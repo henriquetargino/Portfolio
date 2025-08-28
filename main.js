@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Só executa se o elemento existir na página
         if (!typingElement) return; 
         
-        const words = ["insights.", "modelos preditivos.", "valor para o negócio."];
+        const words = ["resultado.", "valor para o negócio.", "decisões estratégicas.", "I.A."];
         let wordIndex = 0, charIndex = 0, isDeleting = false;
 
         function type() {

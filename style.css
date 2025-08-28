@@ -35,8 +35,10 @@ h2 { font-size: 2.5rem; margin-bottom: 2rem; }
 .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-color); text-decoration: none; }
 .logo span { color: var(--primary-light); }
 .menu { display: flex; list-style: none; gap: 2rem; }
-.menu a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; position: relative; transition: var(--transition); }
-.menu a:hover { color: var(--primary-light); }
+.menu a {color: var(--text-secondary); text-decoration: none; font-size: 1rem; position: relative; transition: var(--transition);}
+.menu a::after {content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0; background: var(--primary-light); border-radius: 2px; transition: width .3s ease;}
+.menu a:hover { color: var(--primary-light);}
+.menu a:hover::after {width: 100%;}
 
 /* --- SEÇÃO HERO --- */
 #hero { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: var(--bg-color); }
@@ -48,7 +50,7 @@ h2 { font-size: 2.5rem; margin-bottom: 2rem; }
 .subtitle { margin: 1.5rem auto; max-width: 500px; color: var(--text-secondary); }
 .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--primary-light); color: white; border-radius: 50px; text-decoration: none; font-weight: 500; transition: var(--transition); }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(51, 153, 255, 0.2); }
-.btn.btn-secondary { background: transparent; border: 1px solid var(--primary-light); color: var(--primary-light); margin-top: 0rem; }
+.btn.btn-secondary { background: transparent; border: 1px solid var(--primary-light); color: var(--primary-light); margin-top: 1rem; padding: 0.8rem 2rem; font-size: 0.9rem;} /* Botão ajustado */
 .btn.btn-secondary:hover { background: var(--primary-light); color: white; }
 .scroll-down-arrow { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 3; color: var(--text-secondary); font-size: 2rem; animation: bounce 2s infinite; }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -15px); } 60% { transform: translate(-50%, -5px); } }
@@ -56,15 +58,19 @@ h2 { font-size: 2.5rem; margin-bottom: 2rem; }
 /* --- SEÇÃO SOBRE MIM (LAYOUT INVERTIDO) --- */
 #about { background-color: var(--bg-color); display: flex; align-items: center; }
 .about-container { display: grid; grid-template-columns: 1fr minmax(280px, 35%); gap: 4rem; align-items: flex-start; }
-.about-right-column { display: flex; flex-direction: column; gap: 2.5rem; align-items: center; }
+.about-right-column { display: flex; flex-direction: column; gap: 2rem; align-items: center; }
 .about-image img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface-color); }
+.about-text p:last-of-type { margin-bottom: 1rem; } /* Diminui a distância abaixo do último parágrafo */
 .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; text-align: justify; }
+.about-text a:not(.btn) { color: var(--primary-light); text-decoration: none; position: relative; font-weight: 500; transition: color .3s ease; }
+.about-text a:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: -3px; height: 2px; width: 0; background: var(--primary-light); border-radius: 2px; transition: width .3s ease; }
+.about-text a:not(.btn):hover::after { width: 100%; }
 .tech-stack { width: 100%; }
-.tech-stack h4 { margin-bottom: 1.5rem; font-size: 1.2rem; text-align: center; }
-.tools-container { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-.tool-category-card { background-color: var(--surface-color); padding: 0.75rem 1rem; border-radius: var(--border-radius); transition: var(--transition); text-align: center; flex: 1 1 120px; min-width: 120px; }
+.tech-stack h4 { margin-bottom: 1rem; font-size: 1.2rem; text-align: center; }
+.tools-container { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+.tool-category-card { background-color: var(--surface-color); padding: 0.7rem 0.9rem; border-radius: var(--border-radius); transition: var(--transition); text-align: center; flex: 1 1 120px; min-width: 120px; } /* Padding ajustado */
 .tool-category-card:hover { transform: translateY(-5px); background-color: #202225; }
-.tool-category-card h5 { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.9rem; color: var(--primary-light); margin-bottom: 0.5rem; font-weight: 500; }
+.tool-category-card h5 { display: flex; align-items: center; justify-content: center; gap: 0.3rem; font-size: 0.9rem; color: var(--primary-light); margin-bottom: 0.5rem; font-weight: 500; }
 .tool-category-card h5 i { font-size: 1.1rem; }
 .tool-category-card p { color: var(--text-secondary); line-height: 1.5; font-size: 0.8rem; margin: 0; }
 
@@ -110,8 +116,9 @@ h2 { font-size: 2.5rem; margin-bottom: 2rem; }
 .project-content img { width: 100%; border-radius: var(--border-radius); margin-bottom: 2rem; }
 .project-content h3 { font-size: 1.8rem; color: var(--primary-light); margin-top: 3rem; margin-bottom: 1.5rem; }
 .project-content p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; text-align: justify; }
-.back-to-home { display: inline-block; margin-top: 3rem; color: var(--primary-light); text-decoration: none; font-weight: 500; }
-.back-to-home:hover { text-decoration: underline; }
+.back-to-home { display: inline-block; margin-top: 3rem; color: var(--primary-light); text-decoration: none; font-weight: 500; position: relative; }
+.back-to-home::after { content: "";  position: absolute; left: 0; bottom: -6px; height: 2px; width: 0; background: var(--primary-light); border-radius: 2px; transition: width .3s ease; }
+.back-to-home:hover::after { width: 100%; }
 
 /* --- ESTILOS DA PÁGINA DE CERTIFICADOS --- */
 .certifications-list { display: flex; flex-direction: column; gap: 2rem; max-width: 900px; margin: 0 auto; }
