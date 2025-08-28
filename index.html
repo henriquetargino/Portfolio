@@ -1,343 +1,123 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html lang="pt-BR">
-	<head>
-		<title>Portfólio Henrique Targino</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Nome | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Cabeçalho Fixo -->
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="#">Seu Nome<span>.</span></a>
+            <ul class="menu">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#footer">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <main>
+        <!-- Seção Hero (Inicial) -->
+        <section id="hero" class="section">
+            <div id="particles-js"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p>Olá, eu sou</p>
+                    <h1>Seu Nome</h1>
+                    <h3>Transformo dados em <span class="typing-effect"></span></h3>
+                    <p class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque similique!</p>
+                    <a href="#about" class="btn">Explorar</a>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down-arrow" aria-label="Rolar para baixo">
+                <i class="ph-bold ph-caret-down"></i>
+            </a>
+        </section>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="fas fa-laptop"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Henrique Targino</h1>
-								<p>Data Science Portfolio<br />
-								
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#about">Sobre Mim</a></li>
-								<li><a href="#projects">Projetos</a></li>
-								<li><a href="#contact">Contato</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+        <!-- Seção Sobre Mim -->
+        <section id="about" class="section">
+            <div class="container about-container">
+                <div class="about-image reveal">
+                    <img src="https://placehold.co/400x400/181A1D/F0F0F0?text=Sua+Foto" alt="Sua Foto de Perfil">
+                </div>
+                <div class="about-text reveal">
+                    <h2>Minha Jornada</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</p>
+                    <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper.</p>
+                    <div class="tech-stack">
+                        <h4>Minhas Ferramentas:</h4>
+                        <div class="tools-list">
+                            <div class="tool-item"><i class="ph-bold ph-file-py"></i><span>Python</span></div>
+                            <div class="tool-item"><i class="ph-bold ph-database"></i><span>SQL</span></div>
+                            <div class="tool-item"><i class="ph-bold ph-chart-bar"></i><span>Power BI</span></div>
+                            <div class="tool-item"><i class="ph-bold ph-brain"></i><span>Scikit-learn</span></div>
+                            <div class="tool-item"><i class="ph-bold ph-docker-logo"></i><span>Docker</span></div>
+                            <div class="tool-item"><i class="ph-bold ph-git-branch"></i><span>Git</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-				<!-- Main -->
-					<div id="main">
+        <!-- Seção de Projetos -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="reveal">Projetos Principais</h2>
+                <div class="legend reveal">
+                    <div class="legend-item"><span class="tag-color ml"></span> Machine Learning</div>
+                    <div class="legend-item"><span class="tag-color analise"></span> Análise de Dados</div>
+                    <div class="legend-item"><span class="tag-color automacao"></span> Automação</div>
+                </div>
+                
+                <div class="projects-grid-container reveal">
+                    <div class="project-card">
+                        <span class="project-tag ml"></span>
+                        <img src="https://placehold.co/600x600/0A2540/FFFFFF?text=Projeto" alt="Projeto">
+                        <div class="project-overlay"><h3>Modelo Preditivo</h3><p>Lorem ipsum dolor sit amet.</p></div>
+                    </div>
+                    <div class="project-card">
+                         <span class="project-tag analise"></span>
+                        <img src="https://placehold.co/600x600/0A2540/FFFFFF?text=Projeto" alt="Projeto">
+                        <div class="project-overlay"><h3>Dashboard de Vendas</h3><p>Duis sagittis ipsum.</p></div>
+                    </div>
+                    <div class="project-card">
+                         <span class="project-tag automacao"></span>
+                        <img src="https://placehold.co/600x600/0A2540/FFFFFF?text=Projeto" alt="Projeto">
+                        <div class="project-overlay"><h3>ETL Automatizado</h3><p>Mauris massa. Vestibulum.</p></div>
+                    </div>
+                    <div class="project-card">
+                        <span class="project-tag ml"></span>
+                        <img src="https://placehold.co/600x600/0A2540/FFFFFF?text=Projeto" alt="Projeto">
+                        <div class="project-overlay"><h3>Sistema de Recomendação</h3><p>Lorem ipsum dolor sit amet.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-						<!-- Aboot Me -->
-							<article id="about">
-								<h2 class="major">Um Pouco Sobre Mim</h2>
-								<span class="image main"><img src="images/eu.jpg" alt="" /></span>
-								<h3>Henrique Targino</h3>
-								<p>Desde criança, eu sabia que iria trabalhar com tecnologia. Minha paixão começou com videogames e computadores, que despertaram minha curiosidade sobre como as coisas funcionavam "por trás das telas". Essa curiosidade me levou a explorar programação e entender como a tecnologia pode resolver problemas e criar soluções incríveis.</a></p>
-								<p>Hoje, estou cursando faculdade de Ciência da Computação e me especializando em Ciência de Dados e Machine Learning. Essas áreas me fascinam porque combinam lógica, criatividade e a possibilidade de transformar dados em decisões que realmente fazem a diferença. Cada <a href="#projects">projeto</a> que faço é uma oportunidade de unir minha paixão por tecnologia com meu desejo de fazer a diferença... (obs: esse texto veio 100% do coração e não foi uma I.A. que fez hahaha).</p>
-								<p>Trabalhar com dados me proporciona não apenas a oportunidade de solucionar problemas complexos, mas também de impactar positivamente as decisões e estratégias de pessoas e empresas. Continuo motivado a aprender, evoluir e explorar novos horizontes, sempre guiado pela minha paixão por tecnologia e ciência de dados. Este portfólio é mais do que uma vitrine de projetos; é o reflexo do meu entusiasmo em transformar dados complexos em análises claras e acessíveis, capazes de gerar insights compreensíveis para qualquer público e não apenas para nós que estamos acostumados ao mundo dos datasets. </p>
-							</article>
+    <!-- Rodapé -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2>Vamos nos conectar?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi.</p>
+            <div class="social-icons">
+                <a href="#" target="_blank" title="GitHub"><i class="ph-bold ph-github-logo"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="mailto:email@example.com" title="Email"><i class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2025 | Feito com 💜 por Seu Nome</p>
+        </div>
+    </footer>
 
-						<!-- Projects -->
-							<article id="projects">
-								<h2 class="major">Projetos Ciência de Dados</h2>
-								<span class="image main"><a href="https://vehicles-bjlv.onrender.com/" target="_blank" rel="noopener noreferrer"><img src="images/vehicle.jpg" alt="titulo" /></a></span>
-								<h3> <a href="https://vehicles-bjlv.onrender.com/" target="_blank" rel="noopener noreferrer">Aplicativo Web: Previsão de Preços (Machine Learning) e Análise de Dados Automotivos.</a></h3>
-								<p class="projects-paragraph">Aplicativo web desenvolvido para oferecer uma análise completa e interativa do mercado de veículos (utilizando dados fornecidos por uma plataforma de vendas de carros), integrando técnicas de machine learning e visualização de dados. Com foco na experiência do usuário, o projeto permite explorar um conjunto de dados automotivos detalhado, investigando padrões e tendências importantes. Entre as principais funcionalidades estão filtros personalizados que possibilitam refinar a análise por marca, modelo, ano de fabricação e faixa de preço, além de gráficos dinâmicos que ilustram distribuições de preços, quilometragem e outras características dos veículos. Uma das grandes inovações é a integração de um modelo de machine learning, permitindo que o usuário insira as características do seu carro para a I.A. realizar predições de preços com base no histórico de dados, auxiliando tanto compradores quanto vendedores na tomada de decisões estratégicas. Este projeto combina ciência de dados e desenvolvimento web, resultando em uma ferramenta poderosa e prática para o mercado automotivo.<br><br><strong>Como Utilizar: </strong> Clique na imagem ou no título acima, espere alguns segundos e você será redirecionado para o link do projeto. Todos os textos estão em inglês, e, se você preferir, clique com o botão direito do mouse e traduza a página.<br><br><strong>Ferramentas Utilizadas:</strong> Python, Streamlit (Aplicação Web), Scikit-Learn (Treinamento de I.A.), Pandas (Manipulação de Dados), CSS (Estilização), Plotly e Matplotlib (Visualização Gráfica), Scipy e Statsmodels (Testes de Hipóteses).<br><br><strong>Post Linkedin:</strong> <a href="https://www.linkedin.com/posts/henriquetargino_machinelearning-randomforest-datascience-activity-7286419582548910080-1GnN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3MTUABr4cje47qJcyWiAb4GZmwYQTKSbg" target="_blank" rel="noopener noreferrer">Clique aqui</a></p>
-
-								<span class="image main"><a href="https://buraco.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="images/baralho.jpg" alt="titulo" /></a></span>
-								<h3> <a href="https://buraco.streamlit.app" target="_blank" rel="noopener noreferrer">Automatizando o dia a dia: Do Bloco de Notas ao Dashboard Interativo</a></h3>
-								<p class="projects-paragraph">Este projeto nasceu de um hobby que compartilho com minha mãe: o jogo de cartas Buraco. Por muito tempo, nosso placar era gerenciado em um simples bloco de notas no celular. Ao ver aquelas anotações manuais, tive a ideia imediata de aplicar o meu conhecimento para criar uma solução mais moderna e divertida para nós.<br><br>O resultado é esta aplicação web, que transforma a simples marcação de pontos em uma experiência de análise de dados. Com ela, visualizamos em tempo real nosso desempenho através de dashboards interativos, acompanhamos estatísticas como sequências de vitórias e aproveitamento, e comparamos nossos perfis de jogador. A adição de novas partidas é feita por um formulário seguro e protegido por senha, garantindo a integridade dos nossos "dados oficiais" de jogo.<br><br>Mais do que uma ferramenta técnica, esta foi uma automação que tornou um passatempo em família ainda mais especial e competitivo. É a prova de que as habilidades em dados podem ser usadas para agregar valor e diversão ao nosso cotidiano.<br><br><strong>Como Utilizar:</strong> Clique na imagem ou no título acima para acessar a aplicação ao vivo. Navegue pelas abas para explorar os dashboards e as estatísticas.<br><br><strong>Ferramentas Utilizadas:</strong> Python, Streamlit (Aplicação Web), Pandas (Manipulação e Análise de Dados), Plotly (Visualização Gráfica Interativa), Google Sheets API e gspread (Persistência de Dados).<br><br><strong>Post Linkedin:</strong> <a href="https://www.linkedin.com/posts/henriquetargino_automacao-python-streamlit-activity-7340801378207813632-DYGV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3MTUABr4cje47qJcyWiAb4GZmwYQTKSbg" target="_blank" rel="noopener noreferrer">Clique aqui</a></p></p>
-							</article>
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contato</h2>
-								<p></p>
-								<h3>henriquetarginoalbuquerque@gmail.com</h3>
-								<h3>+55 (83) 9 8212-1506</h3>
-								<p></p>
-
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/henriquetargino/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="https://github.com/henriquetargino" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
-
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
-
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
-
-								<section>
-									<h3 class="major">Lists</h3>
-
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; 2025 Henrique Targino</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="main.js"></script>
+</body>
 </html>
