@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- O título deve ser alterado para o nome do seu projeto -->
-    <title>Nome do Projeto | Portfólio de Dados</title>
+    <title>Buraco | Portfólio de Dados</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,11 +11,9 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <!-- Cabeçalho Fixo (Consistente em todas as páginas) -->
     <header id="header">
         <nav class="container">
-            <!-- O link do logo agora aponta para a página inicial -->
-            <a class="logo" href="index.html">Voltar<span>.</span></a>
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
             <ul class="menu">
                 <li><a href="index.html#hero">Início</a></li>
                 <li><a href="index.html#about">Sobre</a></li>
@@ -30,30 +27,26 @@
         <section class="section project-detail-section">
             <div class="container">
                 <div class="project-detail-header">
-                    <!-- Substitua pelo título e subtítulo do seu projeto -->
                     <h1>Automatizando o dia a dia: Do Bloco de Notas ao Dashboard Interativo</h1>
                     <p>Aplicativo web interativo que transforma os pontos de um jogo de cartas em análises de dados em tempo real, com dashboards dinâmicos e controle seguro de partidas.</p>
                 </div>
 
                 <div class="project-content">
-                    <!-- Substitua pela imagem principal do seu projeto -->
                     <img src="images/video_baralho.gif" alt="Demonstração do projeto de automação do jogo de baralho">
 
-                    <h3>O Desafio</h3>
-                    <p>Comece explicando o problema que você se propôs a resolver. Qual era o contexto? Qual era a necessidade de negócio ou a pergunta de pesquisa que motivou este projeto? Tente ser claro e conciso.</p>
+                    <h3>O Início da Ideia</h3>
+                    <p>O projeto nasceu de uma situação simples do cotidiano: jogar Buraco, um jogo de baralho, com minha mãe. Por um bom tempo, nosso placar era anotado manualmente no bloco de notas do celular dela, um processo lento e pouco visual. Ao observar essas anotações, percebi uma oportunidade perfeita de automatizar essa tarefa e transformar nosso hobby em uma experiência interativa. A ideia era uma só: criar um sistema que registrasse os pontos, mostrasse gráficos e métricas, e permitisse acompanhar o desempenho de cada jogador ao longo do tempo.</p>
                     
-                    <h3>Minha Abordagem e Metodologia</h3>
-                    <p>Descreva os passos que você tomou para resolver o problema. Fale sobre a coleta e limpeza dos dados (Data Cleaning), a análise exploratória (EDA), a seleção de características (Feature Engineering) e o modelo que você escolheu (se aplicável).</p>
-                    <p>Aqui é um bom lugar para mencionar as bibliotecas e ferramentas específicas que você usou, como Pandas para manipulação, Seaborn para visualizações ou Scikit-learn para modelagem.</p>
+                    <h3>Desenvolvimento </h3>
+                    <p>O primeiro desafio foi entender como manter uma base de dados viva que fosse atualizada a cada nova partida. Até então, eu nunca tinha trabalhado com a API do Google Sheets, então comecei a estudar. Busquei documentações e fóruns para entender como autenticar, escrever e ler dados de forma segura. Descobri o poder das bibliotecas Python <span class="highlight-text">gspread</span> e <span class="highlight-text">gspread-dataframe</span>, que permitiram conectar a aplicação diretamente a uma planilha, como se fosse um banco de dados online, acessível de qualquer lugar.</p>
+                    <p>Com os dados garantidos, o próximo passo foi dar vida à interface. Usei <span class="highlight-text">Streamlit</span> para criar uma página interativa, intuitiva e responsiva. Mas o grande diferencial estava em transformar números em histórias visuais: com <span class="highlight-text">Plotly</span>, desenvolvi gráficos interativos. Assim, é possível ver a evolução de cada jogador, as maiores vitórias, sequências, diferenças médias de pontuação e até estatísticas como “qual foi o dia em que um jogador fez a maior pontuação?”.</p>
+                    <p>Para que tudo fosse rápido, implementei cache com <span class="highlight-text"><code>@st.cache_data</code></span>, garantindo que as consultas à planilha fossem otimizadas e que os dados estivessem sempre atualizados. Ao registrar novas partidas, criei um formulário seguro, protegido por senha, para que apenas os jogadores autorizados pudessem inserir resultados. Isso garantiu integridade e confiabilidade nas análises. Cada vez que uma partida é registrada, os dados mudam, e os gráficos se atualizam instantaneamente, tornando a experiência quase tão empolgante quanto o próprio jogo.</p>
 
-                    <!-- Você pode adicionar mais imagens ou gráficos aqui -->
-                     <img src="https://placehold.co/1200x600/181A1D/FFFFFF?text=Gráfico+ou+Resultado" alt="Gráfico ou resultado importante">
+                    <h3>Impacto Emocional</h3>
+                    <p>A melhor parte de todo o projeto acontece quando uma nova partida é registrada: o <span class="highlight-text">st.balloons</span> (função do Streamlit de soltar balões na tela) toma conta da tela, e minha mãe começa a sorrir à toa, como se tivesse acabado de ganhar um troféu. Esse detalhe simples virou um momento esperado em cada jogo, transformando a atualização de um placar em uma pequena celebração.</p>
+                    <p>Esse não foi nem de perto o projeto mais trabalhoso ou mais técnico que já desenvolvi, mas, sem sombra de dúvidas, foi o mais divertido e o que trouxe o maior retorno: a felicidade e o orgulho da minha mãe. Mais do que gráficos, estatísticas ou linhas de código, esse projeto provou que a tecnologia pode criar memórias, aproximar pessoas e transformar momentos simples em experiências inesquecíveis.</p>
 
-                    <h3>Resultados e Impacto</h3>
-                    <p>Apresente os resultados que você alcançou. Qual foi a acurácia do seu modelo? Que insights você descobriu durante a análise? Se possível, quantifique o impacto. Por exemplo: "O modelo de previsão de churn alcançou uma precisão de 85%, permitindo uma redução potencial de 15% na perda de clientes."</p>
-
-                    <!-- Link para o repositório do GitHub ou para uma demonstração ao vivo -->
-                    <a href="#" class="btn" style="margin-top: 2rem;">Ver no GitHub</a>
+                    <a href="https://github.com/henriquetargino/buraco" class="btn" style="margin-top: 2rem;" target="_blank">Ver no GitHub</a>
 
                     <a href="index.html#projects" class="back-to-home">← Voltar para todos os projetos</a>
                 </div>
@@ -61,21 +54,19 @@
         </section>
     </main>
 
-    <!-- Rodapé (Consistente em todas as páginas) -->
     <footer id="footer" class="footer">
         <div class="container">
             <h2>Vamos nos conectar?</h2>
             <p>Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato.</p>
             <div class="social-icons">
-                <a href="#" target="_blank" title="GitHub"><i class="ph-bold ph-github-logo"></i></a>
-                <a href="#" target="_blank" title="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
-                <a href="mailto:email@example.com" title="Email"><i class="ph-bold ph-envelope"></i></a>
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i class="ph-bold ph-envelope"></i></a>
             </div>
             <p class="copyright">© 2025 | Desenvolvido por Henrique Targino</p>
         </div>
     </footer>
 
-    <!-- O main.js é necessário para o cabeçalho dinâmico funcionar -->
     <script src="main.js"></script>
 </body>
 </html>
