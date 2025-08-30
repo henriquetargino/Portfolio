@@ -27,26 +27,28 @@
         <section class="section project-detail-section">
             <div class="container">
                 <div class="project-detail-header">
-                    <h1>Automatizando o dia a dia: Do Bloco de Notas ao Dashboard Interativo</h1>
-                    <p>Aplicativo web interativo que transforma os pontos de um jogo de cartas em análises de dados em tempo real, com dashboards dinâmicos e controle seguro de partidas.</p>
+                    <h1>Agente de IA Secretário Virtual para Nutricionista</h1>
+                    <p>Automação de atendimento no WhatsApp com integração entre N8N, Evolution API e Chatwoot</p>
                 </div>
 
                 <div class="project-content">
-                    <img src="images/video_baralho.gif" alt="Demonstração do projeto de automação do jogo de baralho">
+                    <img src="images/n8n0.PNG" alt="Demonstração do projeto de automação do jogo de baralho">
 
-                    <h3>O Início da Ideia</h3>
-                    <p>O projeto nasceu de uma situação simples do cotidiano: jogar Buraco, um jogo de baralho, com minha mãe. Por um bom tempo, nosso placar era anotado manualmente no bloco de notas do celular dela, um processo lento e pouco visual. Ao observar essas anotações, percebi uma oportunidade perfeita de automatizar essa tarefa e transformar nosso hobby em uma experiência interativa. A ideia era uma só: criar um sistema que registrasse os pontos, mostrasse gráficos e métricas, e permitisse acompanhar o desempenho de cada jogador ao longo do tempo.</p>
-                    
-                    <h3>Desenvolvimento </h3>
-                    <p>O primeiro desafio foi entender como manter uma base de dados viva que fosse atualizada a cada nova partida. Até então, eu nunca tinha trabalhado com a API do Google Sheets, então comecei a estudar. Busquei documentações e fóruns para entender como autenticar, escrever e ler dados de forma segura. Descobri o poder das bibliotecas Python <span class="highlight-text">gspread</span> e <span class="highlight-text">gspread-dataframe</span>, que permitiram conectar a aplicação diretamente a uma planilha, como se fosse um banco de dados online, acessível de qualquer lugar.</p>
-                    <p>Com os dados garantidos, o próximo passo foi dar vida à interface. Usei <span class="highlight-text">Streamlit</span> para criar uma página interativa, intuitiva e responsiva. Mas o grande diferencial estava em transformar números em histórias visuais: com <span class="highlight-text">Plotly</span>, desenvolvi gráficos interativos. Assim, é possível ver a evolução de cada jogador, as maiores vitórias, sequências, diferenças médias de pontuação e até estatísticas como “qual foi o dia em que um jogador fez a maior pontuação?”.</p>
-                    <p>Para que tudo fosse rápido, implementei cache com <span class="highlight-text"><code>@st.cache_data</code></span>, garantindo que as consultas à planilha fossem otimizadas e que os dados estivessem sempre atualizados. Ao registrar novas partidas, criei um formulário seguro, protegido por senha, para que apenas os jogadores autorizados pudessem inserir resultados. Isso garantiu integridade e confiabilidade nas análises. Cada vez que uma partida é registrada, os dados mudam, e os gráficos se atualizam instantaneamente, tornando a experiência quase tão empolgante quanto o próprio jogo.</p>
+<h3>Início</h3>
+<p>Uma nutricionista me procurou dizendo que a maior dor dela era lidar com o volume de mensagens no WhatsApp. Muitas vezes, no meio da rotina de atendimentos, as conversas desciam na tela e acabavam ficando sem resposta, o que prejudicava a experiência dos pacientes e gerava atrasos para marcar ou desmarcar consultas. A ideia era criar um agente virtual que pudesse assumir esse papel de secretária: responder dúvidas, enviar informações personalizadas sobre dietas e manter o atendimento ativo a qualquer hora do dia.</p>
 
-                    <h3>Impacto Emocional</h3>
-                    <p>A melhor parte de todo o projeto acontece quando uma nova partida é registrada: o <span class="highlight-text">st.balloons</span> (função do Streamlit de soltar balões na tela) toma conta da tela, e minha mãe começa a sorrir à toa, como se tivesse acabado de ganhar um troféu. Esse detalhe simples virou um momento esperado em cada jogo, transformando a atualização de um placar em uma pequena celebração.</p>
-                    <p>Esse não foi nem de perto o projeto mais trabalhoso ou mais técnico que já desenvolvi, mas, sem sombra de dúvidas, foi o mais divertido e o que trouxe o maior retorno: a felicidade e o orgulho da minha mãe. Mais do que gráficos, estatísticas ou linhas de código, esse projeto provou que a tecnologia pode criar memórias, aproximar pessoas e transformar momentos simples em experiências inesquecíveis.</p>
+<h3>Desenvolvimento</h3>
+<p>O primeiro passo foi estruturar uma base de dados centralizada e fácil de atualizar. Optei pelo Google Sheets, mesmo sabendo que não é o banco de dados mais robusto, porque a aplicação não exigia grandes volumes de armazenamento e a nutricionista já estava acostumada a trabalhar com planilhas. Ali, registrei informações como nome e número de contato dos pacientes, dietas personalizadas e observações importantes, como “paciente bariátrico, evitar X alimento”.</p>
+<p>Para orquestrar todo o fluxo, utilizei o <span class="highlight-text">N8N</span>, que integrou a <span class="highlight-text">Evolution API</span> (responsável pela gestão das mensagens no <span class="highlight-text">WhatsApp</span>) e o <span class="highlight-text">Chatwoot</span>, onde todas as conversas são centralizadas. O agente foi configurado para buscar respostas diretamente na planilha, garantindo mensagens rápidas e personalizadas. Se um paciente perguntasse “Qual a minha dieta desta semana?”, o sistema consultava seus dados e respondia instantaneamente. Quando surgiam perguntas que exigiam histórico ou contexto de consultas anteriores, como “Você lembra o que conversamos na última consulta?”, o agente acionava o handoff e transferia a conversa para que a nutricionista respondesse diretamente no Chatwoot.</p>
 
-                    <a href="https://github.com/henriquetargino/buraco" class="btn" style="margin-top: 2rem;" target="_blank">Ver no GitHub</a>
+                    <h3>Fluxo N8N</h3>
+                    <img src="images/n8n1.PNG" alt="Primeira parte do fluxo N8N">
+                    <p></p>
+                    <img src="images/n8n2.PNG" alt="Segunda parte do fluxo N8N">
+                    <p></p>
+                    <h3>Resultado</h3>
+                    <p>O resultado foi uma transformação imediata no fluxo de trabalho. Desde a implementação, nenhuma mensagem deixou de ser respondida e o número de interações com os pacientes aumentou em 30% no primeiro mês. A nutricionista passou a dedicar menos tempo a tarefas administrativas e mais tempo a atividades de alto valor, como o acompanhamento detalhado de cada paciente.</p>
+
 
                     <a href="index.html#projects" class="back-to-home">← Voltar para todos os projetos</a>
                 </div>
