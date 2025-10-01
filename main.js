@@ -1,9 +1,7 @@
-// Garante que todo o código só será executado após o carregamento completo da página
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. INICIALIZAÇÃO DO PARTICLES.JS (FUNDO INTERATIVO)
+    // FUNDO INTERATIVO
     function initParticles() {
-        // Verifica se o elemento #particles-js existe na página atual
         if (document.getElementById('particles-js')) {
             if (typeof particlesJS === 'undefined') {
                 console.error('Particles.js não foi carregado. Verifique o link do script no HTML.');
@@ -29,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. EFEITO DE "MÁQUINA DE ESCREVER"
+    // MAQUINA DE ESCREVER
     function setupTypingEffect() {
         const typingElement = document.querySelector('.typing-effect');
-        // Só executa se o elemento existir na página
+
         if (!typingElement) return; 
         
         const words = ["resultado.", "valor para o negócio.", "decisões estratégicas.", "I.A."];
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // 3. CABEÇALHO DINÂMICO
+    // CABEÇALHO DINAMICO
     function setupScrollHeader() {
         const header = document.getElementById('header');
         if (!header) return;
@@ -66,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. ANIMAÇÃO DE ELEMENTOS AO ROLAR A PÁGINA
+    // ANIMAÇÃO ELEMENTOS AO ROLAR A PAGINA
     function setupScrollReveal() {
         const revealElements = document.querySelectorAll('.reveal');
         if (revealElements.length === 0) return;
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         revealElements.forEach(element => observer.observe(element));
     }
 
-    // --- EXECUÇÃO DAS FUNÇÕES ---
     initParticles();
     setupTypingEffect();
     setupScrollHeader();
