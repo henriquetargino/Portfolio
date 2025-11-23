@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal for Help | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        .video-container {
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background-color: #000;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="index.html#hero">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#projects">Projetos</a></li>
+                <li><a href="index.html#footer">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1>Detector de "Sinal de Socorro" em Tempo Real</h1>
+                    <p>Um sistema de segurança baseado em Visão Computacional que identifica pedidos de ajuda e dispara alertas via API.</p>
+                </div>
+
+                <div class="project-content">
+                    
+                    <div class="video-container">
+                        <video controls preload="metadata" style="width: 100%; height: auto; background-color: #000;">
+                            <source src="images/video_cv.mp4#t=0.1" type="video/mp4">
+                            Seu navegador não suporta a tag de vídeo.
+                        </video>
+                    </div>
+
+                    <h3>A Inspiração</h3>
+                    <p>Entrei na área de Dados justamente por causa da Visão Computacional. Eu ficava impressionado assistindo aqueles vídeos de carros autônomos e câmeras de segurança inteligentes, tentando entender como as máquinas "enxergavam" o mundo. Curiosamente, o caminho profissional me levou para análises e automações, mas decidi tirar um fim de semana para finalmente colocar a mão na massa no que me trouxe para essa carreira.</p>
+                    <p>Não queria fazer apenas um "Hello World". Queria algo diferente, com impacto real. Desenvolvi um sistema capaz de identificar o "Sinal de Socorro" (Signal for Help) em tempo real e disparar um alerta silencioso via API.</p>
+
+                    <h3>Desafios Técnicos e Soluções</h3>
+                    <p>O mais interessante desse projeto foi sair da zona de conforto dos modelos prontos. Para evitar falsos positivos (o sistema confundir um tchau com um pedido de ajuda), tive que desenhar uma <strong>Máquina de Estados</strong> com geometria vetorial. O código precisa validar a intenção do movimento, e não apenas a posição estática da mão.</p>
+                    
+                    <p>Principais pontos de engenharia do projeto:</p>
+                    <ul style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>Compatibilidade:</strong> Configurei um ambiente virtual isolado (Conda) com Python 3.10 para garantir estabilidade do MediaPipe.</li>
+                        <li><strong>Espaço de Cor:</strong> Implementei conversão explícita de BGR (OpenCV) para RGB (IA) para garantir a precisão da detecção.</li>
+                        <li><strong>Matemática Vetorial:</strong> A validação do dedão "dentro" da palma é feita via Álgebra Linear, calculando a distância relativa entre landmarks.</li>
+                        <li><strong>Performance (Threading):</strong> O envio do alerta para o webhook roda em uma thread separada, impedindo que a requisição de rede trave o vídeo.</li>
+                    </ul>
+
+                    <h3>Resultado</h3>
+                    <p>O resultado é um sistema robusto que roda levemente usando apenas CPU, com feedback visual na tela (flash vermelho) e integração instantânea com softwares externos (N8N).</p>
+
+                    <a href="https://github.com/henriquetargino/sos_computer_vision" target="_blank" class="btn" style="margin-top: 2rem;">Ver Código no GitHub</a>
+
+                    <a href="index.html#projects" class="back-to-home">← Voltar para todos os projetos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2>Vamos nos conectar?</h2>
+            <p>Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2025 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

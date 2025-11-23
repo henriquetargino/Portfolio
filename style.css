@@ -13,6 +13,7 @@
     --tag-ml: #3399FF; /* Azul */
     --tag-analise: #FFAB00; /* Dourado */
     --tag-automacao: #E53935; /* Vermelho */
+    --tag-visao: #8c00ff; /* Roxo */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -88,6 +89,7 @@ h2 { font-size: 2.5rem; margin-bottom: 2rem; }
 .tag-color.ml { background-color: var(--tag-ml); }
 .tag-color.analise { background-color: var(--tag-analise); }
 .tag-color.automacao { background-color: var(--tag-automacao); }
+.tag-color.visao { background-color: var(--tag-visao); }
 
 .projects-grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
 .project-link { text-decoration: none; color: inherit; }
