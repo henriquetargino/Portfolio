@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessor I.A. | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="index.html#hero" data-i18n="menu_home">Início</a></li>
+                <li><a href="index.html#about" data-i18n="menu_about">Sobre</a></li>
+                <li><a href="index.html#projects" data-i18n="menu_projects">Projetos</a></li>
+                <li><a href="certifications.html" data-i18n="menu_certifications">Certificações</a></li>
+                <li><a href="index.html#footer" data-i18n="menu_contact">Contato</a></li>
+                <li class="lang-switch">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <span class="lang-sep">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1 data-i18n="p4_h1">Agente de IA Secretário Virtual para Nutricionista</h1>
+                    <p data-i18n="p4_sb">Automação de atendimento no WhatsApp com integração entre N8N, Evolution API e
+                        Chatwoot</p>
+                </div>
+
+                <div class="project-content">
+                    <img src="images/n8n0.PNG" alt="Demonstração do projeto de automação do jogo de baralho">
+
+                    <h3 data-i18n="p4_h3_1">Início</h3>
+                    <p data-i18n="p4_p1_1">Uma nutricionista me procurou dizendo que a maior dor dela era lidar com o
+                        volume de mensagens no
+                        WhatsApp. Muitas vezes, no meio da rotina de atendimentos, as conversas desciam na tela e
+                        acabavam ficando sem resposta, o que prejudicava a experiência dos pacientes e gerava atrasos
+                        para marcar ou desmarcar consultas. A ideia era criar um agente virtual que pudesse assumir esse
+                        papel de secretária: responder dúvidas, enviar informações personalizadas sobre dietas e manter
+                        o atendimento ativo a qualquer hora do dia.</p>
+
+                    <h3 data-i18n="p4_h3_2">Desenvolvimento</h3>
+                    <p data-i18n="p4_p2_1">O primeiro passo foi estruturar uma base de dados centralizada e fácil de
+                        atualizar. Optei pelo
+                        Google Sheets, mesmo sabendo que não é o banco de dados mais robusto, porque a aplicação não
+                        exigia grandes volumes de armazenamento e a nutricionista já estava acostumada a trabalhar com
+                        planilhas. Ali, registrei informações como nome e número de contato dos pacientes, dietas
+                        personalizadas e observações importantes, como “paciente bariátrico, evitar X alimento”.</p>
+                    <p><span data-i18n="p4_p2_2_1">Para orquestrar todo o fluxo, utilizei o </span><span
+                            class="highlight-text" data-i18n="p4_s_1">N8N</span><span data-i18n="p4_p2_2_2">, que
+                            integrou a
+                        </span><span class="highlight-text" data-i18n="p4_s_2">Evolution API</span><span
+                            data-i18n="p4_p2_2_3"> (responsável pela gestão das mensagens no
+                        </span><span class="highlight-text" data-i18n="p4_s_3">WhatsApp</span><span
+                            data-i18n="p4_p2_2_4">) e o </span><span class="highlight-text"
+                            data-i18n="p4_s_4">Chatwoot</span><span data-i18n="p4_p2_2_5">,
+                            onde todas as conversas são centralizadas. O agente foi configurado para buscar respostas
+                            diretamente na planilha, garantindo mensagens rápidas e personalizadas. Se um paciente
+                            perguntasse “Qual a minha dieta desta semana?”, o sistema consultava seus dados e respondia
+                            instantaneamente. Quando surgiam perguntas que exigiam histórico ou contexto de consultas
+                            anteriores, como “Você lembra o que conversamos na última consulta?”, o agente acionava o
+                            handoff e transferia a conversa para que a nutricionista respondesse diretamente no
+                            Chatwoot.</span>
+                    </p>
+
+                    <h3 data-i18n="p4_h3_3">Fluxo N8N</h3>
+                    <img src="images/n8n1.PNG" alt="Primeira parte do fluxo N8N">
+                    <p><span data-i18n="p4_p3_1_1">Na primeira parte do fluxo, a mensagem chega pelo WhatsApp através do
+                            nó </span><span class="highlight-text" data-i18n="p4_s_5">Webhook</span><span
+                            data-i18n="p4_p3_1_2">. Em seguida, o nó </span><span class="highlight-text"
+                            data-i18n="p4_s_6">Filter</span><span data-i18n="p4_p3_1_3"> verifica se a mensagem foi
+                            enviada por um cliente. Os
+                            nós </span><span class="highlight-text" data-i18n="p4_s_7">Set (0 , 1 , 2 , 3)</span><span
+                            data-i18n="p4_p3_1_4"> armazenam variáveis importantes,
+                            como o número de telefone do cliente. Depois, há uma verificação de áudio: caso a mensagem
+                            recebida seja um áudio, ela é baixada e transcrita; caso contrário, o fluxo segue
+                            normalmente.
+                            No final dessa etapa, os dois caminhos (texto e áudio) se unem no nó </span><span
+                            class="highlight-text" data-i18n="p4_s_8">Merge</span><span data-i18n="p4_p3_1_5">,
+                            permitindo que o processamento continue de forma
+                            centralizada.</span></p>
+                    <img src="images/n8n2.PNG" alt="Segunda parte do fluxo N8N">
+                    <p><span data-i18n="p4_p3_2_1">Na segunda parte do fluxo, o nó </span><span class="highlight-text"
+                            data-i18n="p4_s_9">Google Sheets</span><span data-i18n="p4_p3_2_2"> busca
+                            informações adicionais sobre o cliente com base no número de telefone, como nome, dieta e
+                            observações. Esses dados, junto com a mensagem recebida, são enviados ao agente de IA, que
+                            gera
+                            a resposta. Em seguida, um nó </span><span class="highlight-text"
+                            data-i18n="p4_s_10">If</span><span data-i18n="p4_p3_2_3"> verifica se a situação
+                            exige um <em>handoff</em> para atendimento humano: se sim, a nutricionista é notificada e o
+                            fluxo para; se não, a IA analisa o tamanho da mensagem para calcular o tempo de digitação
+                            simulada, criando uma experiência mais natural, e então envia a resposta diretamente para o
+                            cliente no WhatsApp.</span></p>
+                    <h3 data-i18n="p4_h3_4">Resultado</h3>
+                    <p data-i18n="p4_p4_1">O resultado foi uma transformação imediata no fluxo de trabalho. Desde a
+                        implementação, nenhuma
+                        mensagem deixou de ser respondida e o número de interações com os pacientes aumentou em 30% no
+                        primeiro mês. A nutricionista passou a dedicar menos tempo a tarefas administrativas e mais
+                        tempo a atividades de alto valor, como o acompanhamento detalhado de cada paciente.</p>
+
+
+                    <a href="index.html#projects" class="back-to-home" data-i18n="back_home">← Voltar para todos os
+                        projetos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2 data-i18n="footer_title">Vamos nos conectar?</h2>
+            <p data-i18n="footer_text">Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar
+                em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i
+                        class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i
+                        class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i
+                        class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

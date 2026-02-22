@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Dados Automotivos | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="index.html#hero" data-i18n="menu_home">Início</a></li>
+                <li><a href="index.html#about" data-i18n="menu_about">Sobre</a></li>
+                <li><a href="index.html#projects" data-i18n="menu_projects">Projetos</a></li>
+                <li><a href="certifications.html" data-i18n="menu_certifications">Certificações</a></li>
+                <li><a href="index.html#footer" data-i18n="menu_contact">Contato</a></li>
+                <li class="lang-switch">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <span class="lang-sep">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1 data-i18n="p2_h1">Aplicativo Web: Previsão de Preços (Machine Learning) e Análise de Dados
+                        Automotivos.</h1>
+                    <p data-i18n="p2_sb">Aplicativo web interativo para análise e previsões de dados do mercado
+                        automotivo.</p>
+                </div>
+
+                <div class="project-content">
+                    <img src="images/projeto.PNG" alt="Imagem do projeto">
+
+                    <h3 data-i18n="p2_h3_1">O Começo</h3>
+                    <p data-i18n="p2_p1_1">O desenvolvimento do projeto iniciou-se com a coleta dos dados brutos
+                        fornecidos por uma
+                        plataforma de vendas de veículos. Esses dados continham diversas informações, como marca,
+                        modelo, ano, quilometragem, preço, cor e outras características. Antes de qualquer análise, foi
+                        necessário realizar um processo de limpeza e pré-processamento dos dados.</p>
+
+                    <h3 data-i18n="p2_h3_2">Exploração e Análise dos Dados (EDA)</h3>
+                    <p><span data-i18n="p2_p2_1_1">Após a etapa de limpeza e pré-processamento, iniciei a Análise
+                            Exploratória de Dados (EDA) para
+                            compreender melhor o comportamento do conjunto de dados e identificar padrões relevantes. O
+                            primeiro desafio foi lidar com valores ausentes. Mais de </span><span class="highlight-text"
+                            data-i18n="p2_s_1">25 mil
+                            registros</span><span data-i18n="p2_p2_1_2"> apresentavam campos vazios, sendo que cerca de
+                            10 mil estavam na coluna
+                            "paint_color", preenchida com a categoria "unknown". Os demais valores ausentes, presentes
+                            em
+                            colunas como "model_year", "cylinders" e "odometer", foram tratados com base na moda por
+                            modelo,
+                            na condição do veículo, na quilometragem e no ano de fabricação, garantindo consistência nas
+                            informações.</span></p>
+                    <p data-i18n="p2_p2_2">Durante a análise, identifiquei casos específicos que poderiam distorcer os
+                        resultados, como a
+                        marca Mercedes-Benz, que tinha apenas 40 linhas de dados para dois modelos de carro (valores
+                        repetidos). Para manter a robustez estatística, essa marca foi removida. Também foram eliminados
+                        mais de 800 registros de veículos com preços inferiores a 100 dólares, considerados outliers
+                        irreais para o mercado automotivo.</p>
+                    <p data-i18n="p2_p2_3">Essa etapa foi fundamental para estruturar as variáveis que alimentariam o
+                        modelo de machine
+                        learning e os gráficos.</p>
+
+                    <h3 data-i18n="p2_h3_3">Análises Visuais</h3>
+                    <p data-i18n="p2_p3_1">Com o conjunto de dados tratado, iniciei a construção de visualizações
+                        interativas para
+                        investigar padrões no mercado automotivo. Um dos principais gráficos foi a mediana de preços por
+                        marca, que oferece uma visão mais robusta do valor central de cada fabricante, reduzindo o
+                        impacto de valores extremos e fornecendo uma referência mais fiel do mercado. Essa análise
+                        permitiu identificar quais marcas se posicionam em faixas de preço mais altas e quais apresentam
+                        valores mais acessíveis.</p>
+                    <img src="images/grafico1.PNG" alt="Imagem do projeto">
+                    <p data-i18n="p2_p3_2">Outro ponto explorado foi a distribuição das cores dos veículos. Ao mapear a
+                        frequência de cada
+                        cor, foi possível observar preferências do mercado e avaliar se determinadas tonalidades podem
+                        ter relação com liquidez de venda ou variações de preço. Esses insights visuais ajudam tanto
+                        compradores quanto vendedores a compreender melhor as tendências de consumo.</p>
+                    <img src="images/grafico2.PNG" alt="Imagem do projeto">
+
+                    <h3 data-i18n="p2_h3_4">Entendendo e Tratando Outliers</h3>
+                    <p><span data-i18n="p2_p4_1_1">Para tornar a análise mais </span><span class="highlight-text"
+                            data-i18n="p2_s_2">compreensível</span><span data-i18n="p2_p4_1_2"> a </span><span
+                            class="highlight-text" data-i18n="p2_s_3">qualquer público</span><span
+                            data-i18n="p2_p4_1_3">, preparei uma explicação simples sobre o que
+                            são outliers, como identificá-los e qual o impacto que eles podem ter nas conclusões.
+                            Utilizei o
+                            exemplo de um boxplot, explicando seus elementos principais: mediana, quartis e outliers.
+                            Além
+                            disso, mostrei como esses outliers representam valores extremos que podem distorcer métricas
+                            como a média.</span></p>
+                    <p data-i18n="p2_p4_2">Um caso prático foi o tempo de venda de veículos Chevrolet, onde um registro
+                        indicava 271 dias
+                        para a venda, enquanto a mediana era de apenas 33 dias. Esse único valor elevava a média para
+                        39,6 dias. Após a remoção dos outliers, a mediana caiu para 32 dias e a média para 36,6 dias,
+                        evidenciando que a média é muito mais sensível a valores extremos do que a mediana.</p>
+                    <img src="images/outliers2.png" alt="Imagem do projeto">
+                    <p data-i18n="p2_p4_3">Expliquei também que a remoção foi criteriosa: apenas 3,1% dos dados foram
+                        excluídos, mas eles
+                        inflavam a média em quase 10%. Incluí um exemplo de código em Python mostrando como calcular a
+                        porcentagem de outliers por marca, utilizando o intervalo interquartil (IQR) como critério. Essa
+                        abordagem combinou clareza na explicação com aplicação prática, tornando o conceito acessível
+                        até mesmo para quem não tem formação em ciência de dados.</p>
+                    <img src="images/outliers.PNG" alt="Imagem do projeto">
+
+                    <h3 data-i18n="p2_h3_5">Testes Estatísticos</h3>
+                    <p data-i18n="p2_p5_1">Para validar se as diferenças observadas nos gráficos eram estatisticamente
+                        significativas,
+                        utilizei testes como ANOVA e Tukey’s HSD. O ANOVA foi aplicado para verificar se havia
+                        diferenças relevantes entre as médias de preço de diferentes grupos, enquanto o teste de Tukey’s
+                        HSD ajudou a identificar quais pares de grupos apresentavam essas diferenças de forma mais
+                        precisa. Essa abordagem assegurou que as conclusões fossem baseadas em evidências numéricas e
+                        não apenas em percepções visuais.</p>
+                    <img src="images/teste.PNG" alt="Imagem do projeto">
+                    <p data-i18n="p2_p5_2">Esses testes foram implementados com as bibliotecas Scipy e Statsmodels, e os
+                        resultados foram
+                        apresentados de forma visual, utilizando gráficos para destacar comparações significativas.</p>
+
+                    <h3 data-i18n="p2_h3_6">Modelo de Machine Learning</h3>
+                    <p data-i18n="p2_p6_1">Com a análise estatística concluída e as variáveis mais relevantes definidas,
+                        desenvolvi um
+                        modelo de Machine Learning para prever preços de veículos. Inicialmente testei a Regressão
+                        Linear, mas o desempenho não foi satisfatório. Em seguida, optei pelo algoritmo Random Forest
+                        Regression, que apresentou melhor equilíbrio entre precisão e capacidade de generalização.</p>
+                    <img src="images/model.PNG" alt="Imagem do projeto">
+                    <p data-i18n="p2_p6_2">O modelo foi treinado com atributos como marca, ano de fabricação,
+                        quilometragem, tipo de
+                        combustível e cor do veículo. Para medir a performance, utilizei métricas de avaliação de
+                        regressão, garantindo que as previsões fossem consistentes com o comportamento real do mercado.
+                        O modelo atingiu mais de 85% de score no conjunto de validação e foi integrado à aplicação web,
+                        permitindo que o usuário insira as características de um veículo e obtenha uma estimativa de
+                        preço baseada no histórico de dados.</p>
+
+                    <h3 data-i18n="p2_h3_7">Resultado</h3>
+                    <p data-i18n="p2_p7_1">Este projeto combinou o poder do machine learning com uma análise detalhada
+                        de dados e testes
+                        estatísticos para construir uma ferramenta completa de análise do mercado automotivo. A
+                        combinação de visualizações interativas, tratamento criterioso de dados e modelo preditivo
+                        oferece uma solução completa para análise e tomada de decisão.</p>
+
+                    <!-- Link para o repositório do GitHub ou para uma demonstração ao vivo -->
+                    <a href="https://github.com/henriquetargino/Vehicles" target="_blank" class="btn"
+                        style="margin-top: 2rem;" data-i18n="view_github_2">Ver no GitHub</a>
+
+                    <a href="index.html#projects" class="back-to-home" data-i18n="back_home">← Voltar para todos os
+                        projetos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (Consistente em todas as páginas) -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2 data-i18n="footer_title">Vamos nos conectar?</h2>
+            <p data-i18n="footer_text">Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar
+                em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i
+                        class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i
+                        class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i
+                        class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <!-- O main.js é necessário para o cabeçalho dinâmico funcionar -->
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

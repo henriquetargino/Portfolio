@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buraco | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="index.html#hero" data-i18n="menu_home">Início</a></li>
+                <li><a href="index.html#about" data-i18n="menu_about">Sobre</a></li>
+                <li><a href="index.html#projects" data-i18n="menu_projects">Projetos</a></li>
+                <li><a href="certifications.html" data-i18n="menu_certifications">Certificações</a></li>
+                <li><a href="index.html#footer" data-i18n="menu_contact">Contato</a></li>
+                <li class="lang-switch">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <span class="lang-sep">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1 data-i18n="p3_h1">Automatizando o dia a dia: Do Bloco de Notas ao Dashboard Interativo</h1>
+                    <p data-i18n="p3_sb">Aplicativo web interativo que transforma os pontos de um jogo de cartas em
+                        análises de dados em
+                        tempo real, com dashboards dinâmicos e controle seguro de partidas.</p>
+                </div>
+
+                <div class="project-content">
+                    <img src="images/video_baralho.gif" alt="Demonstração do projeto de automação do jogo de baralho">
+
+                    <h3 data-i18n="p3_h3_1">O Início da Ideia</h3>
+                    <p data-i18n="p3_p1_1">O projeto nasceu de uma situação simples do cotidiano: jogar Buraco, um jogo
+                        de baralho, com
+                        minha mãe. Por um bom tempo, nosso placar era anotado manualmente no bloco de notas do celular
+                        dela, um processo lento e pouco visual. Ao observar essas anotações, percebi uma oportunidade
+                        perfeita de automatizar essa tarefa e transformar nosso hobby em uma experiência interativa. A
+                        ideia era uma só: criar um sistema que registrasse os pontos, mostrasse gráficos e métricas, e
+                        permitisse acompanhar o desempenho de cada jogador ao longo do tempo.</p>
+
+                    <h3 data-i18n="p3_h3_2">Desenvolvimento </h3>
+                    <p><span data-i18n="p3_p2_1_1">O primeiro desafio foi entender como manter uma base de dados viva
+                            que fosse atualizada a cada
+                            nova partida. Até então, eu nunca tinha trabalhado com a API do Google Sheets, então comecei
+                            a
+                            estudar. Busquei documentações e fóruns para entender como autenticar, escrever e ler dados
+                            de
+                            forma segura. Descobri o poder das bibliotecas Python </span><span class="highlight-text"
+                            data-i18n="p3_s_1">gspread</span><span data-i18n="p3_p2_1_2"> e </span><span
+                            class="highlight-text" data-i18n="p3_s_2">gspread-dataframe</span><span
+                            data-i18n="p3_p2_1_3">, que permitiram conectar a aplicação
+                            diretamente a uma planilha, como se fosse um banco de dados online, acessível de qualquer
+                            lugar.</span>
+                    </p>
+                    <p><span data-i18n="p3_p2_2_1">Com os dados garantidos, o próximo passo foi dar vida à interface.
+                            Usei </span><span class="highlight-text" data-i18n="p3_s_3">Streamlit</span><span
+                            data-i18n="p3_p2_2_2"> para criar uma página interativa, intuitiva e
+                            responsiva. Mas o grande diferencial estava em transformar números em histórias visuais: com
+                        </span><span class="highlight-text" data-i18n="p3_s_4">Plotly</span><span
+                            data-i18n="p3_p2_2_3">, desenvolvi gráficos interativos. Assim, é possível
+                            ver a evolução de cada jogador, as maiores vitórias, sequências, diferenças médias de
+                            pontuação
+                            e até estatísticas como “qual foi o dia em que um jogador fez a maior pontuação?”.</span>
+                    </p>
+                    <p><span data-i18n="p3_p2_3_1">Para que tudo fosse rápido, implementei cache com </span><span
+                            class="highlight-text" data-i18n="p3_s_5"><code>@st.cache_data</code></span><span
+                            data-i18n="p3_p2_3_2">, garantindo que as consultas à
+                            planilha fossem otimizadas e que os dados estivessem sempre atualizados. Ao registrar novas
+                            partidas, criei um formulário seguro, protegido por senha, para que apenas os jogadores
+                            autorizados pudessem inserir resultados. Isso garantiu integridade e confiabilidade nas
+                            análises. Cada vez que uma partida é registrada, os dados mudam, e os gráficos se atualizam
+                            instantaneamente, tornando a experiência quase tão empolgante quanto o próprio jogo.</span>
+                    </p>
+
+                    <h3 data-i18n="p3_h3_3">Impacto Emocional</h3>
+                    <p><span data-i18n="p3_p3_1_1">A melhor parte de todo o projeto acontece quando uma nova partida é
+                            registrada: o </span><span class="highlight-text" data-i18n="p3_s_6">st.balloons</span><span
+                            data-i18n="p3_p3_1_2"> (função do Streamlit de soltar balões na tela)
+                            toma conta da tela, e minha mãe começa a sorrir à toa, como se tivesse acabado de ganhar um
+                            troféu. Esse detalhe simples virou um momento esperado em cada jogo, transformando a
+                            atualização
+                            de um placar em uma pequena celebração.</span></p>
+                    <p data-i18n="p3_p3_2">Esse não foi nem de perto o projeto mais trabalhoso ou mais técnico que já
+                        desenvolvi, mas, sem
+                        sombra de dúvidas, foi o mais divertido e o que trouxe o maior retorno: a felicidade e o orgulho
+                        da minha mãe. Mais do que gráficos, estatísticas ou linhas de código, esse projeto provou que a
+                        tecnologia pode criar memórias, aproximar pessoas e transformar momentos simples em experiências
+                        inesquecíveis.</p>
+
+                    <a href="https://github.com/henriquetargino/buraco" class="btn" style="margin-top: 2rem;"
+                        target="_blank" data-i18n="view_github_2">Ver no GitHub</a>
+
+                    <a href="index.html#projects" class="back-to-home" data-i18n="back_home">← Voltar para todos os
+                        projetos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2 data-i18n="footer_title">Vamos nos conectar?</h2>
+            <p data-i18n="footer_text">Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar
+                em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i
+                        class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i
+                        class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i
+                        class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

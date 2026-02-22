@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal for Help | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        .video-container {
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-color: #000;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="index.html">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="index.html#hero" data-i18n="menu_home">Início</a></li>
+                <li><a href="index.html#about" data-i18n="menu_about">Sobre</a></li>
+                <li><a href="index.html#projects" data-i18n="menu_projects">Projetos</a></li>
+                <li><a href="certifications.html" data-i18n="menu_certifications">Certificações</a></li>
+                <li><a href="index.html#footer" data-i18n="menu_contact">Contato</a></li>
+                <li class="lang-switch">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <span class="lang-sep">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1 data-i18n="p1_h1">Detector de "Sinal de Socorro" em Tempo Real</h1>
+                    <p data-i18n="p1_sb">Um sistema de segurança baseado em Visão Computacional que identifica pedidos
+                        de ajuda e dispara
+                        alertas via API.</p>
+                </div>
+
+                <div class="project-content">
+
+                    <div class="video-container">
+                        <video controls preload="metadata" style="width: 100%; height: auto; background-color: #000;">
+                            <source src="images/video_cv.mp4#t=0.1" type="video/mp4">
+                            Seu navegador não suporta a tag de vídeo.
+                        </video>
+                    </div>
+
+                    <h3 data-i18n="p1_h3_1">A Inspiração</h3>
+                    <p data-i18n="p1_p1_1">Entrei na área de Dados justamente por causa da Visão Computacional. Eu
+                        ficava impressionado
+                        assistindo aqueles vídeos de carros autônomos e câmeras de segurança inteligentes, tentando
+                        entender como as máquinas "enxergavam" o mundo. Curiosamente, o caminho profissional me levou
+                        para análises e automações, mas decidi tirar um fim de semana para finalmente colocar a mão na
+                        massa no que me trouxe para essa carreira.</p>
+                    <p data-i18n="p1_p1_2">Não queria fazer apenas um "Hello World". Queria algo diferente, com impacto
+                        real. Desenvolvi um
+                        sistema capaz de identificar o "Sinal de Socorro" (Signal for Help) em tempo real e disparar um
+                        alerta silencioso via API.</p>
+                    <p style="margin-bottom: 2rem;"><span data-i18n="p1_p1_3">Por conta desta aplicação e da repercussão
+                            do meu </span><a
+                            href="https://www.linkedin.com/posts/henriquetargino_datascience-python-computervision-activity-7398759818959876096-HeEO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3MTUABr4cje47qJcyWiAb4GZmwYQTKSbg"
+                            target="_blank" style="color: var(--primary-light); text-decoration: underline;"
+                            data-i18n="p1_a_1">post original</a><span data-i18n="p1_p1_4">, fui <strong>convidado para
+                                ministrar uma
+                                aula</strong> sobre Visão Computacional para alunos da TripleTen, compartilhando toda a
+                            engenharia e os desafios práticos da construção deste sistema (você pode conferir o
+                        </span><a
+                            href="https://www.linkedin.com/posts/henriquetargino_visaetocomputacional-python-opencv-ugcPost-7407063214959587328-AMia?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3MTUABr4cje47qJcyWiAb4GZmwYQTKSbg"
+                            target="_blank" style="color: var(--primary-light); text-decoration: underline;"
+                            data-i18n="p1_a_2">post sobre a aula aqui</a><span data-i18n="p1_p1_5">).</span></p>
+
+                    <h3 data-i18n="p1_h3_2">Como Funciona a Lógica?</h3>
+                    <p data-i18n="p1_p2_1">Diferente de abordagens tradicionais que exigem o treinamento de modelos
+                        pesados de Deep
+                        Learning,
+                        este sistema utiliza <strong>Geometria Euclidiana</strong> e <strong>Álgebra Linear</strong>
+                        para analisar
+                        a biomecânica da mão em tempo real usando apenas CPU. O algoritmo segue um pipeline de decisão
+                        rigoroso através de uma <strong>Máquina de Estados Finita (FSM)</strong> para evitar detectar um
+                        "tchau" ou gestos aleatórios:</p>
+
+                    <ul
+                        style="color: var(--text-secondary); margin-bottom: 2rem; padding-left: 1.5rem; line-height: 1.8;">
+                        <li data-i18n="p1_li_1"><strong>Estágio 1 (Armar):</strong> O sistema extrai 21 landmarks via
+                            MediaPipe e verifica
+                            se os 4 dedos estão levantados. Calculamos a <em>Distância Euclidiana</em> entre a ponta do
+                            dedão e a base do mindinho. Se for curta (dedão escondido na palma), entra no estado de
+                            <strong>ALERTA (Laranja)</strong> na UI.
+                        </li>
+                        <li data-i18n="p1_li_2"><strong>Estágio 2 (Disparar):</strong> Uma janela temporal invisível de
+                            apenas 2 segundos é
+                            aberta. Se o usuário fechar o punho (abaixar os 4 dedos juntos) estritamente dentro desse
+                            limite, a intenção de socorro é comprovada matematicamente.</li>
+                        <li data-i18n="p1_li_3"><strong>Output Assíncrono:</strong> A tela pisca em vermelho como
+                            feedback visual e dispara
+                            magicamente um POST Request de alerta para o N8N (ou qualquer webhook de segurança).</li>
+                    </ul>
+
+                    <h3 data-i18n="p1_h3_3">Desafios de Engenharia Superados</h3>
+                    <p data-i18n="p1_p3_1">Para construir a solução, diversos obstáculos práticos do uso de
+                        processamento de imagens ao vivo
+                        precisaram ser trabalhados para o algoritmo não ser lento e nem impreciso:</p>
+                    <ul
+                        style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.8;">
+                        <li data-i18n="p1_li2_1"><strong>Processamento Paralelo (Threading):</strong> Sem dúvida o
+                            desafio crucial de UX.
+                            Utilizar <em>Threading</em> foi vital porque sem isso ocorre o famoso <em>"Blocking
+                                I/O"</em>. Basicamente, o vídeo "congelava" toda vez que o Python aguardava a resposta
+                            de sucesso do servidor HTTP na internet. Colocando o request em uma Thread separada, o FPS
+                            da câmera local se manteve inalterado.</li>
+                        <li data-i18n="p1_li2_2"><strong>Independência de Profundidade:</strong> Como a lógica mede as
+                            proporções das juntas
+                            em vez de calcular distâncias exatas de pixels na tela, a segurança matemática funciona quer
+                            a mão da pessoa esteja muito perto da câmera, ou lá no final do quarto.</li>
+                        <li data-i18n="p1_li2_3"><strong>Tratamento de Matrizes:</strong> A clássica dor de cabeça com
+                            canais de cores.
+                            Garantir a fluidez na hora de reverter o espaço de cores nativo BGR lido nativamente pelo
+                            OpenCV para o formato RGB exigido pelos modelos de análise de pose para então desenhar as
+                            <em>Bounding Boxes</em> devolvendo à tela original.
+                        </li>
+                    </ul>
+
+                    <a href="https://github.com/henriquetargino/sos_computer_vision" target="_blank" class="btn"
+                        style="margin-top: 2rem;" data-i18n="view_github">Ver Código no GitHub</a>
+
+                    <a href="index.html#projects" class="back-to-home" data-i18n="back_home">← Voltar para todos os
+                        projetos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2 data-i18n="footer_title">Vamos nos conectar?</h2>
+            <p data-i18n="footer_text">Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar
+                em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i
+                        class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i
+                        class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i
+                        class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henrique Targino | Portfólio de Dados</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="#">Henrique Targino<span>.</span></a>
+            <ul class="menu">
+                <li><a href="#hero" data-i18n="menu_home">Início</a></li>
+                <li><a href="#about" data-i18n="menu_about">Sobre</a></li>
+                <li><a href="#projects" data-i18n="menu_projects">Projetos</a></li>
+                <li><a href="certifications.html" data-i18n="menu_certifications">Certificações</a></li>
+                <li><a href="#footer" data-i18n="menu_contact">Contato</a></li>
+                <li class="lang-switch">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <span class="lang-sep">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section">
+            <div id="particles-js"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p data-i18n="hero_greeting">Olá, eu sou</p>
+                    <h1>Henrique Targino</h1>
+                    <h3><span data-i18n="hero_transform">Transformo dados em</span> <span class="typing-effect"></span>
+                    </h3>
+                    <p class="subtitle" data-i18n="hero_subtitle">Bem-vindo ao meu portfólio de Ciência de Dados.</p>
+                    <a href="#about" class="btn" data-i18n="hero_explore">Explorar</a>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down-arrow" aria-label="Rolar para baixo">
+                <i class="ph-bold ph-caret-down"></i>
+            </a>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container about-container">
+                <div class="about-text reveal">
+                    <h2 data-i18n="about_title">Minha Jornada</h2>
+                    <p data-i18n="about_p1">Minha paixão por tecnologia começou cedo com os videogames. Mais do que
+                        jogar, o que me prendia
+                        era entender como tudo funcionava "por trás das telas".</p>
+
+                    <p class="about-highlight-text" data-i18n="about_p2">
+                        Lembro que, aos 10 anos, uma professora perguntou o que queríamos ser quando crescer. Peguei meu
+                        papel e escrevi: <strong>"quero ser TI"</strong>. Desde aquela época, eu já sabia o
+                        caminho que iria seguir.
+                    </p>
+
+                    <p data-i18n="about_p3">O tempo passou e aquele desejo virou minha realidade como <strong>Cientista
+                            de Dados</strong>.
+                        Escolhi essa área impulsionado principalmente pela <strong>Visão Computacional</strong>: o fato
+                        de uma máquina "aprender" a distinguir a mão de um humano de uma xícara é algo que sempre me
+                        impressionou muito.</p>
+
+                    <p data-i18n="about_p4">Tenho sólida experiência profissional na criação de <strong>agentes de
+                            IA</strong>, no
+                        desenvolvimento de <strong>Machine Learning</strong> (como sistemas de recomendação e predição)
+                        e em fluxos
+                        de <strong>Automação</strong> avançados para integrar processos de ponta a ponta.</p>
+
+                    <p>
+                        <span data-i18n="about_p5_1">No fim das contas, a tecnologia só faz sentido quando gera impacto
+                            e ajuda pessoas. Afinal, por
+                            trás de todos esses dados, fluxos e modelos, existe alguém que simplesmente ama o que
+                            faz.</span>
+                        <br><br><span style="color: var(--text-secondary); font-size: 0.85rem;"
+                            data-i18n="about_p5_2">(obs: esse texto veio
+                            100% do
+                            coração e não foi uma I.A. que fez hahaha)</span>
+                    </p>
+                </div>
+                <div class="about-right-column reveal">
+                    <div class="about-image" style="position: relative; display: inline-block;">
+                        <img src="images/eu2.jpg" alt="Sua Foto de Perfil">
+                        <canvas id="human-canvas" width="250" height="150"
+                            style="position: absolute; top: -50px; right: -150px; pointer-events: none; z-index: 2;"></canvas>
+                    </div>
+                    <canvas id="about-canvas" width="400" height="250"
+                        style="max-width: 100%; height: auto; margin-top: 1rem;"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="technologies" class="section">
+            <div class="container">
+                <h2 class="reveal text-center" style="text-align: center;" data-i18n="tech_title">Minhas Tecnologias
+                </h2>
+
+                <div class="bento-grid reveal">
+                    <!-- AI & Data -->
+                    <div class="bento-card glow-ai">
+                        <div class="bento-icon">
+                            <i class="ph-bold ph-code"></i>
+                        </div>
+                        <h3>AI & Data</h3>
+                        <div class="bento-tags">
+                            <span>RAG</span>
+                            <span>Embeddings</span>
+                            <span>Vector Search</span>
+                            <span>Transformers</span>
+                            <span>Prompt Engineering</span>
+                            <span>LLMs</span>
+                            <span>One-hot encoding</span>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning & Computer Vision -->
+                    <div class="bento-card glow-ml">
+                        <div class="bento-icon">
+                            <i class="ph-bold ph-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <div class="bento-tags">
+                            <span>Scikit-Learn</span>
+                            <span>TensorFlow</span>
+                            <span>Keras</span>
+                            <span>LightGBM</span>
+                            <span>XGBoost</span>
+                            <span>LangChain</span>
+                            <span>PydanticAI</span>
+                        </div>
+
+                        <div class="bento-inner-box">
+                            <h4 class="bento-subtitle" data-i18n="tech_cv">Visão Computacional</h4>
+                            <div class="bento-tags">
+                                <span>OpenCV</span>
+                                <span>MediaPipe</span>
+                                <span>YOLO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python & Data Viz -->
+                    <div class="bento-card glow-data">
+                        <div class="bento-icon">
+                            <i class="ph-bold ph-chart-pie-slice"></i>
+                        </div>
+                        <h3>Python & Data Viz</h3>
+                        <div class="bento-tags">
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                            <span>Matplotlib</span>
+                            <span>Seaborn</span>
+                            <span>Plotly</span>
+                            <span>Streamlit</span>
+                        </div>
+                    </div>
+
+                    <!-- Automation & DevOps -->
+                    <div class="bento-card glow-devops">
+                        <div class="bento-icon">
+                            <i class="ph-bold ph-git-branch"></i>
+                        </div>
+                        <h3>Automation & DevOps</h3>
+                        <div class="bento-tags">
+                            <span>N8N</span>
+                            <span>Docker</span>
+                            <span>Git</span>
+                            <span>AWS</span>
+                            <span>Chatwoot</span>
+                            <span>Evolution API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="reveal text-center" style="text-align: center;" data-i18n="projects_title">Principais
+                    Projetos</h2>
+
+                <div class="legend reveal">
+                    <div class="legend-item"><span class="tag-color ml"></span> <span data-i18n="legend_ml">Machine
+                            Learning</span></div>
+                    <div class="legend-item"><span class="tag-color analise"></span> <span
+                            data-i18n="legend_data">Análise de Dados</span></div>
+                    <div class="legend-item"><span class="tag-color automacao"></span> <span
+                            data-i18n="legend_auto">Automação</span></div>
+                    <div class="legend-item"><span class="tag-color visao"></span> <span data-i18n="legend_cv">Visão
+                            Computacional</span></div>
+                </div>
+
+                <div class="projects-grid-container reveal">
+                    <a href="projeto_cv.html" class="project-card">
+                        <div class="project-tags">
+                            <span class="tag-color visao"></span>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="images/cv.jpeg" alt="Projeto Visão Computacional SOS Detector">
+                        </div>
+                        <div class="project-content-layer">
+                            <div class="project-gray-tags">
+                                <span class="gray-tag">OpenCV</span>
+                                <span class="gray-tag">MediaPipe</span>
+                                <span class="gray-tag">Python</span>
+                                <span class="gray-tag">N8N</span>
+                            </div>
+                            <h3 data-i18n="proj1_title">Hand Tracking: Detector de Sinal de Socorro</h3>
+                            <p data-i18n="proj1_desc">Sistema de visão computacional em tempo real (MediaPipe/OpenCV)
+                                para detecção do sinal
+                                universal de socorro. Valida gestos via geometria analítica e dispara alertas
+                                automáticos via webhook.</p>
+                            <span class="project-view-link" data-i18n="view_project">Visualizar projeto →</span>
+                        </div>
+                    </a>
+                    <a href="projeto_carros.html" class="project-card">
+                        <div class="project-tags">
+                            <span class="tag-color analise"></span>
+                            <span class="tag-color ml"></span>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="images/outliers2.png" alt="Projeto Análise e Previsão de Dados Automotivos">
+                        </div>
+                        <div class="project-content-layer">
+                            <div class="project-gray-tags">
+                                <span class="gray-tag">EDA</span>
+                                <span class="gray-tag">Machine Learning</span>
+                                <span class="gray-tag">Matplotlib</span>
+                                <span class="gray-tag">Plotly</span>
+                                <span class="gray-tag">Scikit-Learn</span>
+                            </div>
+                            <h3 data-i18n="proj2_title">Análise de Dados Automotivos &amp; Previsão de Preços</h3>
+                            <p data-i18n="proj2_desc">Análise exploratória de dados veiculares e modelo de Machine
+                                Learning para predição de
+                                preços. Contém um pequeno artigo sobre outliers e como lidar com eles.</p>
+                            <span class="project-view-link" data-i18n="view_project">Visualizar projeto →</span>
+                        </div>
+                    </a>
+                    <a href="projeto_baralho.html" class="project-card">
+                        <div class="project-tags">
+                            <span class="tag-color automacao"></span>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="images/baralho.jpg" alt="Projeto Baralho">
+                        </div>
+                        <div class="project-content-layer">
+                            <div class="project-gray-tags">
+                                <span class="gray-tag">Streamlit</span>
+                                <span class="gray-tag">Python</span>
+                                <span class="gray-tag">Pandas</span>
+                                <span class="gray-tag">Matplotlib</span>
+                                <span class="gray-tag">Plotly</span>
+                            </div>
+                            <h3 data-i18n="proj3_title">Automatizando um Hobby: Jogo de Baralho</h3>
+                            <p data-i18n="proj3_desc">Projeto pessoal feito para cadastrar partidas e gerar estatísticas
+                                das partidas de
+                                Buraco com a minha mãe. Tem como objetivo aumentar a competitividade e diversão do nosso
+                                hobby.</p>
+                            <span class="project-view-link" data-i18n="view_project">Visualizar projeto →</span>
+                        </div>
+                    </a>
+                    <a href="projeto_n8n.html" class="project-card">
+                        <div class="project-tags">
+                            <span class="tag-color automacao"></span>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="images/n8n_logo.png" alt="Projeto Chatbot Secretário">
+                        </div>
+                        <div class="project-content-layer">
+                            <div class="project-gray-tags">
+                                <span class="gray-tag">LLM</span>
+                                <span class="gray-tag">N8N</span>
+                                <span class="gray-tag">Evolution API</span>
+                                <span class="gray-tag">Chatwoot</span>
+                                <span class="gray-tag">RAG</span>
+                                <span class="gray-tag">OpenAI</span>
+                            </div>
+                            <h3 data-i18n="proj4_title">Agente de I.A. no WhatsApp</h3>
+                            <p data-i18n="proj4_desc">Automação completa baseada em Inteligência Artificial utilizando
+                                N8N, Evolution API e
+                                Chatwoot para realizar o atendimento inicial autônomo, automatizando respostas e
+                                acompanhamentos.</p>
+                            <span class="project-view-link" data-i18n="view_project">Visualizar projeto →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="highlight-certifications" class="section">
+            <div class="container">
+                <div class="highlight-header reveal">
+                    <h2 data-i18n="cert_highlight_title">Certificações em Destaque</h2>
+                </div>
+                <div class="certifications-carousel reveal">
+                    <div class="carousel-track">
+                        <!-- Set 1 -->
+                        <img src="images/certificado_asimov_visao.png" alt="Certificado Asimov">
+                        <img src="images/certificado_harvard.png" alt="Certificado Harvard" class="highlight-cert">
+                        <img src="images/certificado_tripleten.png" alt="Certificado TripleTen">
+                        <!-- Set 2 (Centro) -->
+                        <img src="images/certificado_asimov_visao.png" alt="Certificado Asimov">
+                        <img src="images/certificado_harvard.png" alt="Certificado Harvard" class="highlight-cert">
+                        <img src="images/certificado_tripleten.png" alt="Certificado TripleTen">
+                        <!-- Set 3 -->
+                        <img src="images/certificado_asimov_visao.png" alt="Certificado Asimov">
+                        <img src="images/certificado_harvard.png" alt="Certificado Harvard" class="highlight-cert">
+                        <img src="images/certificado_tripleten.png" alt="Certificado TripleTen">
+                    </div>
+                </div>
+
+                <div class="reveal" style="text-align: center; margin-top: 1.5rem;">
+                    <a href="certifications.html" class="btn btn-secondary" data-i18n="view_all_cert">Ver todas</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <h2 data-i18n="footer_title">Vamos nos conectar?</h2>
+            <p data-i18n="footer_text">Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar
+                em contato.</p>
+            <div class="social-icons">
+                <a href="https://github.com/henriquetargino" target="_blank" title="GitHub"><i
+                        class="ph-bold ph-github-logo"></i></a>
+                <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" title="LinkedIn"><i
+                        class="ph-bold ph-linkedin-logo"></i></a>
+                <a href="https://wa.me/5583982121506" title="WhatsApp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+                <a href="mailto:henriquetarginoalbuquerque@gmail.com" title="Email"><i
+                        class="ph-bold ph-envelope"></i></a>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 | Desenvolvido por Henrique Targino</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/roughjs@latest/bundled/rough.js"></script>
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('about-canvas');
+            if (!canvas) return;
+            const rc = rough.canvas(canvas);
+            const ctx = canvas.getContext('2d');
+
+            ctx.font = '14px "Space Grotesk", sans-serif';
+            ctx.fillStyle = '#A0A0A0'; // var(--text-secondary)
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            const strokeColor = '#3399FF'; // var(--primary-light)
+            const options = { stroke: strokeColor, strokeWidth: 1.5, roughness: 1.5, bowing: 1 };
+
+            const robotJson = {
+                "elements": [
+                    { "type": "rectangle", "x": 40, "y": 100, "width": 80, "height": 60, "text": "" },
+                    { "type": "ellipse", "x": 65, "y": 120, "width": 15, "height": 15, "text": "" },
+                    { "type": "ellipse", "x": 95, "y": 120, "width": 15, "height": 15, "text": "" },
+                    { "type": "rectangle", "x": 65, "y": 140, "width": 30, "height": 8, "text": "" },
+                    { "type": "arrow", "x": 80, "y": 100, "points": [[0, 0], [0, -30]] },
+                    { "type": "ellipse", "x": 80, "y": 55, "width": 27, "height": 27, "text": "A.I" }
+                ]
+            };
+
+            const mlJson = {
+                "elements": [
+                    { "type": "ellipse", "x": 200, "y": 130, "width": 90, "height": 45, "text": "Data" },
+                    { "type": "arrow", "x": 245, "y": 130, "points": [[0, 0], [40, 0]] },
+                    { "type": "rectangle", "x": 285, "y": 105, "width": 85, "height": 50, "text": "Model" },
+                    { "type": "arrow", "x": 327, "y": 105, "points": [[0, 0], [0, -35]] },
+                    { "type": "ellipse", "x": 327, "y": 45, "width": 90, "height": 45, "text": "Predict" }
+                ]
+            };
+
+            const allElements = [...robotJson.elements, ...mlJson.elements];
+
+            allElements.forEach(el => {
+                if (el.type === 'rectangle') {
+                    rc.rectangle(el.x, el.y, el.width, el.height, options);
+                    if (el.text) ctx.fillText(el.text, el.x + el.width / 2, el.y + el.height / 2);
+                } else if (el.type === 'ellipse') {
+                    rc.ellipse(el.x, el.y, el.width, el.height, options);
+                    if (el.text) ctx.fillText(el.text, el.x, el.y);
+                } else if (el.type === 'arrow') {
+                    const x1 = el.x;
+                    const y1 = el.y;
+                    const x2 = el.x + el.points[1][0];
+                    const y2 = el.y + el.points[1][1];
+                    rc.line(x1, y1, x2, y2, options);
+
+                    const angle = Math.atan2(y2 - y1, x2 - x1);
+                    const headlen = 10;
+                    rc.line(x2, y2, x2 - headlen * Math.cos(angle - Math.PI / 6), y2 - headlen * Math.sin(angle - Math.PI / 6), options);
+                    rc.line(x2, y2, x2 - headlen * Math.cos(angle + Math.PI / 6), y2 - headlen * Math.sin(angle + Math.PI / 6), options);
+                }
+            });
+
+            const humanCanvas = document.getElementById('human-canvas');
+            if (humanCanvas) {
+                const hrc = rough.canvas(humanCanvas);
+                const hctx = humanCanvas.getContext('2d');
+                hctx.font = '14px "Space Grotesk", sans-serif';
+                hctx.fillStyle = '#A0A0A0';
+                hctx.textAlign = 'center';
+                hctx.textBaseline = 'middle';
+
+                const humanJson = {
+                    "elements": [
+                        { "type": "ellipse", "x": 187, "y": 25, "width": 100, "height": 45, "text": "100% human" },
+                        { "type": "arrow", "x": 75, "y": 75, "points": [[0, 0], [60, -35]] }
+                    ]
+                };
+
+                humanJson.elements.forEach(el => {
+                    if (el.type === 'ellipse') {
+                        hrc.ellipse(el.x, el.y, el.width, el.height, options);
+                        if (el.text) hctx.fillText(el.text, el.x, el.y);
+                    } else if (el.type === 'arrow') {
+                        const x1 = el.x;
+                        const y1 = el.y;
+                        const x2 = el.x + el.points[1][0];
+                        const y2 = el.y + el.points[1][1];
+                        hrc.line(x1, y1, x2, y2, options);
+
+                        const angle = Math.atan2(y2 - y1, x2 - x1);
+                        const headlen = 10;
+                        hrc.line(x2, y2, x2 - headlen * Math.cos(angle - Math.PI / 6), y2 - headlen * Math.sin(angle - Math.PI / 6), options);
+                        hrc.line(x2, y2, x2 - headlen * Math.cos(angle + Math.PI / 6), y2 - headlen * Math.sin(angle + Math.PI / 6), options);
+                    }
+                });
+            }
+
+            // --- FLUID INFINITE CAROUSEL ---
+            const carousel = document.querySelector('.certifications-carousel');
+            const track = document.querySelector('.carousel-track');
+            if (carousel && track) {
+                let isHovered = false;
+                let isDragging = false;
+                let startX;
+                let scrollLeft;
+                let speed = 0.5; // Constante contínua
+
+                // --- CONFIGURAÇÃO DE POSIÇÃO INICIAL ---
+                // Para mudar onde o carrossel inicia, altere este valor (ex: 0.66 significa 2/3 do primeiro certificado).
+                // Mude o valor abaixo caso deseje alterar o início!
+                let initialOffsetPercentage = 0.66;
+
+                function initCarousel() {
+                    if (track.children.length >= 9) {
+                        const cloneOffset = track.children[3].offsetLeft - track.children[0].offsetLeft;
+                        const firstItemWidth = track.children[0].offsetWidth;
+
+                        // Começamos no Set 2 (que fica no 'cloneOffset') mais a porcentagem da primeira imagem
+                        carousel.scrollLeft = cloneOffset + (firstItemWidth * initialOffsetPercentage);
+                    }
+                }
+
+                // Aguarda o carregamento das imagens para cálculo de dimensões exato
+                window.addEventListener('load', initCarousel);
+                setTimeout(initCarousel, 500); // Fallback caso já esteja em cache
+
+                let isVisible = true;
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0 });
+                observer.observe(carousel);
+
+                function autoScroll() {
+                    if (!isHovered && !isDragging && isVisible) {
+                        carousel.scrollLeft += speed;
+                    }
+                    requestAnimationFrame(autoScroll);
+                }
+                requestAnimationFrame(autoScroll);
+
+                carousel.addEventListener('mouseenter', () => isHovered = true);
+                carousel.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                    isDragging = false;
+                });
+
+                // Scroll lateral manual (drag)
+                carousel.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.pageX - carousel.offsetLeft;
+                    scrollLeft = carousel.scrollLeft;
+                });
+
+                carousel.addEventListener('mouseup', () => isDragging = false);
+
+                carousel.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const x = e.pageX - carousel.offsetLeft;
+                    const walk = (x - startX) * 1.5;
+                    carousel.scrollLeft = scrollLeft - walk;
+                });
+
+                // Reset infinito bidirecional para rolagem lateral manual ou automática
+                carousel.addEventListener('scroll', () => {
+                    if (track.children.length < 9) return;
+                    const cloneOffset = track.children[3].offsetLeft - track.children[0].offsetLeft;
+
+                    // Verifica se o scroll passou para o 3º set da direita, então joga de volta pro 2º set perfeitamente
+                    if (carousel.scrollLeft >= cloneOffset * 2) {
+                        carousel.scrollLeft -= cloneOffset;
+                    }
+                    // Verifica se o scroll encostou no limite zero da esquerda (1º set), então joga de volta pro 2º set
+                    else if (carousel.scrollLeft <= 0) {
+                        carousel.scrollLeft += cloneOffset;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
