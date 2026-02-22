@@ -413,9 +413,14 @@ function updateLangButtons(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     let savedLang = localStorage.getItem('portfolioLang');
 
-    // Default to PT
+    // Default to PT or EN based on browser language
     if (!savedLang) {
-        savedLang = 'pt';
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang && userLang.toLowerCase().includes('en')) {
+            savedLang = 'en';
+        } else {
+            savedLang = 'pt';
+        }
         localStorage.setItem('portfolioLang', savedLang);
     }
 
