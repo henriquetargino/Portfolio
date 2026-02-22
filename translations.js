@@ -393,6 +393,9 @@ function applyTranslations(lang) {
 
     // Update typing strings in main.js if needed by storing lang globally
     window.currentLang = lang;
+
+    // Update HTML lang attribute for accessibility and SEO
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
 }
 
 function updateLangButtons(lang) {
@@ -413,14 +416,9 @@ function updateLangButtons(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     let savedLang = localStorage.getItem('portfolioLang');
 
-    // Default to PT or EN based on browser language
+    // Default to EN
     if (!savedLang) {
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang && userLang.toLowerCase().includes('en')) {
-            savedLang = 'en';
-        } else {
-            savedLang = 'pt';
-        }
+        savedLang = 'en';
         localStorage.setItem('portfolioLang', savedLang);
     }
 
