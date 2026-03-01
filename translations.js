@@ -4,7 +4,7 @@ const translations = {
         "menu_home": "Início",
         "menu_about": "Sobre",
         "menu_projects": "Projetos",
-        "menu_certifications": "Certificações",
+        "menu_certifications": "Certificados",
         "menu_contact": "Contato",
 
         // --- Index: Hero ---
@@ -49,7 +49,7 @@ const translations = {
         "proj4_desc": "Automação completa baseada em Inteligência Artificial utilizando N8N, Evolution API e Chatwoot para realizar o atendimento inicial autônomo, automatizando respostas e acompanhamentos.",
 
         // --- Index: Certifications Highlights ---
-        "cert_highlight_title": "Certificações em Destaque",
+        "cert_highlight_title": "Certificados em Destaque",
         "view_all_cert": "Ver todas",
 
         // --- Footer ---
@@ -175,8 +175,8 @@ const translations = {
         "p4_p4_1": "O resultado foi uma transformação imediata no fluxo de trabalho. Desde a implementação, nenhuma mensagem deixou de ser respondida e o número de interações com os pacientes aumentou em 30% no primeiro mês. A nutricionista passou a dedicar menos tempo a tarefas administrativas e mais tempo a atividades de alto valor, como o acompanhamento detalhado de cada paciente.",
 
         // --- Certifications ---
-        "cert_title_main": "Minhas Certificações",
-        "cert_subtitle": "Aqui estão algumas das certificações que conquistei ao longo da minha jornada de aprendizado contínuo.",
+        "cert_title_main": "Meus Certificados",
+        "cert_subtitle": "Aqui estão alguns dos certificados que conquistei ao longo da minha jornada.",
         "cert_img": "https://placehold.co/400x300/181A1D/FFFFFF?text=Ver+Certificado",
         "cert_1_h3": "Bootcamp Ciência de Dados ( 1 ano )",
         "cert_1_p": "Agosto 2024 - Setembro 2025",
@@ -192,7 +192,7 @@ const translations = {
         "menu_home": "Home",
         "menu_about": "About",
         "menu_projects": "Projects",
-        "menu_certifications": "Certifications",
+        "menu_certifications": "Certificates",
         "menu_contact": "Contact",
 
         // --- Index: Hero ---
@@ -236,7 +236,7 @@ const translations = {
         "proj4_desc": "A complete Artificial Intelligence-based automation using N8N, Evolution API, and Chatwoot to autonomously handle initial customer service, automating responses and follow-ups.",
 
         // --- Index: Certifications Highlights ---
-        "cert_highlight_title": "Featured Certifications",
+        "cert_highlight_title": "Featured Certificates",
         "view_all_cert": "View all",
 
         // --- Footer ---
@@ -362,8 +362,8 @@ const translations = {
         "p4_p4_1": "The outcome was an immediate transformation in the workflow. Since implementation, not a single message was left unreplied, and the number of patient interactions grew by 30% in the first month. The nutritionist was able to spend less time on administrative duties and more time on high-value tasks, like the detailed follow-up of every patient.",
 
         // --- Certifications ---
-        "cert_title_main": "My Certifications",
-        "cert_subtitle": "Here are some of the certifications I have earned along my continuous learning journey.",
+        "cert_title_main": "My Certificates",
+        "cert_subtitle": "Here are some of the certificates I have earned along my journey.",
         "cert_img": "https://placehold.co/400x300/181A1D/FFFFFF?text=View+Certificate",
         "cert_1_h3": "Data Science Bootcamp ( 1 year )",
         "cert_1_p": "August 2024 - September 2025",
