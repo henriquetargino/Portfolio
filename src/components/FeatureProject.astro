@@ -1,0 +1,66 @@
+---
+const base = import.meta.env.BASE_URL;
+
+interface BodyCol { h4: string; text: string; }
+interface Props {
+  cell: string;
+  kind: string;
+  title: string;
+  lead: string;
+  img: string;
+  imgAlt: string;
+  figPhotoCap: string;
+  rep: 'hand' | 'nn';
+  figRepCap: string;
+  body: BodyCol[];
+  tags: string[];
+  metricValue: string;
+  metricLabel: string;
+  href: string;
+  alt?: boolean;
+}
+
+const {
+  cell, kind, title, lead, img, imgAlt, figPhotoCap, rep, figRepCap,
+  body, tags, metricValue, metricLabel, href, alt = false,
+} = Astro.props;
+---
+
+<section class={alt ? 'feature alt' : 'feature'}>
+  <div class="wrap">
+    <p class="cell-label">{cell}</p>
+    <span class="kind">{kind}</span>
+    <h2>{title}</h2>
+    <p class="lead">{lead}</p>
+
+    <div class="fig-pair">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src={`${base}${img}`} alt={imgAlt} /></div>
+        <figcaption set:html={figPhotoCap} />
+      </figure>
+      <svg class="fig-arrow" viewBox="0 0 56 38" aria-hidden="true">
+        <path d="M3,19 C 22,9 36,29 48,19" />
+        <path d="M48,19 l-9,-4 M48,19 l-8,6" />
+      </svg>
+      <figure class="fig-cell">
+        <div class="fig-frame rep"><canvas id={rep}></canvas></div>
+        <figcaption set:html={figRepCap} />
+      </figure>
+    </div>
+
+    <div class="feature-body">
+      {body.map((col) => (
+        <div>
+          <h4>{col.h4}</h4>
+          <p set:html={col.text} />
+        </div>
+      ))}
+    </div>
+
+    <div class="feature-foot">
+      <div class="tags">{tags.map((t) => <span>{t}</span>)}</div>
+      <div class="metric"><b>{metricValue}</b><span>{metricLabel}</span></div>
+      <a class="band-link" href={href}>abrir ficha completa →</a>
+    </div>
+  </div>
+</section>

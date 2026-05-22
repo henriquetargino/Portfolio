@@ -1,0 +1,29 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const cards = [
+  { img: 'images/outliers2.png', alt: 'Análise de preços de carros', kind: 'análise + ml', title: 'Preços de Carros', desc: 'EDA, tratamento criterioso de outliers e previsão de preço.', tags: ['EDA', 'scikit-learn'], href: '#' },
+  { img: 'images/baralho.jpg', alt: 'App de Buraco da mãe', kind: 'automação', title: 'Buraco da Mãe', desc: 'Dashboard de partidas em tempo real, feito pra minha mãe.', tags: ['Streamlit', 'Plotly'], href: '#' },
+  { img: 'images/n8n1.PNG', alt: 'Agente de IA no WhatsApp', kind: 'ia · n8n', title: 'Agente no WhatsApp', desc: 'Secretária virtual com handoff humano e base RAG.', tags: ['n8n', 'LLM'], href: '#' },
+];
+---
+
+<section class="section-block">
+  <div class="wrap">
+    <p class="cell-label out">Out [06]:</p>
+    <h3 class="exp-sub">// outros experimentos</h3>
+    <div class="card-grid">
+      {cards.map((c) => (
+        <a class="pcard" href={c.href}>
+          <div class="pcard-fig"><img src={`${base}${c.img}`} alt={c.alt} /></div>
+          <div class="pcard-body">
+            <span class="kind">{c.kind}</span>
+            <h4>{c.title}</h4>
+            <p>{c.desc}</p>
+            <div class="tags">{c.tags.map((t) => <span>{t}</span>)}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

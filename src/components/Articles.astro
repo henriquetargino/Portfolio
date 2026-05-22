@@ -1,0 +1,23 @@
+---
+const articles = [
+  {
+    pub: 'Medium · 2026',
+    title: "I trained an AI to play football for a billion steps. Here's what broke.",
+    href: 'https://medium.com/@henriquetarginoalbuquerque/i-trained-an-ai-to-play-football-for-a-billion-steps-heres-what-broke-742328956196',
+  },
+];
+---
+
+<section class="section-block">
+  <div class="wrap">
+    <p class="cell-label out">Out [07]:</p>
+    <h3 class="exp-sub">// artigos</h3>
+    {articles.map((a) => (
+      <a class="article-card" href={a.href} target="_blank" rel="noopener">
+        <span class="pub">{a.pub}</span>
+        <h3>{a.title}</h3>
+        <span class="go">→</span>
+      </a>
+    ))}
+  </div>
+</section>
