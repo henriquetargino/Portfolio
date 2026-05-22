@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title={`${project.title} · Henrique Targino`} description={project.lead}>
+  <main class="detail">
+    <div class="wrap">
+      <a class="back-link" href={base}>← voltar pra home</a>
+      <p class="cell-label">{project.kind}</p>
+      <h1 class="detail-title">{project.title}</h1>
+      <p class="detail-lead">{project.lead}</p>
+
+      <div class="detail-cover">
+        {project.coverIsVideo ? (
+          <video src={`${base}${project.cover}`} autoplay loop muted playsinline data-autopause></video>
+        ) : (
+          <img src={`${base}${project.cover}`} alt={project.title} />
+        )}
+      </div>
+
+      <div class="detail-meta">
+        <div class="metric"><b>{project.metric.value}</b><span>{project.metric.label}</span></div>
+        <div class="tags">{project.tags.map((t) => <span>{t}</span>)}</div>
+      </div>
+
+      <article class="detail-body">
+        {project.sections.map((s) => (
+          <section class="detail-section">
+            <h3>{s.h3}</h3>
+            {s.body.map((p) => <p set:html={p} />)}
+          </section>
+        ))}
+      </article>
+
+      {project.links && project.links.length > 0 && (
+        <div class="detail-links">
+          {project.links.map((l) => (
+            <a href={l.href} target={l.href.startsWith('http') ? '_blank' : null} rel="noopener">{l.label} →</a>
+          ))}
+        </div>
+      )}
+
+      <a class="back-link bottom" href={base}>← voltar pra home</a>
+    </div>
+  </main>
+</Base>

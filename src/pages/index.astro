@@ -8,6 +8,8 @@ import OtherProjects from '../components/OtherProjects.astro';
 import Articles from '../components/Articles.astro';
 import Certificates from '../components/Certificates.astro';
 import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Base>
@@ -33,7 +35,7 @@ import Footer from '../components/Footer.astro';
       tags={['OpenCV', 'MediaPipe', 'NumPy', 'FSM', 'Python']}
       metricValue="21"
       metricLabel="landmarks · CPU · tempo real"
-      href="#"
+      href={`${base}projetos/detector-sos`}
     />
 
     <FeatureProject
@@ -54,7 +56,7 @@ import Footer from '../components/Footer.astro';
       tags={['PyTorch', 'PPO', 'Gymnasium', 'self-play', 'CPU-only']}
       metricValue="50M"
       metricLabel="steps de treino"
-      href="#"
+      href={`${base}projetos/ai-soccer`}
     />
 
     <OtherProjects />

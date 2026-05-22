@@ -1225,3 +1225,141 @@ body.has-cursor #reg {
         height: 180px;
     }
 }
+
+/* ---- ficha de projeto ---- */
+.detail {
+    padding: 8rem 0 6rem;
+    position: relative;
+    z-index: 2;
+}
+
+.back-link {
+    font-family: var(--mono);
+    font-size: .8rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+    transition: color .2s;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.back-link.bottom {
+    margin: 3rem 0 0;
+}
+
+.detail .kind {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.detail-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.05;
+    margin: .3rem 0 1rem;
+}
+
+.detail-lead {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+}
+
+.detail-cover {
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0A0E18;
+    margin-bottom: 2rem;
+    line-height: 0;
+}
+
+.detail-cover img,
+.detail-cover video {
+    width: 100%;
+    display: block;
+}
+
+.detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    border-top: 1px dashed var(--hair);
+    border-bottom: 1px dashed var(--hair);
+    padding: 1.2rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.detail-meta .metric {
+    margin-left: 0;
+}
+
+.detail-meta .tags {
+    margin-left: auto;
+}
+
+.detail-body {
+    max-width: 70ch;
+}
+
+.detail-section {
+    margin-bottom: 2.2rem;
+}
+
+.detail-section h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: .8rem;
+}
+
+.detail-section p {
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.detail-section strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.detail-section code {
+    font-family: var(--mono);
+    font-size: .85em;
+    background: var(--paper-2);
+    padding: .1em .3em;
+    border-radius: 3px;
+}
+
+.detail-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.detail-links a {
+    font-family: var(--mono);
+    font-size: .85rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+}
+
+.detail-links a:hover {
+    border-color: var(--accent);
+}

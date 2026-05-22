@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { articles } from '../data/articles';
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Artigos · Henrique Targino" description="Artigos escritos por Henrique Targino.">
+  <main class="detail">
+    <div class="wrap">
+      <a class="back-link" href={base}>← voltar pra home</a>
+      <p class="cell-label out">// escritos</p>
+      <h1 class="detail-title">Artigos</h1>
+      <p class="detail-lead">Textos onde eu abro a caixa-preta dos projetos.</p>
+
+      <div class="article-list">
+        {articles.map((a) => (
+          <a class="article-card" href={a.href} target="_blank" rel="noopener">
+            <div class="article-cover"><img src={`${base}${a.cover}`} alt={a.title} /></div>
+            <div class="article-body">
+              <span class="pub">{a.pub}</span>
+              <h3>{a.title}</h3>
+              <p class="article-excerpt">{a.excerpt}</p>
+              <span class="article-go">ler no Medium →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>
