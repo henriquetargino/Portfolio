@@ -44,7 +44,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth removido — scroll mais natural/suave */
 }
 
 body {
@@ -379,6 +379,11 @@ mark {
     display: block;
 }
 
+.fig-frame video {
+    width: 100%;
+    display: block;
+}
+
 .fig-cell figcaption {
     font-family: var(--mono);
     font-size: .66rem;
@@ -569,22 +574,41 @@ mark {
 
 /* ---- articles ---- */
 .article-card {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1.4rem;
-    align-items: center;
+    display: block;
+    max-width: 760px;
     border: 1px solid var(--hair);
     border-radius: 6px;
     background: var(--paper-2);
-    padding: 1.5rem 1.7rem;
     text-decoration: none;
     color: inherit;
-    transition: border-color .2s, transform .2s;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
 }
 
 .article-card:hover {
     border-color: var(--accent);
     transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .12);
+}
+
+.article-cover {
+    height: 175px;
+    background: #0A0E18;
+    line-height: 0;
+}
+
+.article-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.article-body {
+    padding: 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .article-card .pub {
@@ -597,16 +621,24 @@ mark {
 
 .article-card h3 {
     font-family: var(--serif);
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
     font-weight: 600;
-    line-height: 1.2;
-    margin-top: .2rem;
+    line-height: 1.25;
+    margin: .4rem 0 .6rem;
 }
 
-.article-card .go {
+.article-excerpt {
+    font-size: .92rem;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    max-width: 62ch;
+}
+
+.article-go {
     font-family: var(--mono);
-    font-size: 1.4rem;
+    font-size: .8rem;
     color: var(--accent);
+    margin-top: auto;
 }
 
 /* ---- footer / contato ---- */
@@ -850,5 +882,346 @@ body.has-cursor #reg {
     .statement,
     .play-hint {
         opacity: 1;
+    }
+}
+
+/* ---- about ---- */
+.about {
+    padding: 5rem 0;
+    border-top: 1px solid var(--hair);
+    background: var(--paper);
+    position: relative;
+    z-index: 2;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.about .kind {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.about h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    margin: .3rem 0 1.4rem;
+}
+
+.about-text p {
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    max-width: 56ch;
+}
+
+.about-text p.hl {
+    color: var(--ink);
+    font-size: 1.12rem;
+}
+
+.about-text strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.about-text em {
+    font-style: italic;
+}
+
+.about-photo {
+    position: relative;
+}
+
+.about-photo .fig-frame {
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper-2);
+    line-height: 0;
+}
+
+.about-photo .fig-frame img {
+    width: 100%;
+    display: block;
+}
+
+.about-note {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.1rem;
+    padding-left: 1rem;
+}
+
+.about-note .hand {
+    font-family: var(--hand);
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.2;
+}
+
+.note-arrow {
+    width: 60px;
+    height: 44px;
+    overflow: visible;
+    flex: none;
+}
+
+.note-arrow path {
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---- instrumentos ---- */
+.instr {
+    padding: 5rem 0;
+    border-top: 1px solid var(--hair);
+    background: var(--paper-2);
+    position: relative;
+    z-index: 2;
+}
+
+.instr .kind {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.instr-h {
+    font-family: var(--mono);
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin: .3rem 0 2rem;
+    letter-spacing: .04em;
+}
+
+.instr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 2.5rem;
+}
+
+.instr-group h4 {
+    font-family: var(--sans);
+    font-size: .95rem;
+    font-weight: 600;
+    margin-bottom: .7rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.instr-group h4::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--c, var(--accent));
+}
+
+.instr-group ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.instr-group li {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--hair);
+    border-radius: 3px;
+    padding: .22rem .5rem;
+}
+
+/* ---- certificados ---- */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.cert-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    background: var(--paper-2);
+    padding: 1.4rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s, transform .2s;
+}
+
+.cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.cert-inst {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: 1rem;
+}
+
+.cert-inst img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--paper);
+}
+
+.cert-inst span {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.cert-card h4 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+}
+
+.cert-date {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+}
+
+.cert-link {
+    font-family: var(--mono);
+    font-size: .76rem;
+    color: var(--accent);
+    margin-top: auto;
+}
+
+/* ---- responsive (novas seções) ---- */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-photo {
+        max-width: 320px;
+        margin: 1.5rem auto 0;
+    }
+
+    .about-note {
+        position: static;
+        margin-top: 1.2rem;
+        justify-content: center;
+    }
+
+    .instr-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .instr-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- certificados (carrossel) ---- */
+.certs {
+    padding: 5rem 0;
+    border-top: 1px solid var(--hair);
+    background: var(--paper);
+    position: relative;
+    z-index: 2;
+}
+
+.cert-carousel {
+    overflow: hidden;
+    padding: 1rem 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.cert-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    padding: 0 1rem;
+}
+
+.cert-track.playing {
+    animation: certscroll 45s linear infinite;
+}
+
+.cert-carousel:hover .cert-track.playing {
+    animation-play-state: paused;
+}
+
+@keyframes certscroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.cert-slide {
+    display: block;
+    flex: none;
+}
+
+.cert-slide img {
+    height: clamp(240px, 36vh, 380px);
+    width: auto;
+    display: block;
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    background: var(--paper-2);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.cert-slide:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+}
+
+.about-ps {
+    color: var(--ink-soft);
+    font-size: .82rem;
+}
+
+@media (max-width: 760px) {
+    .article-card {
+        grid-template-columns: 1fr;
+    }
+
+    .article-cover {
+        height: 180px;
     }
 }

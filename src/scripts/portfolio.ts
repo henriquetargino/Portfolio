@@ -231,3 +231,23 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawStatic
 if (fig) { initPts(); computeFit(); figResize(); }
 drawStatics();
 if (reduce) { if (fig) { lineProg = 1; drawReg(); } } else { kick(); }
+
+/* ===================== CERT CAROUSEL (toca só quando visível) ===================== */
+const certCar = document.getElementById('cert-carousel');
+if (certCar && !reduce) {
+  const track = certCar.querySelector('.cert-track');
+  if (track) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => track.classList.toggle('playing', e.isIntersecting));
+    }, { threshold: 0 }).observe(certCar);
+  }
+}
+
+/* ===================== PAUSA VÍDEOS FORA DA TELA ===================== */
+document.querySelectorAll('video[data-autopause]').forEach((v) => {
+  new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); }
+    });
+  }, { threshold: 0.1 }).observe(v);
+});

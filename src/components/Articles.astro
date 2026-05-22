@@ -1,23 +1,28 @@
 ---
-const articles = [
-  {
-    pub: 'Medium · 2026',
-    title: "I trained an AI to play football for a billion steps. Here's what broke.",
-    href: 'https://medium.com/@henriquetarginoalbuquerque/i-trained-an-ai-to-play-football-for-a-billion-steps-heres-what-broke-742328956196',
-  },
-];
+const base = import.meta.env.BASE_URL;
+
+const article = {
+  cover: 'images/ai_soccer_heatmap.png',
+  pub: 'Medium · 13 min de leitura · 2026',
+  title: "I trained an AI to play football for a billion steps. Here's what broke.",
+  excerpt:
+    'Um postmortem de 3 meses construindo uma IA de futebol 1v1 com PPO — os modos de falha silenciosos, as dezenas de runs fracassados, e o que finalmente funcionou.',
+  href: 'https://medium.com/@henriquetarginoalbuquerque/i-trained-an-ai-to-play-football-for-a-billion-steps-heres-what-broke-742328956196',
+};
 ---
 
-<section class="section-block">
+<section class="section-block" id="artigos">
   <div class="wrap">
-    <p class="cell-label out">Out [07]:</p>
+    <p class="cell-label out">Out [06]:</p>
     <h3 class="exp-sub">// artigos</h3>
-    {articles.map((a) => (
-      <a class="article-card" href={a.href} target="_blank" rel="noopener">
-        <span class="pub">{a.pub}</span>
-        <h3>{a.title}</h3>
-        <span class="go">→</span>
-      </a>
-    ))}
+    <a class="article-card" href={article.href} target="_blank" rel="noopener">
+      <div class="article-cover"><img src={`${base}${article.cover}`} alt="Heatmap de posições da IA: início vs fim do treino" /></div>
+      <div class="article-body">
+        <span class="pub">{article.pub}</span>
+        <h3>{article.title}</h3>
+        <p class="article-excerpt">{article.excerpt}</p>
+        <span class="article-go">ler no Medium →</span>
+      </div>
+    </a>
   </div>
 </section>

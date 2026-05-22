@@ -1,18 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Instrumentos from '../components/Instrumentos.astro';
 import FeatureProject from '../components/FeatureProject.astro';
 import OtherProjects from '../components/OtherProjects.astro';
 import Articles from '../components/Articles.astro';
+import Certificates from '../components/Certificates.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Base>
   <main>
     <Hero />
+    <About />
+    <Instrumentos />
 
     <FeatureProject
-      cell="In [04]:"
+      cell="In [03]:"
       kind="visão computacional"
       title="Detector de Sinal de Socorro"
       lead="Um sistema que reconhece o gesto universal de pedido de ajuda em tempo real — só com webcam e CPU — e dispara um alerta silencioso via webhook."
@@ -33,11 +38,11 @@ import Footer from '../components/Footer.astro';
 
     <FeatureProject
       alt={true}
-      cell="In [05]:"
+      cell="In [04]:"
       kind="redes neurais · reinforcement learning"
       title="AI Soccer"
       lead="Agentes que aprendem a jogar futebol do zero — sem nenhuma regra escrita à mão — em pura tentativa e erro, ao longo de 50 milhões de steps de treino."
-      img="images/ai_soccer_nn.gif"
+      img="images/ai_soccer_nn.mp4"
       imgAlt="Visualização da rede neural do AI Soccer em ação"
       figPhotoCap="<b>fig.04</b> · a rede neural em ação"
       rep="nn"
@@ -54,6 +59,7 @@ import Footer from '../components/Footer.astro';
 
     <OtherProjects />
     <Articles />
+    <Certificates />
     <Footer />
   </main>
 </Base>

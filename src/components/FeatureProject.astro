@@ -35,7 +35,13 @@ const {
 
     <div class="fig-pair">
       <figure class="fig-cell">
-        <div class="fig-frame"><img src={`${base}${img}`} alt={imgAlt} /></div>
+        <div class="fig-frame">
+          {img.endsWith('.mp4') ? (
+            <video src={`${base}${img}`} autoplay loop muted playsinline data-autopause aria-label={imgAlt}></video>
+          ) : (
+            <img src={`${base}${img}`} alt={imgAlt} />
+          )}
+        </div>
         <figcaption set:html={figPhotoCap} />
       </figure>
       <svg class="fig-arrow" viewBox="0 0 56 38" aria-hidden="true">
