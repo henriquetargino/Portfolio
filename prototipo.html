@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Protótipo v2 · Caderno de Laboratório</title>
+    <title>Protótipo v4 · Caderno de Laboratório</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Shantell+Sans:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Shantell+Sans:wght@400;500;600&display=swap"
         rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
     <style>
@@ -90,7 +90,6 @@
             color: var(--hl-ml);
         }
 
-        /* ---- topbar ---- */
         .topbar {
             position: fixed;
             top: 0;
@@ -258,7 +257,6 @@
             }
         }
 
-        /* ---- figure / regression ---- */
         .figure {
             border: 1px solid var(--hair);
             border-radius: 6px;
@@ -301,7 +299,6 @@
         }
 
         .figcap .eq {
-            color: var(--ink);
             font-weight: 500;
         }
 
@@ -315,8 +312,186 @@
             font-size: .72rem;
         }
 
-        /* ---- experiments ---- */
-        .exp {
+        /* ---- featured projects (big sections) ---- */
+        .feature {
+            padding: clamp(3.5rem, 7vw, 6rem) 0;
+            border-top: 1px solid var(--hair);
+            background: var(--paper-2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature.alt {
+            background: var(--paper);
+        }
+
+        .feature .kind {
+            font-family: var(--mono);
+            font-size: .72rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .feature h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            line-height: 1.05;
+            margin: .3rem 0 1rem;
+        }
+
+        .feature .lead {
+            font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+            max-width: 62ch;
+            margin-bottom: 2.8rem;
+        }
+
+        .fig-pair {
+            display: grid;
+            grid-template-columns: 1.25fr auto 1fr;
+            gap: clamp(1rem, 3vw, 2.2rem);
+            align-items: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .fig-cell {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .fig-frame {
+            border: 1px solid var(--hair);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--paper-2);
+            line-height: 0;
+        }
+
+        .fig-frame.rep {
+            border-style: dashed;
+            background: var(--paper);
+        }
+
+        .fig-frame img {
+            width: 100%;
+            display: block;
+        }
+
+        .fig-frame.rep canvas {
+            width: 100%;
+            height: clamp(200px, 22vw, 260px);
+            display: block;
+        }
+
+        .fig-cell figcaption {
+            font-family: var(--mono);
+            font-size: .66rem;
+            letter-spacing: .05em;
+            color: var(--ink-soft);
+            margin-top: .65rem;
+            line-height: 1.4;
+        }
+
+        .fig-cell figcaption b {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .fig-arrow {
+            width: 56px;
+            height: 38px;
+            overflow: visible;
+            align-self: center;
+        }
+
+        .fig-arrow path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 4vw, 3rem);
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-body h4 {
+            font-family: var(--mono);
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--ink-soft);
+            margin-bottom: .6rem;
+        }
+
+        .feature-body p {
+            color: var(--ink-soft);
+            max-width: 52ch;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+        }
+
+        .tags span {
+            font-family: var(--mono);
+            font-size: .66rem;
+            padding: .25rem .5rem;
+            border: 1px solid var(--hair);
+            border-radius: 3px;
+            color: var(--ink-soft);
+        }
+
+        .feature-foot {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-top: 1px dashed var(--hair);
+            padding-top: 1.5rem;
+        }
+
+        .metric {
+            display: flex;
+            align-items: baseline;
+            gap: .5rem;
+            margin-left: auto;
+        }
+
+        .metric b {
+            font-family: var(--mono);
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .metric span {
+            font-family: var(--mono);
+            font-size: .7rem;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            max-width: 12ch;
+        }
+
+        .band-link {
+            font-family: var(--mono);
+            font-size: .8rem;
+            color: var(--accent);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* ---- other projects ---- */
+        .others {
             padding: 5rem 0 6rem;
             border-top: 1px solid var(--hair);
             background: var(--paper);
@@ -324,163 +499,78 @@
             z-index: 2;
         }
 
-        .exp-title {
-            font-family: var(--serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            margin-bottom: 2.5rem;
-        }
-
-        .flag-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .flag-card {
-            border: 1px solid var(--hair);
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--paper-2);
-            transition: transform .25s, border-color .25s, box-shadow .25s;
-            cursor: pointer;
-        }
-
-        .flag-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, .12);
-        }
-
-        .flag-figure {
-            position: relative;
-            height: 200px;
-            border-bottom: 1px solid var(--hair);
-            background-image: radial-gradient(var(--grid) 1px, transparent 1px);
-            background-size: 18px 18px;
-        }
-
-        .flag-figure canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .fsm {
-            position: absolute;
-            top: .7rem;
-            left: .7rem;
-            display: flex;
-            gap: .35rem;
-        }
-
-        .fsm .st {
+        .exp-sub {
             font-family: var(--mono);
-            font-size: .58rem;
-            letter-spacing: .08em;
-            padding: .2rem .4rem;
-            border-radius: 3px;
-            border: 1px solid var(--hair);
-            color: var(--ink-soft);
-            opacity: .5;
-        }
-
-        .fsm .st.amber {
-            border-color: var(--hl-data);
-            color: var(--hl-data);
-            opacity: 1;
-        }
-
-        .fsm .st.red {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .flag-meta {
-            padding: 1.3rem 1.4rem 1.5rem;
-        }
-
-        .flag-kind {
-            font-family: var(--mono);
-            font-size: .68rem;
+            font-size: .8rem;
             letter-spacing: .1em;
             text-transform: uppercase;
             color: var(--ink-soft);
+            margin-bottom: 1.8rem;
         }
 
-        .flag-meta h3 {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: .3rem 0 .4rem;
-            line-height: 1.1;
-        }
-
-        .flag-meta p {
-            font-size: .92rem;
-            color: var(--ink-soft);
-            margin-bottom: 1.1rem;
-        }
-
-        .metric {
-            display: flex;
-            align-items: baseline;
-            gap: .5rem;
-            border-top: 1px dashed var(--hair);
-            padding-top: .9rem;
-        }
-
-        .metric b {
-            font-family: var(--mono);
-            font-size: 2.1rem;
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1;
-        }
-
-        .metric span {
-            font-family: var(--mono);
-            font-size: .72rem;
-            color: var(--ink-soft);
-            text-transform: uppercase;
-            letter-spacing: .08em;
-        }
-
-        .mini-grid {
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
-        .mini {
+        .pcard {
             display: block;
             border: 1px solid var(--hair);
             border-radius: 6px;
-            padding: 1.2rem 1.3rem;
+            overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: border-color .2s, transform .2s;
+            background: var(--paper-2);
+            transition: transform .2s, border-color .2s, box-shadow .2s;
         }
 
-        .mini:hover {
+        .pcard:hover {
+            transform: translateY(-4px);
             border-color: var(--accent);
-            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, .12);
         }
 
-        .mini span {
+        .pcard-fig {
+            height: 150px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--hair);
+        }
+
+        .pcard-fig img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s;
+        }
+
+        .pcard:hover .pcard-fig img {
+            transform: scale(1.05);
+        }
+
+        .pcard-body {
+            padding: 1.1rem 1.2rem 1.3rem;
+        }
+
+        .pcard-body .kind {
             font-family: var(--mono);
-            font-size: .66rem;
+            font-size: .64rem;
             letter-spacing: .1em;
             text-transform: uppercase;
             color: var(--ink-soft);
         }
 
-        .mini h4 {
+        .pcard-body h4 {
             font-family: var(--serif);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-top: .3rem;
+            margin: .25rem 0 .4rem;
+        }
+
+        .pcard-body p {
+            font-size: .85rem;
+            color: var(--ink-soft);
+            margin-bottom: .8rem;
         }
 
         /* ---- contextual cursor ---- */
@@ -602,12 +692,13 @@
 
         body.has-cursor a,
         body.has-cursor button,
-        body.has-cursor .flag-card,
+        body.has-cursor .pcard,
         body.has-cursor #reg {
             cursor: none;
         }
 
         @media (max-width: 900px) {
+
             .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -617,11 +708,26 @@
                 order: 2;
             }
 
-            .flag-grid {
+            .fig-pair {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+                justify-items: center;
+            }
+
+            .fig-cell {
+                width: 100%;
+            }
+
+            .fig-arrow {
+                transform: rotate(90deg);
+                margin: -.4rem 0;
+            }
+
+            .feature-body {
                 grid-template-columns: 1fr;
             }
 
-            .mini-grid {
+            .card-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -695,51 +801,136 @@
             </div>
         </section>
 
-        <section class="exp">
+        <!-- FLAGSHIP 1: Computer Vision -->
+        <section class="feature" id="feat-cv">
             <div class="wrap">
-                <p class="cell-label out">Out [03]:</p>
-                <h2 class="exp-title">Experimentos</h2>
+                <p class="cell-label">In [04]:</p>
+                <span class="kind">visão computacional</span>
+                <h2>Detector de Sinal de Socorro</h2>
+                <p class="lead">Um sistema que reconhece o gesto universal de pedido de ajuda em tempo real —
+                    só com webcam e CPU — e dispara um alerta silencioso via webhook.</p>
 
-                <div class="flag-grid">
-                    <article class="flag-card">
-                        <div class="flag-figure">
-                            <canvas id="nn"></canvas>
-                        </div>
-                        <div class="flag-meta">
-                            <span class="flag-kind">redes neurais · reinforcement learning</span>
-                            <h3>AI Soccer</h3>
-                            <p>Agentes aprendendo a jogar futebol do zero, em pura tentativa e erro.</p>
-                            <div class="metric"><b>50M</b><span>steps de treino</span></div>
-                        </div>
-                    </article>
-
-                    <article class="flag-card">
-                        <div class="flag-figure">
-                            <canvas id="hand"></canvas>
-                            <div class="fsm">
-                                <span class="st amber">ARMAR</span>
-                                <span class="st">DISPARAR</span>
-                                <span class="st red">ALERTA</span>
-                            </div>
-                        </div>
-                        <div class="flag-meta">
-                            <span class="flag-kind">visão computacional</span>
-                            <h3>Detector de Sinal de Socorro</h3>
-                            <p>21 landmarks + máquina de estados, só com geometria e CPU, em tempo real.</p>
-                            <div class="metric"><b>21</b><span>landmarks · tempo real</span></div>
-                        </div>
-                    </article>
+                <div class="fig-pair">
+                    <figure class="fig-cell">
+                        <div class="fig-frame"><img src="images/cv.jpeg"
+                                alt="Frame da webcam detectando o gesto de socorro" /></div>
+                        <figcaption><b>fig.02</b> · a câmera vê</figcaption>
+                    </figure>
+                    <svg class="fig-arrow" viewBox="0 0 56 38" aria-hidden="true">
+                        <path d="M3,19 C 22,9 36,29 48,19" />
+                        <path d="M48,19 l-9,-4 M48,19 l-8,6" />
+                    </svg>
+                    <figure class="fig-cell">
+                        <div class="fig-frame rep"><canvas id="hand"></canvas></div>
+                        <figcaption><b>fig.03</b> · o modelo extrai 21 landmarks</figcaption>
+                    </figure>
                 </div>
 
-                <div class="mini-grid">
-                    <a class="mini" href="#"><span>análise + ML</span>
-                        <h4>Preços de Carros</h4>
+                <div class="feature-body">
+                    <div>
+                        <h4>// como funciona</h4>
+                        <p>O MediaPipe extrai 21 pontos da mão. Em vez de treinar um modelo pesado, o sistema usa
+                            geometria pura — a distância euclidiana entre os dedos — dentro de uma máquina de estados
+                            (ARMAR → DISPARAR → ALERTA) pra não confundir um aceno com um pedido de socorro.</p>
+                    </div>
+                    <div>
+                        <h4>// o impacto</h4>
+                        <p>A repercussão do projeto rendeu um convite pra ministrar uma masterclass de visão
+                            computacional na TripleTen. Quando o gesto é confirmado, um POST assíncrono dispara o
+                            alerta — em uma thread separada, sem travar o vídeo.</p>
+                    </div>
+                </div>
+
+                <div class="feature-foot">
+                    <div class="tags"><span>OpenCV</span><span>MediaPipe</span><span>NumPy</span><span>FSM</span><span>Python</span>
+                    </div>
+                    <div class="metric"><b>21</b><span>landmarks · CPU · tempo real</span></div>
+                    <a class="band-link" href="#">abrir ficha completa →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLAGSHIP 2: Neural Networks -->
+        <section class="feature alt" id="feat-nn">
+            <div class="wrap">
+                <p class="cell-label">In [05]:</p>
+                <span class="kind">redes neurais · reinforcement learning</span>
+                <h2>AI Soccer</h2>
+                <p class="lead">Agentes que aprendem a jogar futebol do zero — sem nenhuma regra escrita à mão —
+                    em pura tentativa e erro, ao longo de 50 milhões de steps de treino.</p>
+
+                <div class="fig-pair">
+                    <figure class="fig-cell">
+                        <div class="fig-frame"><img src="images/ai_soccer_nn.gif"
+                                alt="Visualização da rede neural do AI Soccer em ação" /></div>
+                        <figcaption><b>fig.04</b> · a rede neural em ação</figcaption>
+                    </figure>
+                    <svg class="fig-arrow" viewBox="0 0 56 38" aria-hidden="true">
+                        <path d="M3,19 C 22,9 36,29 48,19" />
+                        <path d="M48,19 l-9,-4 M48,19 l-8,6" />
+                    </svg>
+                    <figure class="fig-cell">
+                        <div class="fig-frame rep"><canvas id="nn"></canvas></div>
+                        <figcaption><b>fig.05</b> · a arquitetura, à mão</figcaption>
+                    </figure>
+                </div>
+
+                <div class="feature-body">
+                    <div>
+                        <h4>// a ideia</h4>
+                        <p>Nada de comportamento programado: os agentes começam sabendo nada e aprendem por reforço,
+                            jogando milhões de partidas contra si mesmos (self-play) até desenvolverem estratégia.</p>
+                    </div>
+                    <div>
+                        <h4>// por baixo dos panos</h4>
+                        <p>A política é uma rede neural treinada com um <strong>PPO próprio</strong> — escrito do zero,
+                            estilo CleanRL, sem bibliotecas de RL prontas — em PyTorch. Ela lê o estado do jogo e decide
+                            a ação, milhões de vezes, só na CPU.</p>
+                    </div>
+                </div>
+
+                <div class="feature-foot">
+                    <div class="tags"><span>PyTorch</span><span>PPO</span><span>Gymnasium</span><span>self-play</span><span>CPU-only</span>
+                    </div>
+                    <div class="metric"><b>50M</b><span>steps de treino</span></div>
+                    <a class="band-link" href="#">abrir ficha completa →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTHER PROJECTS -->
+        <section class="others">
+            <div class="wrap">
+                <p class="cell-label out">Out [06]:</p>
+                <h3 class="exp-sub">// outros experimentos</h3>
+                <div class="card-grid">
+                    <a class="pcard" href="#">
+                        <div class="pcard-fig"><img src="images/outliers2.png" alt="Análise de preços de carros" />
+                        </div>
+                        <div class="pcard-body">
+                            <span class="kind">análise + ml</span>
+                            <h4>Preços de Carros</h4>
+                            <p>EDA, tratamento criterioso de outliers e previsão de preço.</p>
+                            <div class="tags"><span>EDA</span><span>scikit-learn</span></div>
+                        </div>
                     </a>
-                    <a class="mini" href="#"><span>automação</span>
-                        <h4>Buraco da Mãe</h4>
+                    <a class="pcard" href="#">
+                        <div class="pcard-fig"><img src="images/baralho.jpg" alt="App de Buraco da mãe" /></div>
+                        <div class="pcard-body">
+                            <span class="kind">automação</span>
+                            <h4>Buraco da Mãe</h4>
+                            <p>Dashboard de partidas em tempo real, feito pra minha mãe.</p>
+                            <div class="tags"><span>Streamlit</span><span>Plotly</span></div>
+                        </div>
                     </a>
-                    <a class="mini" href="#"><span>IA · n8n</span>
-                        <h4>Agente no WhatsApp</h4>
+                    <a class="pcard" href="#">
+                        <div class="pcard-fig"><img src="images/n8n1.PNG" alt="Agente de IA no WhatsApp" /></div>
+                        <div class="pcard-body">
+                            <span class="kind">ia · n8n</span>
+                            <h4>Agente no WhatsApp</h4>
+                            <p>Secretária virtual com handoff humano e base RAG.</p>
+                            <div class="tags"><span>n8n</span><span>LLM</span></div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -765,6 +956,7 @@
             function fitCanvas(c) {
                 const dpr = Math.min(window.devicePixelRatio || 1, 2);
                 const w = c.clientWidth, h = c.clientHeight;
+                if (!w || !h) return null;
                 c.width = Math.floor(w * dpr); c.height = Math.floor(h * dpr);
                 const x = c.getContext('2d');
                 x.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -823,27 +1015,22 @@
                 fctx.clearRect(0, 0, figW, figH);
                 const ink = cssVar('--ink'), soft = cssVar('--ink-soft'), acc = cssVar('--accent');
                 const rc = rough.canvas(fig);
-                // gridlines
                 fctx.strokeStyle = cssVar('--grid'); fctx.lineWidth = 1;
                 for (let g = 2; g <= 10; g += 2) {
                     fctx.beginPath(); fctx.moveTo(PX(g), PY(0)); fctx.lineTo(PX(g), PY(10)); fctx.stroke();
                     fctx.beginPath(); fctx.moveTo(PX(0), PY(g)); fctx.lineTo(PX(10), PY(g)); fctx.stroke();
                 }
-                // axes
                 const axo = { stroke: ink, strokeWidth: 1.4, roughness: 1.2, seed: 7 };
                 rc.line(PX(0), PY(0), PX(0), PY(10), axo);
                 rc.line(PX(0), PY(0), PX(10), PY(0), axo);
-                // ticks + labels
                 fctx.fillStyle = soft; fctx.font = '10px "JetBrains Mono", monospace';
                 for (let t = 2; t <= 10; t += 2) {
                     fctx.fillText(String(t), PX(t) - 3, PY(0) + 15);
                     fctx.fillText(String(t), PX(0) - 16, PY(t) + 3);
                 }
-                // regression line (animated draw, fixed seed)
                 const x1 = lineProg * DX1;
                 rc.line(PX(0), PY(fitA), PX(x1), PY(fitA + fitB * x1),
                     { stroke: acc, strokeWidth: 2.4, roughness: 1, bowing: .8, seed: 42 });
-                // points
                 for (let i = 0; i < pts.length; i++) {
                     const p = pts[i];
                     rc.circle(PX(p.x), PY(p.y), i === dragIdx ? 17 : 11,
@@ -864,21 +1051,21 @@
             fig.addEventListener('pointermove', function (e) {
                 if (dragIdx < 0) return;
                 const r = fig.getBoundingClientRect();
-                let x = IX(e.clientX - r.left), y = IY(e.clientY - r.top);
-                pts[dragIdx].x = Math.max(0.3, Math.min(9.8, x));
-                pts[dragIdx].y = Math.max(0.3, Math.min(9.8, y));
+                pts[dragIdx].x = Math.max(0.3, Math.min(9.8, IX(e.clientX - r.left)));
+                pts[dragIdx].y = Math.max(0.3, Math.min(9.8, IY(e.clientY - r.top)));
                 computeFit(); figDirty = true; kick();
             });
             function endDrag() { if (dragIdx >= 0) { dragIdx = -1; figDirty = true; kick(); } }
             fig.addEventListener('pointerup', endDrag);
             fig.addEventListener('pointercancel', endDrag);
 
-            /* ============ FLAGSHIP SKETCHES ============ */
+            /* ============ HAND-DRAWN REPRESENTATIONS ============ */
             function drawNN() {
                 const c = document.getElementById('nn'); if (!c || !window.rough) return;
-                const m = fitCanvas(c); const rc = rough.canvas(c);
+                const m = fitCanvas(c); if (!m) return;
+                const rc = rough.canvas(c);
                 const ink = cssVar('--ink'), acc = cssVar('--accent'), soft = cssVar('--ink-soft');
-                const cols = [0.17, 0.5, 0.83].map(function (f) { return f * m.w; });
+                const cols = [0.16, 0.5, 0.84].map(function (f) { return f * m.w; });
                 const counts = [3, 5, 2];
                 const layers = [];
                 for (let l = 0; l < counts.length; l++) {
@@ -892,7 +1079,7 @@
                         rc.line(a.x, a.y, b.x, b.y, { stroke: soft, strokeWidth: 0.55, roughness: 1, seed: es++ });
                 let ns = 3;
                 for (const layer of layers) for (const nd of layer)
-                    rc.circle(nd.x, nd.y, 15, { stroke: ink, strokeWidth: 1.1, fill: acc, fillStyle: 'solid', seed: ns++ * 9 });
+                    rc.circle(nd.x, nd.y, 17, { stroke: ink, strokeWidth: 1.1, fill: acc, fillStyle: 'solid', seed: ns++ * 9 });
             }
 
             const LM = [[120, 150], [97, 136], [80, 121], [68, 108], [58, 96], [101, 95], [97, 72], [94, 56], [92, 42],
@@ -902,20 +1089,19 @@
             [9, 13], [13, 14], [14, 15], [15, 16], [13, 17], [17, 18], [18, 19], [19, 20], [0, 17]];
             function drawHand() {
                 const c = document.getElementById('hand'); if (!c || !window.rough) return;
-                const m = fitCanvas(c); const rc = rough.canvas(c);
+                const m = fitCanvas(c); if (!m) return;
+                const rc = rough.canvas(c);
                 const ink = cssVar('--ink'), acc = cssVar('--accent'), soft = cssVar('--ink-soft');
-                const s = Math.min(m.w / 210, m.h / 175);
+                const s = Math.min(m.w / 220, m.h / 175);
                 const ox = (m.w - 200 * s) / 2 - 8 * s, oy = (m.h - 165 * s) / 2;
                 function HX(i) { return ox + LM[i][0] * s; }
                 function HY(i) { return oy + LM[i][1] * s; }
-                for (let k = 0; k < CON.length; k++) {
+                for (let k = 0; k < CON.length; k++)
                     rc.line(HX(CON[k][0]), HY(CON[k][0]), HX(CON[k][1]), HY(CON[k][1]),
                         { stroke: soft, strokeWidth: 1, roughness: 1.1, seed: k + 30 });
-                }
-                for (let i = 0; i < LM.length; i++) {
-                    rc.circle(HX(i), HY(i), i === 4 || i === 8 ? 9 : 6,
+                for (let i = 0; i < LM.length; i++)
+                    rc.circle(HX(i), HY(i), i === 4 || i === 8 ? 11 : 7,
                         { stroke: ink, strokeWidth: 0.9, fill: acc, fillStyle: 'solid', seed: i * 5 + 1 });
-                }
             }
             function drawStatics() { drawNN(); drawHand(); }
 
@@ -926,7 +1112,7 @@
 
             if (fine) {
                 document.body.classList.add('has-cursor');
-                document.querySelectorAll('a, button, .flag-card').forEach(function (el) {
+                document.querySelectorAll('a, button, .pcard').forEach(function (el) {
                     el.addEventListener('pointerenter', function () { cur.classList.add('link'); });
                     el.addEventListener('pointerleave', function () { cur.classList.remove('link'); });
                 });
@@ -975,6 +1161,7 @@
 
             /* ============ INIT ============ */
             window.addEventListener('resize', function () { figResize(); drawStatics(); kick(); });
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawStatics);
             initPts(); computeFit(); figResize(); drawStatics();
             if (reduce) { lineProg = 1; drawReg(); } else { kick(); }
         })();
