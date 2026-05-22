@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="paper">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protótipo v2 · Caderno de Laboratório</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Shantell+Sans:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --paper: #F4F0E7;
+            --paper-2: #ECE6D8;
+            --ink: #1B1B19;
+            --ink-soft: #6B675F;
+            --accent: #E8482B;
+            --grid: rgba(27, 27, 25, 0.07);
+            --hair: rgba(27, 27, 25, 0.14);
+            --mark: rgba(232, 72, 43, 0.20);
+            --hl-ml: #2F6BFF;
+            --hl-data: #E0A82E;
+            --hl-auto: #14A98A;
+            --hl-cv: #7C5CFF;
+            --serif: "Fraunces", Georgia, serif;
+            --sans: "General Sans", system-ui, sans-serif;
+            --mono: "JetBrains Mono", ui-monospace, monospace;
+            --hand: "Shantell Sans", "Comic Sans MS", cursive;
+        }
+
+        [data-theme="blueprint"] {
+            --paper: #0E1320;
+            --paper-2: #141A29;
+            --ink: #ECE7DA;
+            --ink-soft: #94A0B5;
+            --accent: #FF5C3D;
+            --grid: rgba(190, 225, 225, 0.09);
+            --hair: rgba(190, 225, 225, 0.18);
+            --mark: rgba(255, 92, 61, 0.26);
+            --hl-ml: #5B8DFF;
+            --hl-data: #F0BD4E;
+            --hl-auto: #2BD4AE;
+            --hl-cv: #9D80FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--ink);
+            font-family: var(--sans);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color .5s ease, color .5s ease;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 4rem);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cell-label {
+            font-family: var(--mono);
+            font-size: .8rem;
+            letter-spacing: .1em;
+            color: var(--accent);
+            margin-bottom: .8rem;
+        }
+
+        .cell-label.out {
+            color: var(--hl-ml);
+        }
+
+        /* ---- topbar ---- */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
+            background: linear-gradient(var(--paper), transparent);
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .brand .dot {
+            color: var(--accent);
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-family: var(--mono);
+            font-size: .72rem;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+            letter-spacing: .12em;
+        }
+
+        #theme-toggle {
+            font-family: var(--mono);
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--ink);
+            background: transparent;
+            border: 1px solid var(--hair);
+            border-radius: 2px;
+            padding: .45rem .7rem;
+            cursor: pointer;
+            transition: border-color .25s, color .25s;
+        }
+
+        #theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ---- hero ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 0 3rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.02fr 1fr;
+            gap: clamp(2rem, 5vw, 4rem);
+            align-items: center;
+            width: 100%;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: .82rem;
+            letter-spacing: .1em;
+            color: var(--ink-soft);
+            margin-bottom: 1rem;
+        }
+
+        .hero-name {
+            font-family: var(--serif);
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-size: clamp(2.6rem, 6.5vw, 5rem);
+            line-height: .94;
+            letter-spacing: -.025em;
+            margin-bottom: .3rem;
+            clip-path: inset(0 100% 0 0);
+            animation: inkReveal 1s cubic-bezier(.22, .68, .2, 1) .2s forwards;
+        }
+
+        @keyframes inkReveal {
+            to {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        .underline {
+            width: min(380px, 70%);
+            height: 22px;
+            display: block;
+            margin: -.1rem 0 1.4rem 2px;
+            overflow: visible;
+        }
+
+        .underline path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: draw .7s ease 1.05s forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .role {
+            font-weight: 600;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: .5rem;
+            opacity: 0;
+            animation: rise .6s ease 1.2s forwards;
+        }
+
+        .statement {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.3rem, 2.6vw, 2rem);
+            line-height: 1.2;
+            max-width: 18ch;
+            opacity: 0;
+            animation: rise .6s ease 1.4s forwards;
+        }
+
+        mark {
+            background: var(--mark);
+            color: inherit;
+            padding: 0 .18em;
+            border-radius: 2px;
+            display: inline-block;
+            transform: rotate(-1.2deg);
+        }
+
+        .play-hint {
+            font-family: var(--hand);
+            font-size: 1.05rem;
+            color: var(--ink-soft);
+            margin-top: 1.6rem;
+            opacity: 0;
+            animation: rise .6s ease 1.7s forwards;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- figure / regression ---- */
+        .figure {
+            border: 1px solid var(--hair);
+            border-radius: 6px;
+            background: var(--paper-2);
+            padding: 1rem 1rem .25rem;
+            position: relative;
+        }
+
+        .fig-top {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: .3rem;
+        }
+
+        .fig-top .num {
+            color: var(--accent);
+        }
+
+        #reg {
+            width: 100%;
+            height: 340px;
+            display: block;
+            touch-action: none;
+        }
+
+        .figcap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px dashed var(--hair);
+            padding: .7rem .2rem;
+            font-family: var(--mono);
+            font-size: .8rem;
+        }
+
+        .figcap .eq {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .figcap .r2 {
+            color: var(--accent);
+        }
+
+        .figcap .muted {
+            color: var(--ink-soft);
+            margin-left: auto;
+            font-size: .72rem;
+        }
+
+        /* ---- experiments ---- */
+        .exp {
+            padding: 5rem 0 6rem;
+            border-top: 1px solid var(--hair);
+            background: var(--paper);
+            position: relative;
+            z-index: 2;
+        }
+
+        .exp-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+        }
+
+        .flag-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .flag-card {
+            border: 1px solid var(--hair);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--paper-2);
+            transition: transform .25s, border-color .25s, box-shadow .25s;
+            cursor: pointer;
+        }
+
+        .flag-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .12);
+        }
+
+        .flag-figure {
+            position: relative;
+            height: 200px;
+            border-bottom: 1px solid var(--hair);
+            background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+
+        .flag-figure canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .fsm {
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            display: flex;
+            gap: .35rem;
+        }
+
+        .fsm .st {
+            font-family: var(--mono);
+            font-size: .58rem;
+            letter-spacing: .08em;
+            padding: .2rem .4rem;
+            border-radius: 3px;
+            border: 1px solid var(--hair);
+            color: var(--ink-soft);
+            opacity: .5;
+        }
+
+        .fsm .st.amber {
+            border-color: var(--hl-data);
+            color: var(--hl-data);
+            opacity: 1;
+        }
+
+        .fsm .st.red {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .flag-meta {
+            padding: 1.3rem 1.4rem 1.5rem;
+        }
+
+        .flag-kind {
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .flag-meta h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: .3rem 0 .4rem;
+            line-height: 1.1;
+        }
+
+        .flag-meta p {
+            font-size: .92rem;
+            color: var(--ink-soft);
+            margin-bottom: 1.1rem;
+        }
+
+        .metric {
+            display: flex;
+            align-items: baseline;
+            gap: .5rem;
+            border-top: 1px dashed var(--hair);
+            padding-top: .9rem;
+        }
+
+        .metric b {
+            font-family: var(--mono);
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .metric span {
+            font-family: var(--mono);
+            font-size: .72rem;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .mini {
+            display: block;
+            border: 1px solid var(--hair);
+            border-radius: 6px;
+            padding: 1.2rem 1.3rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .mini:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .mini span {
+            font-family: var(--mono);
+            font-size: .66rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .mini h4 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: .3rem;
+        }
+
+        /* ---- contextual cursor ---- */
+        .cur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            pointer-events: none;
+            display: none;
+            will-change: transform;
+        }
+
+        .reticle {
+            width: 26px;
+            height: 26px;
+            border: 1.5px solid var(--ink);
+            border-radius: 50%;
+            position: absolute;
+            top: -13px;
+            left: -13px;
+            transition: width .15s, height .15s, top .15s, left .15s, border-color .15s, opacity .15s;
+        }
+
+        .reticle::before,
+        .reticle::after {
+            content: "";
+            position: absolute;
+            background: var(--ink);
+        }
+
+        .reticle::before {
+            left: -6px;
+            right: -6px;
+            top: 50%;
+            height: 1px;
+            transform: translateY(-50%);
+        }
+
+        .reticle::after {
+            top: -6px;
+            bottom: -6px;
+            left: 50%;
+            width: 1px;
+            transform: translateX(-50%);
+        }
+
+        .cur-core {
+            position: absolute;
+            top: -2.5px;
+            left: -2.5px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .cur.link .reticle {
+            width: 46px;
+            height: 46px;
+            top: -23px;
+            left: -23px;
+            border-color: var(--accent);
+        }
+
+        body.cur-chart .reticle {
+            opacity: .25;
+        }
+
+        .cur-guide-x,
+        .cur-guide-y {
+            position: fixed;
+            background: var(--accent);
+            opacity: .35;
+            pointer-events: none;
+            z-index: 9998;
+            display: none;
+        }
+
+        .cur-guide-x {
+            left: 0;
+            width: 100%;
+            height: 1px;
+        }
+
+        .cur-guide-y {
+            top: 0;
+            width: 1px;
+            height: 100%;
+        }
+
+        .cur-readout {
+            position: fixed;
+            z-index: 9999;
+            display: none;
+            font-family: var(--mono);
+            font-size: .7rem;
+            background: var(--ink);
+            color: var(--paper);
+            padding: .2rem .45rem;
+            border-radius: 3px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        body.has-cursor .cur {
+            display: block;
+        }
+
+        body.has-cursor.cur-chart .cur-guide-x,
+        body.has-cursor.cur-chart .cur-guide-y,
+        body.has-cursor.cur-chart .cur-readout {
+            display: block;
+        }
+
+        body.has-cursor {
+            cursor: none;
+        }
+
+        body.has-cursor a,
+        body.has-cursor button,
+        body.has-cursor .flag-card,
+        body.has-cursor #reg {
+            cursor: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .figure {
+                order: 2;
+            }
+
+            .flag-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toolbar>span {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .hero-name {
+                clip-path: none;
+            }
+
+            .underline path {
+                stroke-dashoffset: 0;
+            }
+
+            .role,
+            .statement,
+            .play-hint {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">Henrique Targino<span class="dot">.</span></div>
+        <div class="toolbar">
+            <span>portfolio.ipynb</span>
+            <button id="theme-toggle">tema: papel</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div class="identity">
+                    <p class="cell-label">In [00]:</p>
+                    <p class="eyebrow">olá, eu sou</p>
+                    <h1 class="hero-name">Henrique<br>Targino</h1>
+                    <svg class="underline" viewBox="0 0 380 22" preserveAspectRatio="none" aria-hidden="true">
+                        <path pathLength="1" d="M4,14 C 70,6 110,18 170,10 C 230,3 270,17 330,9 C 350,7 366,11 376,10" />
+                    </svg>
+                    <p class="role">Cientista de Dados</p>
+                    <p class="statement">Transformo dados em <mark>decisões</mark>.</p>
+                    <p class="play-hint">→ arraste os pontos do gráfico e veja a reta se reajustar</p>
+                </div>
+
+                <figure class="figure data-zone">
+                    <div class="fig-top">
+                        <span class="num">fig.01</span>
+                        <span>regressão de mínimos quadrados</span>
+                    </div>
+                    <canvas id="reg"></canvas>
+                    <figcaption class="figcap">
+                        <span class="eq" id="eq">ŷ = …</span>
+                        <span class="r2" id="r2">R² = …</span>
+                        <span class="muted">n = 9 · arraste os pontos</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="exp">
+            <div class="wrap">
+                <p class="cell-label out">Out [03]:</p>
+                <h2 class="exp-title">Experimentos</h2>
+
+                <div class="flag-grid">
+                    <article class="flag-card">
+                        <div class="flag-figure">
+                            <canvas id="nn"></canvas>
+                        </div>
+                        <div class="flag-meta">
+                            <span class="flag-kind">redes neurais · reinforcement learning</span>
+                            <h3>AI Soccer</h3>
+                            <p>Agentes aprendendo a jogar futebol do zero, em pura tentativa e erro.</p>
+                            <div class="metric"><b>50M</b><span>steps de treino</span></div>
+                        </div>
+                    </article>
+
+                    <article class="flag-card">
+                        <div class="flag-figure">
+                            <canvas id="hand"></canvas>
+                            <div class="fsm">
+                                <span class="st amber">ARMAR</span>
+                                <span class="st">DISPARAR</span>
+                                <span class="st red">ALERTA</span>
+                            </div>
+                        </div>
+                        <div class="flag-meta">
+                            <span class="flag-kind">visão computacional</span>
+                            <h3>Detector de Sinal de Socorro</h3>
+                            <p>21 landmarks + máquina de estados, só com geometria e CPU, em tempo real.</p>
+                            <div class="metric"><b>21</b><span>landmarks · tempo real</span></div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mini-grid">
+                    <a class="mini" href="#"><span>análise + ML</span>
+                        <h4>Preços de Carros</h4>
+                    </a>
+                    <a class="mini" href="#"><span>automação</span>
+                        <h4>Buraco da Mãe</h4>
+                    </a>
+                    <a class="mini" href="#"><span>IA · n8n</span>
+                        <h4>Agente no WhatsApp</h4>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cur" id="cur">
+        <span class="reticle"></span>
+        <span class="cur-core"></span>
+    </div>
+    <div class="cur-guide-x" id="gx"></div>
+    <div class="cur-guide-y" id="gy"></div>
+    <div class="cur-readout" id="ro"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            function cssVar(n) { return getComputedStyle(root).getPropertyValue(n).trim(); }
+
+            function fitCanvas(c) {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const w = c.clientWidth, h = c.clientHeight;
+                c.width = Math.floor(w * dpr); c.height = Math.floor(h * dpr);
+                const x = c.getContext('2d');
+                x.setTransform(dpr, 0, 0, dpr, 0, 0);
+                x.clearRect(0, 0, w, h);
+                return { x: x, w: w, h: h };
+            }
+
+            /* ============ REGRESSION ============ */
+            const fig = document.getElementById('reg');
+            const eqEl = document.getElementById('eq');
+            const r2El = document.getElementById('r2');
+            const PAD = { l: 42, r: 18, t: 18, b: 32 };
+            const DX1 = 10, DY1 = 10;
+            let figW = 0, figH = 0, figDPR = 1, fctx = null;
+            let pts = [], dragIdx = -1, fitA = 0, fitB = 0, fitR2 = 0, lineProg = 0, figDirty = true;
+
+            function initPts() {
+                pts = [];
+                const xs = [0.7, 1.7, 2.7, 3.7, 4.7, 5.7, 6.8, 7.9, 8.9];
+                for (let i = 0; i < xs.length; i++) {
+                    let y = 1.1 + 0.78 * xs[i] + (Math.random() - 0.5) * 2.7;
+                    y = Math.max(0.5, Math.min(9.5, y));
+                    pts.push({ x: xs[i], y: y, seed: i * 13 + 5 });
+                }
+            }
+            function PX(x) { return PAD.l + (x / DX1) * (figW - PAD.l - PAD.r); }
+            function PY(y) { return (figH - PAD.b) - (y / DY1) * (figH - PAD.t - PAD.b); }
+            function IX(p) { return (p - PAD.l) / (figW - PAD.l - PAD.r) * DX1; }
+            function IY(p) { return ((figH - PAD.b) - p) / (figH - PAD.t - PAD.b) * DY1; }
+
+            function computeFit() {
+                const n = pts.length; let sx = 0, sy = 0;
+                for (const p of pts) { sx += p.x; sy += p.y; }
+                const mx = sx / n, my = sy / n;
+                let num = 0, den = 0;
+                for (const p of pts) { num += (p.x - mx) * (p.y - my); den += (p.x - mx) * (p.x - mx); }
+                fitB = den === 0 ? 0 : num / den;
+                fitA = my - fitB * mx;
+                let ssr = 0, sst = 0;
+                for (const p of pts) { const yh = fitA + fitB * p.x; ssr += (p.y - yh) * (p.y - yh); sst += (p.y - my) * (p.y - my); }
+                fitR2 = sst === 0 ? 0 : 1 - ssr / sst;
+            }
+
+            function figResize() {
+                figDPR = Math.min(window.devicePixelRatio || 1, 2);
+                figW = fig.clientWidth; figH = fig.clientHeight;
+                fig.width = Math.floor(figW * figDPR); fig.height = Math.floor(figH * figDPR);
+                fctx = fig.getContext('2d');
+                fctx.setTransform(figDPR, 0, 0, figDPR, 0, 0);
+                figDirty = true;
+            }
+
+            function drawReg() {
+                if (!figW) return;
+                fctx.setTransform(figDPR, 0, 0, figDPR, 0, 0);
+                fctx.clearRect(0, 0, figW, figH);
+                const ink = cssVar('--ink'), soft = cssVar('--ink-soft'), acc = cssVar('--accent');
+                const rc = rough.canvas(fig);
+                // gridlines
+                fctx.strokeStyle = cssVar('--grid'); fctx.lineWidth = 1;
+                for (let g = 2; g <= 10; g += 2) {
+                    fctx.beginPath(); fctx.moveTo(PX(g), PY(0)); fctx.lineTo(PX(g), PY(10)); fctx.stroke();
+                    fctx.beginPath(); fctx.moveTo(PX(0), PY(g)); fctx.lineTo(PX(10), PY(g)); fctx.stroke();
+                }
+                // axes
+                const axo = { stroke: ink, strokeWidth: 1.4, roughness: 1.2, seed: 7 };
+                rc.line(PX(0), PY(0), PX(0), PY(10), axo);
+                rc.line(PX(0), PY(0), PX(10), PY(0), axo);
+                // ticks + labels
+                fctx.fillStyle = soft; fctx.font = '10px "JetBrains Mono", monospace';
+                for (let t = 2; t <= 10; t += 2) {
+                    fctx.fillText(String(t), PX(t) - 3, PY(0) + 15);
+                    fctx.fillText(String(t), PX(0) - 16, PY(t) + 3);
+                }
+                // regression line (animated draw, fixed seed)
+                const x1 = lineProg * DX1;
+                rc.line(PX(0), PY(fitA), PX(x1), PY(fitA + fitB * x1),
+                    { stroke: acc, strokeWidth: 2.4, roughness: 1, bowing: .8, seed: 42 });
+                // points
+                for (let i = 0; i < pts.length; i++) {
+                    const p = pts[i];
+                    rc.circle(PX(p.x), PY(p.y), i === dragIdx ? 17 : 11,
+                        { stroke: ink, strokeWidth: 1, fill: acc, fillStyle: 'solid', seed: p.seed });
+                }
+                eqEl.textContent = 'ŷ = ' + fitA.toFixed(2) + ' + ' + fitB.toFixed(2) + 'x';
+                r2El.textContent = 'R² = ' + fitR2.toFixed(3);
+            }
+
+            fig.addEventListener('pointerdown', function (e) {
+                const r = fig.getBoundingClientRect();
+                const mxp = e.clientX - r.left, myp = e.clientY - r.top;
+                for (let i = 0; i < pts.length; i++) {
+                    const dx = mxp - PX(pts[i].x), dy = myp - PY(pts[i].y);
+                    if (dx * dx + dy * dy < 18 * 18) { dragIdx = i; try { fig.setPointerCapture(e.pointerId); } catch (err) { } break; }
+                }
+            });
+            fig.addEventListener('pointermove', function (e) {
+                if (dragIdx < 0) return;
+                const r = fig.getBoundingClientRect();
+                let x = IX(e.clientX - r.left), y = IY(e.clientY - r.top);
+                pts[dragIdx].x = Math.max(0.3, Math.min(9.8, x));
+                pts[dragIdx].y = Math.max(0.3, Math.min(9.8, y));
+                computeFit(); figDirty = true; kick();
+            });
+            function endDrag() { if (dragIdx >= 0) { dragIdx = -1; figDirty = true; kick(); } }
+            fig.addEventListener('pointerup', endDrag);
+            fig.addEventListener('pointercancel', endDrag);
+
+            /* ============ FLAGSHIP SKETCHES ============ */
+            function drawNN() {
+                const c = document.getElementById('nn'); if (!c || !window.rough) return;
+                const m = fitCanvas(c); const rc = rough.canvas(c);
+                const ink = cssVar('--ink'), acc = cssVar('--accent'), soft = cssVar('--ink-soft');
+                const cols = [0.17, 0.5, 0.83].map(function (f) { return f * m.w; });
+                const counts = [3, 5, 2];
+                const layers = [];
+                for (let l = 0; l < counts.length; l++) {
+                    const arr = [];
+                    for (let i = 0; i < counts[l]; i++) arr.push({ x: cols[l], y: m.h * (i + 1) / (counts[l] + 1) });
+                    layers.push(arr);
+                }
+                let es = 100;
+                for (let l = 0; l < layers.length - 1; l++)
+                    for (const a of layers[l]) for (const b of layers[l + 1])
+                        rc.line(a.x, a.y, b.x, b.y, { stroke: soft, strokeWidth: 0.55, roughness: 1, seed: es++ });
+                let ns = 3;
+                for (const layer of layers) for (const nd of layer)
+                    rc.circle(nd.x, nd.y, 15, { stroke: ink, strokeWidth: 1.1, fill: acc, fillStyle: 'solid', seed: ns++ * 9 });
+            }
+
+            const LM = [[120, 150], [97, 136], [80, 121], [68, 108], [58, 96], [101, 95], [97, 72], [94, 56], [92, 42],
+            [121, 90], [121, 64], [121, 46], [121, 32], [141, 93], [145, 70], [147, 54], [149, 40],
+            [160, 100], [168, 82], [173, 68], [177, 56]];
+            const CON = [[0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [5, 6], [6, 7], [7, 8], [5, 9], [9, 10], [10, 11], [11, 12],
+            [9, 13], [13, 14], [14, 15], [15, 16], [13, 17], [17, 18], [18, 19], [19, 20], [0, 17]];
+            function drawHand() {
+                const c = document.getElementById('hand'); if (!c || !window.rough) return;
+                const m = fitCanvas(c); const rc = rough.canvas(c);
+                const ink = cssVar('--ink'), acc = cssVar('--accent'), soft = cssVar('--ink-soft');
+                const s = Math.min(m.w / 210, m.h / 175);
+                const ox = (m.w - 200 * s) / 2 - 8 * s, oy = (m.h - 165 * s) / 2;
+                function HX(i) { return ox + LM[i][0] * s; }
+                function HY(i) { return oy + LM[i][1] * s; }
+                for (let k = 0; k < CON.length; k++) {
+                    rc.line(HX(CON[k][0]), HY(CON[k][0]), HX(CON[k][1]), HY(CON[k][1]),
+                        { stroke: soft, strokeWidth: 1, roughness: 1.1, seed: k + 30 });
+                }
+                for (let i = 0; i < LM.length; i++) {
+                    rc.circle(HX(i), HY(i), i === 4 || i === 8 ? 9 : 6,
+                        { stroke: ink, strokeWidth: 0.9, fill: acc, fillStyle: 'solid', seed: i * 5 + 1 });
+                }
+            }
+            function drawStatics() { drawNN(); drawHand(); }
+
+            /* ============ CONTEXTUAL CURSOR ============ */
+            const cur = document.getElementById('cur');
+            const gx = document.getElementById('gx'), gy = document.getElementById('gy'), ro = document.getElementById('ro');
+            let curTX = -100, curTY = -100, curRX = -100, curRY = -100, overChart = false;
+
+            if (fine) {
+                document.body.classList.add('has-cursor');
+                document.querySelectorAll('a, button, .flag-card').forEach(function (el) {
+                    el.addEventListener('pointerenter', function () { cur.classList.add('link'); });
+                    el.addEventListener('pointerleave', function () { cur.classList.remove('link'); });
+                });
+                const fw = fig.closest('.figure');
+                fw.addEventListener('pointerenter', function () { overChart = true; document.body.classList.add('cur-chart'); });
+                fw.addEventListener('pointerleave', function () { overChart = false; document.body.classList.remove('cur-chart'); });
+            }
+
+            window.addEventListener('pointermove', function (e) {
+                curTX = e.clientX; curTY = e.clientY;
+                if (overChart) {
+                    gx.style.top = e.clientY + 'px';
+                    gy.style.left = e.clientX + 'px';
+                    const r = fig.getBoundingClientRect();
+                    ro.style.left = (e.clientX + 14) + 'px';
+                    ro.style.top = (e.clientY + 16) + 'px';
+                    ro.textContent = 'x ' + IX(e.clientX - r.left).toFixed(1) + '  ·  y ' + IY(e.clientY - r.top).toFixed(1);
+                }
+                kick();
+            });
+
+            /* ============ IDLE-SAFE LOOP ============ */
+            let raf = null;
+            function loop() {
+                let busy = false;
+                if (fine) {
+                    const dx = curTX - curRX, dy = curTY - curRY;
+                    curRX += dx * 0.2; curRY += dy * 0.2;
+                    cur.style.transform = 'translate(' + curRX + 'px,' + curRY + 'px)';
+                    if (Math.abs(dx) + Math.abs(dy) > 0.4) busy = true;
+                }
+                if (lineProg < 1) { lineProg = Math.min(1, lineProg + 0.04); figDirty = true; busy = true; }
+                if (figDirty) { drawReg(); figDirty = false; }
+                raf = busy ? requestAnimationFrame(loop) : null;
+            }
+            function kick() { if (!raf && !reduce) raf = requestAnimationFrame(loop); }
+
+            /* ============ THEME ============ */
+            const tbtn = document.getElementById('theme-toggle');
+            function setLabel() { tbtn.textContent = root.getAttribute('data-theme') === 'blueprint' ? 'tema: blueprint' : 'tema: papel'; }
+            tbtn.addEventListener('click', function () {
+                root.setAttribute('data-theme', root.getAttribute('data-theme') === 'blueprint' ? 'paper' : 'blueprint');
+                setLabel(); figDirty = true; drawStatics(); kick();
+            });
+            setLabel();
+
+            /* ============ INIT ============ */
+            window.addEventListener('resize', function () { figResize(); drawStatics(); kick(); });
+            initPts(); computeFit(); figResize(); drawStatics();
+            if (reduce) { lineProg = 1; drawReg(); } else { kick(); }
+        })();
+    </script>
+</body>
+
+</html>
