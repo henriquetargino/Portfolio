@@ -574,8 +574,10 @@ mark {
 
 /* ---- articles ---- */
 .article-card {
-    display: block;
-    max-width: 760px;
+    display: grid;
+    grid-template-columns: minmax(260px, 40%) 1fr;
+    align-items: stretch;
+    max-width: 880px;
     border: 1px solid var(--hair);
     border-radius: 6px;
     background: var(--paper-2);
@@ -592,9 +594,9 @@ mark {
 }
 
 .article-cover {
-    height: 175px;
     background: #0A0E18;
     line-height: 0;
+    min-height: 100%;
 }
 
 .article-cover img {
@@ -805,15 +807,9 @@ body.has-cursor.cur-chart .cur-readout {
     display: block;
 }
 
-body.has-cursor {
-    cursor: none;
-}
-
-body.has-cursor a,
-body.has-cursor button,
-body.has-cursor .pcard,
-body.has-cursor #reg {
-    cursor: none;
+body.has-cursor,
+body.has-cursor * {
+    cursor: none !important;
 }
 
 /* ---- responsive ---- */
@@ -1197,7 +1193,7 @@ body.has-cursor #reg {
 }
 
 .cert-slide img {
-    height: clamp(240px, 36vh, 380px);
+    height: clamp(340px, 52vh, 520px);
     width: auto;
     display: block;
     border: 1px solid var(--hair);
