@@ -17,16 +17,18 @@ interface Props {
   metricValue: string;
   metricLabel: string;
   href: string;
+  slug: string;
+  id?: string;
   alt?: boolean;
 }
 
 const {
   cell, kind, title, lead, img, imgAlt, figPhotoCap, rep, figRepCap,
-  body, tags, metricValue, metricLabel, href, alt = false,
+  body, tags, metricValue, metricLabel, href, slug, id, alt = false,
 } = Astro.props;
 ---
 
-<section class={alt ? 'feature alt' : 'feature'}>
+<section class={alt ? 'feature alt' : 'feature'} id={id}>
   <div class="wrap">
     <p class="cell-label">{cell}</p>
     <span class="kind">{kind}</span>
@@ -36,11 +38,13 @@ const {
     <div class="fig-pair">
       <figure class="fig-cell">
         <div class="fig-frame">
-          {img.endsWith('.mp4') ? (
-            <video src={`${base}${img}`} autoplay loop muted playsinline data-autopause aria-label={imgAlt}></video>
-          ) : (
-            <img src={`${base}${img}`} alt={imgAlt} />
-          )}
+          <a class="fig-link" href={href} aria-label={`abrir ${title}`}>
+            {img.endsWith('.mp4') ? (
+              <video src={`${base}${img}`} autoplay loop muted playsinline data-autopause aria-label={imgAlt} transition:name={`cover-${slug}`}></video>
+            ) : (
+              <img src={`${base}${img}`} alt={imgAlt} transition:name={`cover-${slug}`} />
+            )}
+          </a>
         </div>
         <figcaption set:html={figPhotoCap} />
       </figure>

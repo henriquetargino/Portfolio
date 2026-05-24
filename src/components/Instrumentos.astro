@@ -1,25 +1,18 @@
 ---
-const groups = [
-  { name: 'IA & Dados', color: 'var(--hl-ml)', items: ['RAG', 'Embeddings', 'Vector Search', 'LLMs', 'Prompt Engineering', 'LangChain'] },
-  { name: 'Machine Learning', color: 'var(--hl-ml)', items: ['scikit-learn', 'TensorFlow', 'Keras', 'XGBoost', 'LightGBM'] },
-  { name: 'Redes Neurais & RL', color: 'var(--hl-ml)', items: ['PyTorch', 'PPO', 'Gymnasium', 'self-play'] },
-  { name: 'Visão Computacional', color: 'var(--hl-cv)', items: ['OpenCV', 'MediaPipe', 'YOLO'] },
-  { name: 'Python & Viz', color: 'var(--hl-data)', items: ['Pandas', 'NumPy', 'Matplotlib', 'Plotly', 'Streamlit'] },
-  { name: 'Automação & DevOps', color: 'var(--hl-auto)', items: ['n8n', 'Docker', 'Git', 'AWS', 'Evolution API', 'Chatwoot'] },
-];
+// Instrumentos — clusterização das ferramentas (scatter desenhado à mão)
+import { areaColor, areaLabel } from '../data/tools';
+const areas = ['ml', 'cv', 'agents', 'data'] as const;
 ---
 
 <section class="instr" id="instrumentos">
   <div class="wrap">
     <p class="cell-label">In [02]:</p>
     <span class="kind">instrumentos</span>
-    <h2 class="instr-h">// o que tem na bancada</h2>
-    <div class="instr-grid">
-      {groups.map((g) => (
-        <div class="instr-group">
-          <h4 style={`--c:${g.color}`}>{g.name}</h4>
-          <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
-        </div>
+    <h2 class="instr-h">// k-means das minhas ferramentas</h2>
+    <div class="scatter-frame data-zone"><canvas id="instr-scatter"></canvas></div>
+    <div class="tool-legend">
+      {areas.map((a) => (
+        <span><i style={`background:${areaColor[a]}`}></i>{areaLabel[a]}</span>
       ))}
     </div>
   </div>

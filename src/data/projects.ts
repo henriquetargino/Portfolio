@@ -4,6 +4,7 @@
 export interface ProjectSection {
   h3: string;
   body: string[]; // parágrafos (HTML inline permitido: <strong>, <em>)
+  media?: { src: string; cap: string }[]; // figuras/screenshots ao fim da seção
 }
 
 export interface ProjectLink {
@@ -33,13 +34,18 @@ export const projects: Project[] = [
     kind: 'visão computacional',
     title: 'Detector de Sinal de Socorro',
     lead: 'Um sistema que reconhece o gesto universal de pedido de ajuda em tempo real, só com webcam e CPU, e dispara um alerta silencioso via webhook.',
-    cover: 'images/cv.jpeg',
+    cover: 'images/video_cv.mp4',
+    coverIsVideo: true,
     rep: 'hand',
     featured: true,
     cell: 'In [03]:',
     metric: { value: '21', label: 'landmarks · CPU · tempo real' },
     tags: ['OpenCV', 'MediaPipe', 'NumPy', 'FSM', 'Python'],
-    links: [{ label: 'masterclass na TripleTen', href: '#' }],
+    links: [
+      { label: 'ver o código no GitHub', href: 'https://github.com/henriquetargino/sos_computer_vision' },
+      { label: 'o post que repercutiu', href: 'https://www.linkedin.com/posts/henriquetargino_datascience-python-computervision-activity-7398759818959876096-HeEO' },
+      { label: 'o post sobre a masterclass', href: 'https://www.linkedin.com/posts/henriquetargino_visaetocomputacional-python-opencv-ugcPost-7407063214959587328-AMia' },
+    ],
     sections: [
       {
         h3: 'A inspiração',
@@ -99,12 +105,18 @@ export const projects: Project[] = [
           '<strong>Esquecimento catastrófico:</strong> num currículo monotônico, o agente mandava bem no estágio 1 (88% de gols), travava no estágio 2 e <em>esquecia o estágio 1</em> (caía para 4%). É o vale visível perto dos 28M steps na curva de retorno: a rede "desaprendeu" o ataque para abrir espaço para a defesa.',
           '<strong>Colapso numérico:</strong> com ações contínuas, o bônus de entropia empurrava o desvio-padrão da gaussiana ao infinito até estourar o float32 (NaN, crash). A solução foi estrutural: troquei para <strong>18 ações discretas</strong> com squashing por tanh.',
         ],
+        media: [
+          { src: 'images/ai_soccer_return.png', cap: 'curva de retorno · o vale perto dos 28M steps é o esquecimento catastrófico acontecendo' },
+        ],
       },
       {
         h3: 'O que finalmente funcionou',
         body: [
           'Ações discretas eliminaram quatro patologias de uma vez. Um <strong>currículo de 12 estágios</strong> com ancoragem temporal (20% dos episódios amostrados de estágios passados) resolveu o esquecimento. A versão V10.2 convergiu com 50M steps, depois de quase 1 bilhão somando todas as tentativas.',
           'A maior lição: <em>"a função de recompensa não descreve o que você quer; ela descreve o que o agente vai otimizar."</em> Treinar uma IA não é otimização limpa, é depurar um sistema cujos bugs se escondem dentro de valores esperados.',
+        ],
+        media: [
+          { src: 'images/ai_soccer_heatmap.png', cap: 'mapa de calor de posicionamento · o antes e o depois de 50M steps de treino' },
         ],
       },
     ],
@@ -120,12 +132,17 @@ export const projects: Project[] = [
     cell: '',
     metric: { value: '85%', label: 'score no modelo (Random Forest)' },
     tags: ['EDA', 'scikit-learn', 'Pandas', 'Plotly', 'Random Forest'],
+    links: [{ label: 'ver no GitHub', href: 'https://github.com/henriquetargino/Vehicles' }],
     sections: [
       {
         h3: 'Limpeza e EDA',
         body: [
           'Comecei com dados brutos de uma plataforma de venda de veículos (marca, modelo, ano, km, preço, cor). Mais de <strong>25 mil registros</strong> tinham campos vazios: cerca de 10 mil na coluna de cor (preenchidos como "unknown"). Os demais (ano, cilindros, odômetro) tratei pela moda por modelo, condição e quilometragem.',
           'Removi casos que distorciam tudo: a Mercedes-Benz tinha só 40 linhas (valores repetidos) e mais de 800 carros custavam menos de US$100, outliers irreais para o mercado.',
+        ],
+        media: [
+          { src: 'images/grafico1.PNG', cap: 'mediana de preço por marca · mais robusta que a média contra valores extremos' },
+          { src: 'images/grafico2.PNG', cap: 'distribuição das cores no estoque · preferências do mercado' },
         ],
       },
       {
@@ -134,11 +151,19 @@ export const projects: Project[] = [
           'Preparei uma explicação simples do que são outliers usando um boxplot (mediana, quartis, extremos). Um caso prático: um Chevrolet levou 271 dias para vender, enquanto a mediana era 33. Esse único valor puxava a média para 39,6 dias; removendo os outliers, a média caiu para 36,6.',
           'A remoção foi criteriosa: só <strong>3,1% dos dados</strong> saíram, mas eles inflavam a média em quase 10%. Validei as diferenças com testes estatísticos (ANOVA e Tukey\'s HSD via Scipy/Statsmodels), para basear as conclusões em evidência, não em achismo visual.',
         ],
+        media: [
+          { src: 'images/outliers.PNG', cap: '% de outliers por marca, calculada pelo intervalo interquartil (IQR) em Python' },
+          { src: 'images/teste.PNG', cap: 'ANOVA + Tukey HSD · diferenças entre grupos validadas estatisticamente' },
+        ],
       },
       {
         h3: 'O modelo',
         body: [
           'A Regressão Linear não rendeu bem; parti para o <strong>Random Forest Regression</strong>, com melhor equilíbrio entre precisão e generalização. Treinado com marca, ano, km, combustível e cor, atingiu <strong>mais de 85% de score</strong> na validação e foi integrado a um app web onde o usuário insere as características e recebe a estimativa de preço.',
+        ],
+        media: [
+          { src: 'images/model.PNG', cap: 'Random Forest Regression · mais de 85% de score na validação' },
+          { src: 'images/projeto.PNG', cap: 'o app web final · insira as specs do carro, receba o preço estimado' },
         ],
       },
     ],
@@ -154,6 +179,7 @@ export const projects: Project[] = [
     cell: '',
     metric: { value: '∞', label: 'sorrisos da minha mãe' },
     tags: ['Streamlit', 'Plotly', 'gspread', 'Pandas'],
+    links: [{ label: 'ver no GitHub', href: 'https://github.com/henriquetargino/buraco' }],
     sections: [
       {
         h3: 'O início da ideia',
@@ -166,6 +192,9 @@ export const projects: Project[] = [
         body: [
           'Nunca tinha usado a API do Google Sheets, então estudei: descobri o <strong>gspread</strong>, que conecta o app direto a uma planilha como se fosse um banco de dados online. Para a interface usei <strong>Streamlit</strong>, e com <strong>Plotly</strong> transformei números em histórias: evolução de cada jogador, maiores vitórias, sequências, médias.',
           'Implementei cache com <code>@st.cache_data</code> para deixar tudo rápido, e um formulário protegido por senha para que só jogadores autorizados registrem resultados. A cada partida nova, os gráficos se atualizam na hora.',
+        ],
+        media: [
+          { src: 'images/video_baralho.gif', cap: 'o app em ação · dashboards em Streamlit + Plotly, atualizando a cada partida' },
         ],
       },
       {
@@ -182,7 +211,7 @@ export const projects: Project[] = [
     kind: 'ia · automação · n8n',
     title: 'Agente de IA no WhatsApp',
     lead: 'Uma secretária virtual para uma nutricionista: atende no WhatsApp a qualquer hora, responde com base nos dados de cada paciente e passa o bastão para a humana quando precisa.',
-    cover: 'images/n8n1.PNG',
+    cover: 'images/n8n0.PNG',
     featured: false,
     cell: '',
     metric: { value: '+30%', label: 'interações no 1º mês' },
@@ -199,6 +228,10 @@ export const projects: Project[] = [
         body: [
           'Estruturei uma base no Google Sheets (nome, contato, dieta, observações como "paciente bariátrico, evitar X"). Orquestrei tudo no <strong>n8n</strong>, integrando a <strong>Evolution API</strong> (mensagens do WhatsApp) e o <strong>Chatwoot</strong> (onde as conversas se centralizam).',
           'O fluxo trata texto e áudio (transcrição), busca os dados do paciente pelo telefone e gera a resposta com IA. Um nó <em>If</em> decide se precisa de <strong>handoff</strong>: se a pergunta exige histórico ou contexto, a nutricionista é avisada e responde no Chatwoot; senão, a IA simula um tempo de digitação natural e responde sozinha.',
+        ],
+        media: [
+          { src: 'images/n8n1.PNG', cap: 'fluxo · parte 1: webhook recebe a mensagem, filtra o cliente, transcreve áudio e une os caminhos no merge' },
+          { src: 'images/n8n2.PNG', cap: 'fluxo · parte 2: busca no Google Sheets, resposta da IA e o nó If que decide o handoff humano' },
         ],
       },
       {

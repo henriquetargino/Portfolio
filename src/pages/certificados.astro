@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 <Base title="Certificados · Henrique Targino" description="Certificados de Henrique Targino.">
   <main class="detail">
     <div class="wrap">
-      <a class="back-link" href={base}>← voltar pra home</a>
+      <a class="back-link" href={`${base}#certificados`}>← voltar pros certificados</a>
       <p class="cell-label out">// credenciais</p>
       <h1 class="detail-title">Certificados</h1>
       <p class="detail-lead">Alguns dos certificados que conquistei ao longo da jornada.</p>
@@ -16,8 +16,8 @@ const base = import.meta.env.BASE_URL;
         {certificates.map((c) => (
           <a
             class="cert-card"
-            href={c.image ? `${base}${c.image}` : undefined}
-            target={c.image ? '_blank' : undefined}
+            href={(c.doc || c.image) ? `${base}${c.doc || c.image}` : undefined}
+            target={(c.doc || c.image) ? '_blank' : undefined}
             rel="noopener"
           >
             <div class="cert-inst">
@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL;
             </div>
             <h4>{c.title}</h4>
             <p class="cert-date">{c.date}</p>
-            {c.image && <span class="cert-link">ver certificado →</span>}
+            {(c.doc || c.image) && <span class="cert-link">ver certificado →</span>}
           </a>
         ))}
       </div>

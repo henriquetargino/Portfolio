@@ -13,16 +13,16 @@ const base = import.meta.env.BASE_URL;
 <Base title={`${project.title} · Henrique Targino`} description={project.lead}>
   <main class="detail">
     <div class="wrap">
-      <a class="back-link" href={base}>← voltar pra home</a>
+      <a class="back-link" href={`${base}#proj-${project.slug}`}>← voltar pros projetos</a>
       <p class="cell-label">{project.kind}</p>
       <h1 class="detail-title">{project.title}</h1>
       <p class="detail-lead">{project.lead}</p>
 
       <div class="detail-cover">
         {project.coverIsVideo ? (
-          <video src={`${base}${project.cover}`} autoplay loop muted playsinline data-autopause></video>
+          <video src={`${base}${project.cover}`} autoplay loop muted playsinline data-autopause transition:name={`cover-${project.slug}`}></video>
         ) : (
-          <img src={`${base}${project.cover}`} alt={project.title} />
+          <img src={`${base}${project.cover}`} alt={project.title} transition:name={`cover-${project.slug}`} />
         )}
       </div>
 
@@ -36,6 +36,12 @@ const base = import.meta.env.BASE_URL;
           <section class="detail-section">
             <h3>{s.h3}</h3>
             {s.body.map((p) => <p set:html={p} />)}
+            {s.media && s.media.map((m) => (
+              <figure class="detail-figure">
+                <img src={`${base}${m.src}`} alt={m.cap} loading="lazy" />
+                <figcaption>{m.cap}</figcaption>
+              </figure>
+            ))}
           </section>
         ))}
       </article>
@@ -48,7 +54,7 @@ const base = import.meta.env.BASE_URL;
         </div>
       )}
 
-      <a class="back-link bottom" href={base}>← voltar pra home</a>
+      <a class="back-link bottom" href={`${base}#proj-${project.slug}`}>← voltar pros projetos</a>
     </div>
   </main>
 </Base>

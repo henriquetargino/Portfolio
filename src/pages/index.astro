@@ -8,11 +8,13 @@ import OtherProjects from '../components/OtherProjects.astro';
 import Articles from '../components/Articles.astro';
 import Certificates from '../components/Certificates.astro';
 import Footer from '../components/Footer.astro';
+import BootScreen from '../components/BootScreen.astro';
 
 const base = import.meta.env.BASE_URL;
 ---
 
 <Base>
+  <BootScreen />
   <main>
     <Hero />
     <About />
@@ -36,6 +38,8 @@ const base = import.meta.env.BASE_URL;
       metricValue="21"
       metricLabel="landmarks · CPU · tempo real"
       href={`${base}projetos/detector-sos`}
+      slug="detector-sos"
+      id="proj-detector-sos"
     />
 
     <FeatureProject
@@ -57,6 +61,8 @@ const base = import.meta.env.BASE_URL;
       metricValue="50M"
       metricLabel="steps de treino"
       href={`${base}projetos/ai-soccer`}
+      slug="ai-soccer"
+      id="proj-ai-soccer"
     />
 
     <OtherProjects />
