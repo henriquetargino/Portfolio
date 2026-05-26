@@ -1,0 +1,19 @@
+---
+// Instrumentos — clusterização das ferramentas (scatter desenhado à mão)
+import { areaColor, areaLabel } from '../data/tools';
+const areas = ['ml', 'cv', 'agents', 'data'] as const;
+---
+
+<section class="instr" id="instrumentos">
+  <div class="wrap">
+    <p class="cell-label">In [02]:</p>
+    <span class="kind">instrumentos</span>
+    <h2 class="instr-h">// k-means das minhas ferramentas</h2>
+    <div class="scatter-frame data-zone"><canvas id="instr-scatter"></canvas></div>
+    <div class="tool-legend">
+      {areas.map((a) => (
+        <span><i style={`background:${areaColor[a]}`}></i>{areaLabel[a]}</span>
+      ))}
+    </div>
+  </div>
+</section>

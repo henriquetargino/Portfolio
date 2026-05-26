@@ -1,0 +1,32 @@
+---
+// Hero com a regressão interativa (canvas #reg controlado por portfolio.ts)
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="identity">
+      <p class="cell-label">In [00]:</p>
+      <p class="eyebrow">olá, eu sou</p>
+      <h1 class="hero-name">Henrique<br />Targino</h1>
+      <svg class="underline" viewBox="0 0 380 22" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M4,14 C 70,6 110,18 170,10 C 230,3 270,17 330,9 C 350,7 366,11 376,10" />
+      </svg>
+      <p class="role">AI Engineer e Cientista de Dados</p>
+      <p class="statement">Máquinas que enxergam, aprendem e conversam. E ainda acho <mark>surreal</mark>.</p>
+      <p class="play-hint">→ arraste os pontos do gráfico e veja a reta se reajustar</p>
+    </div>
+
+    <figure class="figure data-zone">
+      <div class="fig-top">
+        <span class="num">fig.01</span>
+        <span>regressão de mínimos quadrados</span>
+      </div>
+      <canvas id="reg"></canvas>
+      <figcaption class="figcap">
+        <span class="eq" id="eq">ŷ = …</span>
+        <span class="r2" id="r2">R² = …</span>
+        <span class="muted">n = 9 · arraste os pontos</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>

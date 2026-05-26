@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { certificates } from '../data/certificates';
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Certificados · Henrique Targino" description="Certificados de Henrique Targino.">
+  <main class="detail">
+    <div class="wrap">
+      <a class="back-link" href={`${base}#certificados`}>← voltar pros certificados</a>
+      <p class="cell-label out">// credenciais</p>
+      <h1 class="detail-title">Certificados</h1>
+      <p class="detail-lead">Alguns dos certificados que conquistei ao longo da jornada.</p>
+
+      <div class="cert-grid" style="margin-top:1rem;">
+        {certificates.map((c) => (
+          <a
+            class="cert-card"
+            href={(c.doc || c.image) ? `${base}${c.doc || c.image}` : undefined}
+            target={(c.doc || c.image) ? '_blank' : undefined}
+            rel="noopener"
+          >
+            <div class="cert-inst">
+              <img src={`${base}${c.logo}`} alt={c.institution} />
+              <span>{c.institution}</span>
+            </div>
+            <h4>{c.title}</h4>
+            <p class="cert-date">{c.date}</p>
+            {(c.doc || c.image) && <span class="cert-link">ver certificado →</span>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>

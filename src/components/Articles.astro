@@ -1,0 +1,21 @@
+---
+import { articles } from '../data/articles';
+const base = import.meta.env.BASE_URL;
+const article = articles[0];
+---
+
+<section class="section-block" id="artigos">
+  <div class="wrap">
+    <p class="cell-label out">Out [06]:</p>
+    <h3 class="exp-sub">// artigos</h3>
+    <a class="article-card" href={article.href} target="_blank" rel="noopener">
+      <div class="article-cover"><img src={`${base}${article.cover}`} alt="Heatmap de posições da IA: início vs fim do treino" /></div>
+      <div class="article-body">
+        <span class="pub">{article.pub}</span>
+        <h3>{article.title}</h3>
+        <p class="article-excerpt">{article.excerpt}</p>
+        <span class="article-go">ler no Medium →</span>
+      </div>
+    </a>
+  </div>
+</section>

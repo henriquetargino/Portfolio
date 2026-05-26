@@ -1,0 +1,54 @@
+---
+// Move 3 — boot do kernel (só na home, 1x por sessão; reduced-motion pula).
+// O gate em Base.astro adiciona .booting no <html> antes da pintura; aqui só anima.
+---
+
+<div id="boot" class="boot" role="status" aria-label="iniciando o notebook">
+  <pre id="boot-log" class="boot-log"></pre>
+  <button id="boot-skip" class="boot-skip" type="button">pular →</button>
+</div>
+
+<script is:inline>
+  (function () {
+    if (!document.documentElement.classList.contains('booting')) return;
+    var el = document.getElementById('boot');
+    var log = document.getElementById('boot-log');
+    if (!el || !log) return;
+    var lines = [
+      'iniciando kernel · python 3.10',
+      'import numpy, pandas, torch, cv2, mediapipe',
+      'carregando portfolio.ipynb',
+      'kernel pronto'
+    ];
+    var items = [], k = 0, done = false;
+    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+    function paint() {
+      log.innerHTML = items.map(function (it) {
+        var mark = it.running ? '<span class="bm-run">[*]</span>' : '<span class="bm-ok">[✓]</span>';
+        return mark + ' ' + esc(it.text);
+      }).join('\n');
+    }
+    function finish() {
+      if (done) return; done = true;
+      try { sessionStorage.setItem('booted', '1'); } catch (e) { }
+      el.classList.add('boot-out');
+      document.documentElement.classList.remove('booting');
+      setTimeout(function () { if (el && el.parentNode) el.parentNode.removeChild(el); }, 650);
+    }
+    el.addEventListener('click', finish);
+    var skip = document.getElementById('boot-skip');
+    if (skip) skip.addEventListener('click', function (e) { e.stopPropagation(); finish(); });
+    function step() {
+      if (k > 0) items[k - 1].running = false;
+      if (k < lines.length) {
+        items.push({ text: lines[k], running: true });
+        k++; paint();
+        setTimeout(step, 262);
+      } else {
+        paint();
+        setTimeout(finish, 414);
+      }
+    }
+    setTimeout(step, 196);
+  })();
+</script>
