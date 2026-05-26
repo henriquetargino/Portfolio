@@ -18,6 +18,7 @@
     --hl-cv: #7C5CFF;
     --hl-agent: #12A074;
     --serif: "Fraunces", Georgia, serif;
+    --brand: "Zodiak", "Fraunces", Georgia, serif;
     --sans: "General Sans", system-ui, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
     --hand: "Shantell Sans", "Comic Sans MS", cursive;
@@ -118,9 +119,9 @@ mark {
 }
 
 .brand {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 1.25rem;
+    font-family: var(--brand);
+    font-weight: 700;
+    font-size: 1.35rem;
     color: var(--ink);
     text-decoration: none;
 }
@@ -184,12 +185,13 @@ mark {
 }
 
 .hero-name {
-    font-family: var(--serif);
+    font-family: var(--brand);
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 700;
     font-size: clamp(2.6rem, 6.5vw, 5rem);
     line-height: .94;
     letter-spacing: -.025em;
+    padding-bottom: .18em;
     margin-bottom: .3rem;
     clip-path: inset(0 100% 0 0);
     animation: inkReveal 1s cubic-bezier(.22, .68, .2, 1) .2s forwards;
@@ -205,7 +207,7 @@ mark {
     width: min(380px, 70%);
     height: 22px;
     display: block;
-    margin: -.1rem 0 1.4rem 2px;
+    margin: -.6rem 0 1.4rem 2px;
     overflow: visible;
 }
 
@@ -238,7 +240,7 @@ mark {
     font-style: italic;
     font-size: clamp(1.3rem, 2.6vw, 2rem);
     line-height: 1.2;
-    max-width: 18ch;
+    max-width: 22ch;
     opacity: 0;
     animation: rise .6s ease 1.4s forwards;
 }
@@ -1769,4 +1771,66 @@ body.has-cursor .term-in {
     padding: .05em .4em;
     font-size: .9em;
     color: var(--ink);
+}
+
+/* ---- comparação de logo (página /logo-opcoes) ---- */
+.logo-mock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 64px;
+    padding: 1.1rem clamp(1.2rem, 4vw, 2rem);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    background: var(--paper);
+    margin: .4rem 0 1.6rem;
+}
+
+.logo-mock-tools {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.logo-brand-serif {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.logo-brand-serif .dot {
+    color: var(--accent);
+}
+
+.logo-brand-ht {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.logo-brand-nome {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+
+.logo-showcase {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2.4rem;
+    border: 1px dashed var(--hair);
+    border-radius: 6px;
+    background: var(--paper-2);
+    margin-top: .4rem;
+}
+
+/* a logo vem preta fixa; no tema escuro, inverte pra ficar clara */
+[data-theme="blueprint"] .logo-adapt {
+    filter: invert(1);
 }

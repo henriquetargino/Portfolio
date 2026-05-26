@@ -293,7 +293,7 @@ function animateLabel(label) {
   if (pre === undefined) return;
   if (/in/i.test(pre)) {
     label.textContent = pre + ' [*]' + post;
-    setTimeout(() => { label.textContent = pre + ' [' + num + ']' + post; }, 430);
+    setTimeout(() => { label.textContent = pre + ' [' + num + ']' + post; }, 473);
   } else {
     label.textContent = pre + ' [' + num + ']' + post;
   }
