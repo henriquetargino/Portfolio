@@ -9,13 +9,21 @@ interface Props {
   title?: string;
   description?: string;
   lang?: string;
+  ogImage?: string; // path relativo dentro de /public (ex: 'og.png' ou 'images/aif_intro.png')
 }
 
 const {
-  title = 'Henrique Targino · Cientista de Dados',
-  description = 'Portfólio de Henrique Targino — Cientista de Dados apaixonado por redes neurais e visão computacional.',
+  title = 'Henrique Targino · AI Engineer & Cientista de Dados',
+  description = 'Construindo máquinas que enxergam, aprendem e conversam. Portfólio de Henrique Targino: redes neurais, visão computacional e agentes de IA.',
   lang = 'pt-BR',
+  ogImage = 'og.png',
 } = Astro.props;
+
+// URLs absolutas (necessárias pra og:image, og:url, canonical)
+const SITE = Astro.site?.toString().replace(/\/$/, '') || 'https://henriquetargino.github.io';
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const ogImageUrl = `${SITE}${BASE}/${ogImage.replace(/^\//, '')}`;
+const canonicalUrl = `${SITE}${Astro.url.pathname}`;
 ---
 
 <!doctype html>
@@ -25,8 +33,30 @@ const {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta name="author" content="Henrique Targino" />
+  <meta name="theme-color" content="#F4F0E7" />
+  <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg?v=3`} />
   <title>{title}</title>
+
+  {/* Open Graph (LinkedIn, Facebook, WhatsApp) */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Henrique Targino · Portfolio" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Henrique Targino · AI Engineer & Cientista de Dados" />
+
+  {/* Twitter / X */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content="Henrique Targino · AI Engineer & Cientista de Dados" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
