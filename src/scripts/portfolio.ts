@@ -341,12 +341,6 @@ function onScroll() {
   revealOnScroll();
 }
 
-/* ===================== THEME ===================== */
-function setThemeLabel() {
-  const tbtn = document.getElementById('theme-toggle');
-  if (tbtn) tbtn.textContent = root.getAttribute('data-theme') === 'blueprint' ? 'tema: blueprint' : 'tema: papel';
-}
-
 /* ===================== TERMINAL ESCONDIDO (aperte /) ===================== */
 let termEl = null, termIn = null, termOut = null;
 function escHtmlT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -362,35 +356,27 @@ function termPrint(html) {
 function termOpen() {
   termRefs();
   if (!termEl) return;
-  if (!termOut.dataset.greeted) { termOut.dataset.greeted = '1'; termPrint('<span class="tm-dim">portfolio.ipynb shell — digite <b>help</b> + Enter · <b>esc</b> pra sair</span>'); }
+  if (!termOut.dataset.greeted) { termOut.dataset.greeted = '1'; termPrint('<span class="tm-dim">portfolio.ipynb shell · digite <b>help</b> + Enter · <b>esc</b> pra sair</span>'); }
   termEl.classList.add('open');
   setTimeout(() => { if (termIn) termIn.focus(); }, 30);
 }
 function termClose() { if (termEl) termEl.classList.remove('open'); if (termIn) termIn.blur(); }
 function termGo(path) { termClose(); try { navigate(base + path); } catch (e) { location.href = base + path; } }
-function termSetTheme(t) {
-  const next = (t === 'paper' || t === 'blueprint') ? t : (root.getAttribute('data-theme') === 'blueprint' ? 'paper' : 'blueprint');
-  root.setAttribute('data-theme', next);
-  try { localStorage.setItem('theme', next); } catch (e) { }
-  setThemeLabel(); figDirty = true; drawStatics(); kick();
-  termPrint('<span class="tm-ok">tema → ' + next + '</span>');
-}
 function termExec(raw) {
   const cmd = (raw || '').trim();
   termPrint('<span class="tm-p">&gt;&gt;&gt;</span> ' + escHtmlT(cmd));
   if (!cmd) return;
   const parts = cmd.toLowerCase().split(/\s+/);
   const name = parts[0];
-  if (name === 'help') termPrint('whoami · projects · cv · nn · theme [paper|blueprint] · contact · clear · home');
-  else if (name === 'whoami') termPrint('henrique targino · cientista de dados · apaixonado por redes neurais e visão computacional');
-  else if (name === 'projects' || name === 'ls') termPrint('detector-sos · ai-soccer · precos-carros · buraco-da-mae · agente-whatsapp<br><span class="tm-dim">dica: "cv" abre o de visão computacional, "nn" o de redes neurais</span>');
+  if (name === 'help') termPrint('whoami · projects · cv · nn · contact · clear · home');
+  else if (name === 'whoami') termPrint('henrique targino<br><span class="tm-dim">ai engineer · cientista de dados</span><br><span class="tm-dim">visão computacional · redes neurais · agentes de ia</span><br>"ainda acho isso surreal"');
+  else if (name === 'projects' || name === 'ls') termPrint('detector-sos · ai-soccer · precos-carros · buraco · agente-whatsapp<br><span class="tm-dim">dica: "cv" abre o de visão computacional, "nn" o de redes neurais</span>');
   else if (name === 'cv') termGo('projetos/detector-sos');
   else if (name === 'nn' || name === 'soccer') termGo('projetos/ai-soccer');
   else if (name === 'contact' || name === 'contato') { const c = document.getElementById('contato'); if (c) { termClose(); c.scrollIntoView({ behavior: 'smooth' }); } else termGo(''); }
-  else if (name === 'theme') termSetTheme(parts[1]);
   else if (name === 'home') termGo('');
   else if (name === 'clear' || name === 'cls') { if (termOut) termOut.innerHTML = ''; }
-  else termPrint('<span class="tm-err">comando não encontrado:</span> ' + escHtmlT(name) + ' — digite <b>help</b>');
+  else termPrint('<span class="tm-err">comando não encontrado:</span> ' + escHtmlT(name) + ', digite <b>help</b>');
 }
 
 /* ===================== SETUP GLOBAL (1x) ===================== */
@@ -421,13 +407,6 @@ function setupGlobals() {
     else if (e.key === 'Escape') { termClose(); }
   });
 
-  // navegação SPA reseta os atributos do <html> — reaplica o tema salvo
-  document.addEventListener('astro:after-swap', () => {
-    let saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) { }
-    if (saved) root.setAttribute('data-theme', saved);
-  });
-
   requestAnimationFrame(() => { rafOk = true; });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawStatics);
 
@@ -443,19 +422,6 @@ function setupPage() {
   // refs que podem ser recriados a cada navegação
   cur = document.getElementById('cur');
   gx = document.getElementById('gx'); gy = document.getElementById('gy'); ro = document.getElementById('ro');
-
-  // tema — liga com guarda pra não duplicar em elemento persistido
-  const tbtn = document.getElementById('theme-toggle');
-  if (tbtn && !tbtn.dataset.bound) {
-    tbtn.dataset.bound = '1';
-    tbtn.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'blueprint' ? 'paper' : 'blueprint';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) { }
-      setThemeLabel(); figDirty = true; drawStatics(); kick();
-    });
-  }
-  setThemeLabel();
 
   // terminal (elementos recriados a cada navegação)
   termRefs();

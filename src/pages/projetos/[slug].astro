@@ -20,14 +20,16 @@ const base = import.meta.env.BASE_URL;
 
       <div class="detail-cover">
         {project.coverIsVideo ? (
-          <video src={`${base}${project.cover}`} autoplay loop muted playsinline data-autopause transition:name={`cover-${project.slug}`}></video>
+          <video src={`${base}${project.cover}`} autoplay loop muted controls playsinline data-autopause transition:name={`cover-${project.slug}`}></video>
         ) : (
           <img src={`${base}${project.cover}`} alt={project.title} transition:name={`cover-${project.slug}`} />
         )}
       </div>
 
       <div class="detail-meta">
-        <div class="metric"><b>{project.metric.value}</b><span>{project.metric.label}</span></div>
+        {(Array.isArray(project.metric) ? project.metric : [project.metric]).map((m) => (
+          <div class="metric"><b>{m.value}</b><span>{m.label}</span></div>
+        ))}
         <div class="tags">{project.tags.map((t) => <span>{t}</span>)}</div>
       </div>
 
@@ -38,7 +40,15 @@ const base = import.meta.env.BASE_URL;
             {s.body.map((p) => <p set:html={p} />)}
             {s.media && s.media.map((m) => (
               <figure class="detail-figure">
-                <img src={`${base}${m.src}`} alt={m.cap} loading="lazy" />
+                {m.src.endsWith('.mp4') ? (
+                  m.heavy ? (
+                    <video src={`${base}${m.src}`} controls preload="metadata" playsinline></video>
+                  ) : (
+                    <video src={`${base}${m.src}`} autoplay loop muted controls playsinline data-autopause></video>
+                  )
+                ) : (
+                  <img src={`${base}${m.src}`} alt={m.cap} loading="lazy" />
+                )}
                 <figcaption>{m.cap}</figcaption>
               </figure>
             ))}

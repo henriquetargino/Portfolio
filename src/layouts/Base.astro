@@ -34,8 +34,6 @@ const {
     rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@700,900&display=swap" rel="stylesheet" />
   <script is:inline>
-    // aplica o tema salvo antes da pintura (evita flash)
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { }
     // refresh começa no topo (hero): impede o navegador de restaurar a rolagem antiga
     try { history.scrollRestoration = 'manual'; } catch (e) { }
   </script>
