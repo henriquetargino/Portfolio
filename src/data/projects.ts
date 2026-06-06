@@ -302,7 +302,7 @@ export const projects: Project[] = [
           'O app tem 3 áreas: <strong>Estatísticas Gerais</strong> com todos os números, <strong>Dashboard Gráfico</strong> com a evolução visual, e <strong>Adicionar Partida</strong>, um formulário protegido por senha pra que só jogadores autorizados registrem resultados. Implementei cache com <code>@st.cache_data</code> pra deixar tudo rápido, e a cada partida nova os gráficos se atualizam na hora.',
         ],
         media: [
-          { src: 'images/video_baralho.gif', cap: 'o app em ação · dashboards em Streamlit + Plotly, atualizando a cada partida' },
+          { src: 'images/video_baralho.mp4', cap: 'o app em ação · dashboards em Streamlit + Plotly, atualizando a cada partida' },
         ],
       },
       {
