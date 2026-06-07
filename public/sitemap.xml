@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://henriquetargino.github.io/Portfolio/</loc><priority>1.0</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/projetos/detector-sos/</loc><priority>0.8</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/projetos/ai-soccer/</loc><priority>0.8</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/projetos/precos-carros/</loc><priority>0.6</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/projetos/buraco/</loc><priority>0.6</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/projetos/agente-whatsapp/</loc><priority>0.6</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/certificados/</loc><priority>0.5</priority></url>
+  <url><loc>https://henriquetargino.github.io/Portfolio/artigos/</loc><priority>0.5</priority></url>
+</urlset>

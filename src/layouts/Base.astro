@@ -35,7 +35,11 @@ const canonicalUrl = `${SITE}${Astro.url.pathname}`;
   <meta name="author" content="Henrique Targino" />
   <meta name="theme-color" content="#F4F0E7" />
   <link rel="canonical" href={canonicalUrl} />
-  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg?v=3`} />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="96x96" href={`${import.meta.env.BASE_URL}favicon-96.png`} />
+  <link rel="icon" type="image/png" sizes="48x48" href={`${import.meta.env.BASE_URL}favicon-48.png`} />
+  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+  <link rel="apple-touch-icon" sizes="180x180" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
   <title>{title}</title>
 
   {/* Open Graph (LinkedIn, Facebook, WhatsApp) */}
