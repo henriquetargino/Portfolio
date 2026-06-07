@@ -1,4 +1,5 @@
 ---
+import L from './L.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -6,27 +7,29 @@ const base = import.meta.env.BASE_URL;
   <div class="wrap about-grid">
     <div class="about-text">
       <p class="cell-label">In [01]:</p>
-      <span class="kind">sobre mim</span>
-      <h2>Minha jornada</h2>
-      <p>Minha paixão por tecnologia começou cedo, com os videogames. Mais do que jogar, o que me
-        prendia era entender como tudo funcionava <em>"por trás das telas"</em>.</p>
-      <p class="hl">Lembro que, aos 10 anos, uma professora perguntou o que a gente queria ser quando
-        crescer. Peguei meu papel e escrevi: <mark>"quero ser TI"</mark>. Desde aquela época, eu já
-        sabia o caminho que ia seguir.</p>
-      <p>O tempo passou e aquele desejo virou minha realidade como <strong>Cientista de Dados</strong>.
-        Escolhi a área puxado principalmente pela <strong>Visão Computacional</strong>: o fato de uma
-        máquina "aprender" a distinguir a mão de um humano de uma xícara sempre me impressionou demais.</p>
-      <p>Hoje tenho experiência sólida criando <strong>agentes de IA</strong>, desenvolvendo
-        <strong>Machine Learning</strong> (sistemas de recomendação e predição) e montando fluxos de
-        <strong>automação</strong> avançados, de ponta a ponta.</p>
-      <p>No fim das contas, a tecnologia só faz sentido quando gera impacto e ajuda pessoas. Afinal,
-        por trás de todos esses dados, fluxos e modelos, existe alguém que simplesmente ama o que faz.</p>
+      <L as="span" class="kind" en="about me" pt="sobre mim" />
+      <L as="h2" en="My journey" pt="Minha jornada" />
+      <L as="p" html
+        en='My passion for tech started early, with video games. More than playing, what hooked me was understanding how everything worked <em>"behind the screens"</em>.'
+        pt='Minha paixão por tecnologia começou cedo, com os videogames. Mais do que jogar, o que me prendia era entender como tudo funcionava <em>"por trás das telas"</em>.' />
+      <L as="p" class="hl" html
+        en='I remember that, when I was 10, a teacher asked what we wanted to be when we grew up. I grabbed my paper and wrote: <mark>"I want to work in tech"</mark>. Even back then, I already knew the path I was going to follow.'
+        pt='Lembro que, aos 10 anos, uma professora perguntou o que a gente queria ser quando crescer. Peguei meu papel e escrevi: <mark>"quero ser TI"</mark>. Desde aquela época, eu já sabia o caminho que ia seguir.' />
+      <L as="p" html
+        en='Time went by and that wish became my reality as a <strong>Data Scientist</strong>. I chose the field pulled mainly by <strong>Computer Vision</strong>: the fact that a machine could "learn" to tell a human hand apart from a cup always blew my mind.'
+        pt='O tempo passou e aquele desejo virou minha realidade como <strong>Cientista de Dados</strong>. Escolhi a área puxado principalmente pela <strong>Visão Computacional</strong>: o fato de uma máquina "aprender" a distinguir a mão de um humano de uma xícara sempre me impressionou demais.' />
+      <L as="p" html
+        en='Today I have solid experience building <strong>AI agents</strong>, developing <strong>Machine Learning</strong> (recommendation and prediction systems) and putting together advanced <strong>automation</strong> flows, end to end.'
+        pt='Hoje tenho experiência sólida criando <strong>agentes de IA</strong>, desenvolvendo <strong>Machine Learning</strong> (sistemas de recomendação e predição) e montando fluxos de <strong>automação</strong> avançados, de ponta a ponta.' />
+      <L as="p" html
+        en='In the end, tech only makes sense when it creates impact and helps people. After all, behind all this data, flows and models, there is someone who simply loves what they do.'
+        pt='No fim das contas, a tecnologia só faz sentido quando gera impacto e ajuda pessoas. Afinal, por trás de todos esses dados, fluxos e modelos, existe alguém que simplesmente ama o que faz.' />
 
       <div class="about-note">
         <svg class="note-arrow" viewBox="0 0 70 50" aria-hidden="true">
           <path d="M34,46 C 28,30 30,16 36,6 M36,6 l-8,9 M36,6 l8,8" />
         </svg>
-        <span class="hand">esse texto é 100% humano, nenhuma IA escreveu :)</span>
+        <L as="span" class="hand" en="this text is 100% human, no AI wrote it :)" pt="esse texto é 100% humano, nenhuma IA escreveu :)" />
       </div>
     </div>
 

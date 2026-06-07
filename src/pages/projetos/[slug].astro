@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import L from '../../components/L.astro';
 import { projects } from '../../data/projects';
 
 export function getStaticPaths() {
@@ -10,25 +11,25 @@ const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<Base title={`${project.title} · Henrique Targino`} description={project.lead}>
+<Base title={`${project.title.en} · Henrique Targino`} description={project.lead.en}>
   <main class="detail">
     <div class="wrap">
-      <a class="back-link" href={`${base}#proj-${project.slug}`}>← voltar pros projetos</a>
-      <p class="cell-label">{project.kind}</p>
-      <h1 class="detail-title">{project.title}</h1>
-      <p class="detail-lead">{project.lead}</p>
+      <a class="back-link" href={`${base}#proj-${project.slug}`}><L en="← back to projects" pt="← voltar pros projetos" /></a>
+      <L as="p" class="cell-label" en={project.kind.en} pt={project.kind.pt} />
+      <L as="h1" class="detail-title" en={project.title.en} pt={project.title.pt} />
+      <L as="p" class="detail-lead" html en={project.lead.en} pt={project.lead.pt} />
 
       <div class="detail-cover">
         {project.coverIsVideo ? (
           <video src={`${base}${project.cover}`} autoplay loop muted controls playsinline data-autopause transition:name={`cover-${project.slug}`}></video>
         ) : (
-          <img src={`${base}${project.cover}`} alt={project.title} transition:name={`cover-${project.slug}`} />
+          <img src={`${base}${project.cover}`} alt={project.title.en} transition:name={`cover-${project.slug}`} />
         )}
       </div>
 
       <div class="detail-meta">
         {(Array.isArray(project.metric) ? project.metric : [project.metric]).map((m) => (
-          <div class="metric"><b>{m.value}</b><span>{m.label}</span></div>
+          <div class="metric"><b>{m.value}</b><span><L en={m.label.en} pt={m.label.pt} /></span></div>
         ))}
         <div class="tags">{project.tags.map((t) => <span>{t}</span>)}</div>
       </div>
@@ -36,8 +37,8 @@ const base = import.meta.env.BASE_URL;
       <article class="detail-body">
         {project.sections.map((s) => (
           <section class="detail-section">
-            <h3>{s.h3}</h3>
-            {s.body.map((p) => <p set:html={p} />)}
+            <L as="h3" en={s.h3.en} pt={s.h3.pt} />
+            {s.body.map((p) => <L as="p" html en={p.en} pt={p.pt} />)}
             {s.media && s.media.map((m) => (
               <figure class="detail-figure">
                 {m.src.endsWith('.mp4') ? (
@@ -47,9 +48,9 @@ const base = import.meta.env.BASE_URL;
                     <video src={`${base}${m.src}`} autoplay loop muted controls playsinline data-autopause></video>
                   )
                 ) : (
-                  <img src={`${base}${m.src}`} alt={m.cap} loading="lazy" />
+                  <img src={`${base}${m.src}`} alt={m.cap.en} loading="lazy" />
                 )}
-                <figcaption>{m.cap}</figcaption>
+                <figcaption><L en={m.cap.en} pt={m.cap.pt} /></figcaption>
               </figure>
             ))}
           </section>
@@ -59,12 +60,12 @@ const base = import.meta.env.BASE_URL;
       {project.links && project.links.length > 0 && (
         <div class="detail-links">
           {project.links.map((l) => (
-            <a href={l.href} target={l.href.startsWith('http') ? '_blank' : null} rel="noopener">{l.label} →</a>
+            <a href={l.href} target={l.href.startsWith('http') ? '_blank' : null} rel="noopener"><L en={l.label.en} pt={l.label.pt} /> →</a>
           ))}
         </div>
       )}
 
-      <a class="back-link bottom" href={`${base}#proj-${project.slug}`}>← voltar pros projetos</a>
+      <a class="back-link bottom" href={`${base}#proj-${project.slug}`}><L en="← back to projects" pt="← voltar pros projetos" /></a>
     </div>
   </main>
 </Base>

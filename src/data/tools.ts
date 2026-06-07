@@ -38,9 +38,9 @@ export const areaColor: Record<Area, string> = {
   data: 'var(--hl-data)',
 };
 
-export const areaLabel: Record<Area, string> = {
-  ml: 'ML & Redes Neurais',
-  cv: 'Visão Computacional',
-  agents: 'Agentes de IA',
-  data: 'Dados & Viz',
+export const areaLabel: Record<Area, { en: string; pt: string }> = {
+  ml: { en: 'ML & Neural Nets', pt: 'ML & Redes Neurais' },
+  cv: { en: 'Computer Vision', pt: 'Visão Computacional' },
+  agents: { en: 'AI Agents', pt: 'Agentes de IA' },
+  data: { en: 'Data & Viz', pt: 'Dados & Viz' },
 };

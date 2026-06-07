@@ -1,16 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import L from '../components/L.astro';
 import { certificates } from '../data/certificates';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Base title="Certificados · Henrique Targino" description="Certificados de Henrique Targino.">
+<Base title="Certificates · Henrique Targino" description="Certificates earned by Henrique Targino.">
   <main class="detail">
     <div class="wrap">
-      <a class="back-link" href={`${base}#certificados`}>← voltar pros certificados</a>
-      <p class="cell-label out">// credenciais</p>
-      <h1 class="detail-title">Certificados</h1>
-      <p class="detail-lead">Alguns dos certificados que conquistei ao longo da jornada.</p>
+      <a class="back-link" href={`${base}#certificados`}><L en="← back to certificates" pt="← voltar pros certificados" /></a>
+      <L as="p" class="cell-label out" en="// credentials" pt="// credenciais" />
+      <L as="h1" class="detail-title" en="Certificates" pt="Certificados" />
+      <L as="p" class="detail-lead" en="Some of the certificates I earned along the way." pt="Alguns dos certificados que conquistei ao longo da jornada." />
 
       <div class="cert-grid" style="margin-top:1rem;">
         {certificates.map((c) => (
@@ -24,9 +25,9 @@ const base = import.meta.env.BASE_URL;
               <img src={`${base}${c.logo}`} alt={c.institution} />
               <span>{c.institution}</span>
             </div>
-            <h4>{c.title}</h4>
-            <p class="cert-date">{c.date}</p>
-            {(c.doc || c.image) && <span class="cert-link">ver certificado →</span>}
+            <L as="h4" en={c.titleEn ?? c.title} pt={c.title} />
+            <L as="p" class="cert-date" en={c.dateEn ?? c.date} pt={c.date} />
+            {(c.doc || c.image) && <span class="cert-link"><L en="see certificate →" pt="ver certificado →" /></span>}
           </a>
         ))}
       </div>

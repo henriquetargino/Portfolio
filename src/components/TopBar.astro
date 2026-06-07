@@ -5,6 +5,11 @@ const base = import.meta.env.BASE_URL;
 <header class="topbar">
   <a class="brand" href={base}>Henrique Targino<span class="dot">.</span></a>
   <div class="toolbar">
+    <div class="lang-toggle" role="group" aria-label="language">
+      <button type="button" data-lang-btn="en" aria-label="English">EN</button>
+      <span class="lang-sep">/</span>
+      <button type="button" data-lang-btn="pt" aria-label="Português">PT</button>
+    </div>
     <span>portfolio.ipynb</span>
   </div>
 </header>

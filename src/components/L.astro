@@ -1,0 +1,28 @@
+---
+// Helper de i18n por renderização dupla (dual-render).
+// Emite a versão EN e a PT lado a lado; o CSS esconde a que não está ativa
+// via html[data-lang]. Default do site: EN.
+//   <L en="hi" pt="olá" />                  → inline (span)
+//   <L as="h2" en="Title" pt="Título" />    → bloco
+//   <L as="p" html en="<b>x</b>" pt="..." /> → conteúdo com HTML
+interface Props {
+  en: string;
+  pt: string;
+  html?: boolean;
+  as?: string;
+  class?: string;
+}
+const { en, pt, html = false, as = 'span', class: className } = Astro.props;
+const Tag = as as any;
+---
+{html ? (
+  <Fragment>
+    <Tag data-l="en" class={className} set:html={en} />
+    <Tag data-l="pt" class={className} set:html={pt} />
+  </Fragment>
+) : (
+  <Fragment>
+    <Tag data-l="en" class={className}>{en}</Tag>
+    <Tag data-l="pt" class={className}>{pt}</Tag>
+  </Fragment>
+)}

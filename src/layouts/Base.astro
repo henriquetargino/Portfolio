@@ -13,9 +13,8 @@ interface Props {
 }
 
 const {
-  title = 'Henrique Targino · AI Engineer & Cientista de Dados',
-  description = 'Construindo máquinas que enxergam, aprendem e conversam. Portfólio de Henrique Targino: redes neurais, visão computacional e agentes de IA.',
-  lang = 'pt-BR',
+  title = 'Henrique Targino · AI Engineer & Data Scientist',
+  description = 'Building machines that see, learn and talk. Portfolio of Henrique Targino: neural networks, computer vision and AI agents.',
   ogImage = 'og.png',
 } = Astro.props;
 
@@ -27,7 +26,7 @@ const canonicalUrl = `${SITE}${Astro.url.pathname}`;
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="paper">
+<html lang="en" data-lang="en" data-theme="paper">
 
 <head>
   <meta charset="UTF-8" />
@@ -42,7 +41,8 @@ const canonicalUrl = `${SITE}${Astro.url.pathname}`;
   {/* Open Graph (LinkedIn, Facebook, WhatsApp) */}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Henrique Targino · Portfolio" />
-  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
@@ -64,6 +64,12 @@ const canonicalUrl = `${SITE}${Astro.url.pathname}`;
     rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@700,900&display=swap" rel="stylesheet" />
   <script is:inline>
+    // aplica o idioma salvo antes da pintura (default EN, evita flash de troca)
+    try {
+      var lg = localStorage.getItem('lang') || 'en';
+      document.documentElement.setAttribute('data-lang', lg);
+      document.documentElement.setAttribute('lang', lg === 'pt' ? 'pt-BR' : 'en');
+    } catch (e) { }
     // refresh começa no topo (hero): impede o navegador de restaurar a rolagem antiga
     try { history.scrollRestoration = 'manual'; } catch (e) { }
   </script>

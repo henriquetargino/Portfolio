@@ -22,21 +22,21 @@ const base = import.meta.env.BASE_URL;
 
     <FeatureProject
       cell="In [03]:"
-      kind="visão computacional"
-      title="Detector de Sinal de Socorro"
-      lead="Um sistema que reconhece o gesto universal de pedido de ajuda em tempo real, só com webcam e CPU, e dispara um alerta silencioso via webhook."
+      kind={{ en: 'computer vision', pt: 'visão computacional' }}
+      title={{ en: 'Signal for Help Detector', pt: 'Detector de Sinal de Socorro' }}
+      lead={{ en: 'A system that recognizes the universal call-for-help gesture in real time, with just a webcam and CPU, and fires a silent alert through a webhook.', pt: 'Um sistema que reconhece o gesto universal de pedido de ajuda em tempo real, só com webcam e CPU, e dispara um alerta silencioso via webhook.' }}
       img="images/cv.jpeg"
       imgAlt="Frame da webcam detectando o gesto de socorro com 21 landmarks"
-      figPhotoCap="<b>fig.02</b> · a câmera vê"
+      figPhotoCap={{ en: '<b>fig.02</b> · the camera sees', pt: '<b>fig.02</b> · a câmera vê' }}
       rep="hand"
-      figRepCap="<b>fig.03</b> · o modelo extrai 21 landmarks"
+      figRepCap={{ en: '<b>fig.03</b> · the model extracts 21 landmarks', pt: '<b>fig.03</b> · o modelo extrai 21 landmarks' }}
       body={[
-        { h4: '// como funciona', text: 'O MediaPipe extrai 21 pontos da mão. Em vez de treinar um modelo pesado, o sistema usa geometria pura (a distância euclidiana entre os dedos), dentro de uma máquina de estados (ARMAR → DISPARAR → ALERTA), para não confundir um aceno com um pedido de socorro.' },
-        { h4: '// o impacto', text: 'A repercussão do projeto rendeu um convite para ministrar uma masterclass de visão computacional na TripleTen. Quando o gesto é confirmado, um POST assíncrono dispara o alerta em uma thread separada, sem travar o vídeo.' },
+        { h4: { en: '// how it works', pt: '// como funciona' }, text: { en: 'MediaPipe extracts 21 points from the hand. Instead of training a heavy model, the system uses pure geometry (the euclidean distance between fingers), inside a state machine (ARM → TRIGGER → ALERT), so it never mistakes a wave for a call for help.', pt: 'O MediaPipe extrai 21 pontos da mão. Em vez de treinar um modelo pesado, o sistema usa geometria pura (a distância euclidiana entre os dedos), dentro de uma máquina de estados (ARMAR → DISPARAR → ALERTA), para não confundir um aceno com um pedido de socorro.' } },
+        { h4: { en: '// the impact', pt: '// o impacto' }, text: { en: 'The project got enough attention to earn me an invitation to teach a computer vision masterclass at TripleTen. When the gesture is confirmed, an async POST fires the alert on a separate thread, without freezing the video.', pt: 'A repercussão do projeto rendeu um convite para ministrar uma masterclass de visão computacional na TripleTen. Quando o gesto é confirmado, um POST assíncrono dispara o alerta em uma thread separada, sem travar o vídeo.' } },
       ]}
       tags={['OpenCV', 'MediaPipe', 'NumPy', 'FSM', 'Python']}
       metricValue="21"
-      metricLabel="landmarks · CPU · tempo real"
+      metricLabel={{ en: 'landmarks · CPU · real time', pt: 'landmarks · CPU · tempo real' }}
       href={`${base}projetos/detector-sos`}
       slug="detector-sos"
       id="proj-detector-sos"
@@ -45,21 +45,21 @@ const base = import.meta.env.BASE_URL;
     <FeatureProject
       alt={true}
       cell="In [04]:"
-      kind="redes neurais · reinforcement learning"
-      title="AI Football"
-      lead="Agentes que aprendem a jogar futebol do zero, sem nenhuma regra escrita à mão, em pura tentativa e erro, ao longo de 50 milhões de steps de treino."
+      kind={{ en: 'neural networks · reinforcement learning', pt: 'redes neurais · reinforcement learning' }}
+      title={{ en: 'AI Football', pt: 'AI Football' }}
+      lead={{ en: 'Agents that learn to play soccer from scratch, with no hand-written rules, in pure trial and error, across 50 million training steps.', pt: 'Agentes que aprendem a jogar futebol do zero, sem nenhuma regra escrita à mão, em pura tentativa e erro, ao longo de 50 milhões de steps de treino.' }}
       img="images/aif_intro.mp4"
       imgAlt="Visualização da rede neural do AI Football em ação"
-      figPhotoCap="<b>fig.04</b> · a rede neural em ação"
+      figPhotoCap={{ en: '<b>fig.04</b> · the neural network in action', pt: '<b>fig.04</b> · a rede neural em ação' }}
       rep="nn"
-      figRepCap="<b>fig.05</b> · a arquitetura, à mão"
+      figRepCap={{ en: '<b>fig.05</b> · the architecture, by hand', pt: '<b>fig.05</b> · a arquitetura, à mão' }}
       body={[
-        { h4: '// a ideia', text: 'Nada de comportamento programado: os agentes começam sabendo nada e aprendem por reforço, jogando milhões de partidas contra si mesmos (self-play) até desenvolverem estratégia.' },
-        { h4: '// por baixo dos panos', text: 'A política é uma rede neural treinada com um <strong>PPO próprio</strong>, escrito do zero (estilo CleanRL, sem bibliotecas de RL prontas), em PyTorch. Ela lê o estado do jogo e decide a ação, milhões de vezes, só na CPU.' },
+        { h4: { en: '// the idea', pt: '// a ideia' }, text: { en: 'No programmed behavior: the agents start out knowing nothing and learn through reinforcement, playing millions of matches against themselves (self-play) until they develop strategy.', pt: 'Nada de comportamento programado: os agentes começam sabendo nada e aprendem por reforço, jogando milhões de partidas contra si mesmos (self-play) até desenvolverem estratégia.' } },
+        { h4: { en: '// under the hood', pt: '// por baixo dos panos' }, text: { en: 'The policy is a neural network trained with my <strong>own PPO</strong>, written from scratch (CleanRL style, no off-the-shelf RL libraries), in PyTorch. It reads the game state and decides the action, millions of times, on CPU only.', pt: 'A política é uma rede neural treinada com um <strong>PPO próprio</strong>, escrito do zero (estilo CleanRL, sem bibliotecas de RL prontas), em PyTorch. Ela lê o estado do jogo e decide a ação, milhões de vezes, só na CPU.' } },
       ]}
       tags={['PyTorch', 'PPO', 'Gymnasium', 'self-play', 'CPU-only']}
       metricValue="50M"
-      metricLabel="steps de treino"
+      metricLabel={{ en: 'training steps', pt: 'steps de treino' }}
       href={`${base}projetos/ai-soccer`}
       slug="ai-soccer"
       id="proj-ai-soccer"

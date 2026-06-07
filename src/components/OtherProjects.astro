@@ -1,25 +1,26 @@
 ---
+import L from './L.astro';
 const base = import.meta.env.BASE_URL;
 
 const cards = [
-  { img: 'images/outliers2.png', slug: 'precos-carros', alt: 'Análise de dados automotivos', kind: 'análise + ml', title: 'Análise Automotiva & Preços', desc: 'Análise exploratória de dados de veículos e um modelo de Machine Learning para prever preços, com um mini-artigo sobre outliers.', tags: ['EDA', 'scikit-learn'], href: `${base}projetos/precos-carros` },
-  { img: 'images/baralho.jpg', slug: 'buraco', alt: 'App de pontuação de Buraco', kind: 'automação · data viz', title: 'Automatizando um Hobby', desc: 'Um app que registra as partidas de Buraco com a minha mãe e transforma os pontos em estatísticas e dashboards em tempo real.', tags: ['Streamlit', 'Plotly'], href: `${base}projetos/buraco` },
-  { img: 'images/n8n0.PNG', slug: 'agente-whatsapp', alt: 'Agente de IA no WhatsApp', kind: 'ia · automação', title: 'Agente de IA no WhatsApp', desc: 'Atendimento autônomo para uma nutricionista com n8n, Evolution API e Chatwoot, com handoff para uma humana quando precisa.', tags: ['n8n', 'LLM'], href: `${base}projetos/agente-whatsapp` },
+  { img: 'images/outliers2.png', slug: 'precos-carros', alt: { en: 'Automotive data analysis', pt: 'Análise de dados automotivos' }, kind: { en: 'analysis + ml', pt: 'análise + ml' }, title: { en: 'Automotive Analysis & Prices', pt: 'Análise Automotiva & Preços' }, desc: { en: 'Exploratory analysis of vehicle data and a Machine Learning model to predict prices, with a mini-article about outliers.', pt: 'Análise exploratória de dados de veículos e um modelo de Machine Learning para prever preços, com um mini-artigo sobre outliers.' }, tags: ['EDA', 'scikit-learn'], href: `${base}projetos/precos-carros` },
+  { img: 'images/baralho.jpg', slug: 'buraco', alt: { en: 'Buraco scoring app', pt: 'App de pontuação de Buraco' }, kind: { en: 'automation · data viz', pt: 'automação · data viz' }, title: { en: 'Automating a Hobby', pt: 'Automatizando um Hobby' }, desc: { en: 'An app that logs the Buraco card games with my mom and turns the scores into real-time stats and dashboards.', pt: 'Um app que registra as partidas de Buraco com a minha mãe e transforma os pontos em estatísticas e dashboards em tempo real.' }, tags: ['Streamlit', 'Plotly'], href: `${base}projetos/buraco` },
+  { img: 'images/n8n0.PNG', slug: 'agente-whatsapp', alt: { en: 'AI Agent on WhatsApp', pt: 'Agente de IA no WhatsApp' }, kind: { en: 'ai · automation', pt: 'ia · automação' }, title: { en: 'AI Agent on WhatsApp', pt: 'Agente de IA no WhatsApp' }, desc: { en: 'Autonomous support for a nutritionist with n8n, Evolution API and Chatwoot, handing off to a human when needed.', pt: 'Atendimento autônomo para uma nutricionista com n8n, Evolution API e Chatwoot, com handoff para uma humana quando precisa.' }, tags: ['n8n', 'LLM'], href: `${base}projetos/agente-whatsapp` },
 ];
 ---
 
 <section class="section-block">
   <div class="wrap">
     <p class="cell-label out">Out [05]:</p>
-    <h3 class="exp-sub">// outros experimentos</h3>
+    <L as="h3" class="exp-sub" en="// other experiments" pt="// outros experimentos" />
     <div class="card-grid">
       {cards.map((c) => (
         <a class="pcard" id={`proj-${c.slug}`} href={c.href}>
-          <div class="pcard-fig"><img src={`${base}${c.img}`} alt={c.alt} transition:name={`cover-${c.slug}`} /></div>
+          <div class="pcard-fig"><img src={`${base}${c.img}`} alt={c.alt.en} transition:name={`cover-${c.slug}`} /></div>
           <div class="pcard-body">
-            <span class="kind">{c.kind}</span>
-            <h4>{c.title}</h4>
-            <p>{c.desc}</p>
+            <span class="kind"><L en={c.kind.en} pt={c.kind.pt} /></span>
+            <L as="h4" en={c.title.en} pt={c.title.pt} />
+            <L as="p" en={c.desc.en} pt={c.desc.pt} />
             <div class="tags">{c.tags.map((t) => <span>{t}</span>)}</div>
           </div>
         </a>

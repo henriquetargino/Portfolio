@@ -1,12 +1,13 @@
 ---
 // Contato
+import L from './L.astro';
 ---
 
 <footer class="footer" id="contato">
   <div class="wrap">
     <p class="cell-label out">In [08]:</p>
-    <h2>Roda a última célula?</h2>
-    <p>Se você rolou até aqui, alguma coisa te interessou. Me chama.</p>
+    <L as="h2" en="Run the last cell?" pt="Roda a última célula?" />
+    <L as="p" en="If you scrolled all the way here, something caught your eye. Reach out." pt="Se você rolou até aqui, alguma coisa te interessou. Me chama." />
     <div class="social">
       <a href="https://github.com/henriquetargino" target="_blank" rel="noopener">github</a>
       <a href="https://www.linkedin.com/in/henriquetargino/" target="_blank" rel="noopener">linkedin</a>
@@ -14,6 +15,6 @@
       <a href="mailto:henriquetarginoalbuquerque@gmail.com">email</a>
     </div>
     <p class="copyright">portfolio.ipynb</p>
-    <p class="term-hint">aperte <kbd>/</kbd> pra abrir o shell</p>
+    <L as="p" class="term-hint" html en="press <kbd>/</kbd> to open the shell" pt="aperte <kbd>/</kbd> pra abrir o shell" />
   </div>
 </footer>

@@ -3,6 +3,8 @@ export interface Certificate {
   logo: string;
   title: string;
   date: string;
+  titleEn?: string; // título traduzido (EN) — opcional pra não quebrar /certificados
+  dateEn?: string;  // data traduzida (EN) — opcional pra não quebrar /certificados
   image?: string; // thumbnail PNG (aparece no carrossel da home)
   doc?: string;   // arquivo aberto ao clicar (PDF oficial)
 }
@@ -10,8 +12,8 @@ export interface Certificate {
 // Ordem da grade "ver todos": Harvard, TripleTen, Asimov, Unipê.
 // (O carrossel da home reordena pra começar na Asimov — ver Certificates.astro.)
 export const certificates: Certificate[] = [
-  { institution: 'Harvard', logo: 'images/harvard.png', title: 'CS50: Introduction to Computer Science', date: 'Abril 2024 – Agosto 2025', image: 'images/certificado_harvard.png', doc: 'images/certificado_harvard.pdf' },
-  { institution: 'TripleTen', logo: 'images/tripleten.png', title: 'Bootcamp em Ciência de Dados (1 ano)', date: 'Agosto 2024 – Setembro 2025', image: 'images/certificado_tripleten.png', doc: 'images/certificado_tripleten.pdf' },
-  { institution: 'Asimov Academy', logo: 'images/asimov.png', title: 'Visão Computacional com OpenCV', date: 'Novembro 2025', image: 'images/certificado_asimov_visao.png', doc: 'images/certificado_asimov_visao.pdf' },
-  { institution: 'Unipê', logo: 'images/unipe.png', title: 'Machine Learning', date: 'Janeiro 2025 – Junho 2025', doc: 'images/certificado_unipe.pdf' },
+  { institution: 'Harvard', logo: 'images/harvard.png', title: 'CS50: Introduction to Computer Science', titleEn: 'CS50: Introduction to Computer Science', date: 'Abril 2024 – Agosto 2025', dateEn: 'April 2024 – August 2025', image: 'images/certificado_harvard.png', doc: 'images/certificado_harvard.pdf' },
+  { institution: 'TripleTen', logo: 'images/tripleten.png', title: 'Bootcamp em Ciência de Dados (1 ano)', titleEn: 'Data Science Bootcamp (1 year)', date: 'Agosto 2024 – Setembro 2025', dateEn: 'August 2024 – September 2025', image: 'images/certificado_tripleten.png', doc: 'images/certificado_tripleten.pdf' },
+  { institution: 'Asimov Academy', logo: 'images/asimov.png', title: 'Visão Computacional com OpenCV', titleEn: 'Computer Vision with OpenCV', date: 'Novembro 2025', dateEn: 'November 2025', image: 'images/certificado_asimov_visao.png', doc: 'images/certificado_asimov_visao.pdf' },
+  { institution: 'Unipê', logo: 'images/unipe.png', title: 'Machine Learning', titleEn: 'Machine Learning', date: 'Janeiro 2025 – Junho 2025', dateEn: 'January 2025 – June 2025', doc: 'images/certificado_unipe.pdf' },
 ];

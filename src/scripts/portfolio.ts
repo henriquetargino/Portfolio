@@ -417,11 +417,34 @@ function setupGlobals() {
   }
 }
 
+/* ===================== IDIOMA (toggle EN/PT, default EN) ===================== */
+function applyLang(lang) {
+  const lg = lang === 'pt' ? 'pt' : 'en';
+  root.setAttribute('data-lang', lg);
+  root.setAttribute('lang', lg === 'pt' ? 'pt-BR' : 'en');
+  try { localStorage.setItem('lang', lg); } catch (e) { }
+}
+function setupLang() {
+  // reaplica o idioma salvo (sobrevive a navegações SPA)
+  let saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }
+  root.setAttribute('data-lang', saved);
+  root.setAttribute('lang', saved === 'pt' ? 'pt-BR' : 'en');
+  // liga os botões do toggle (guarda pra não duplicar em elemento persistido)
+  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = '1';
+    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang-btn')));
+  });
+}
+
 /* ===================== SETUP DE PÁGINA (a cada navegação) ===================== */
 function setupPage() {
   // refs que podem ser recriados a cada navegação
   cur = document.getElementById('cur');
   gx = document.getElementById('gx'); gy = document.getElementById('gy'); ro = document.getElementById('ro');
+
+  setupLang();
 
   // terminal (elementos recriados a cada navegação)
   termRefs();

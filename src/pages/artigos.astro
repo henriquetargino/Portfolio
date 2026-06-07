@@ -1,26 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
+import L from '../components/L.astro';
 import { articles } from '../data/articles';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Base title="Artigos · Henrique Targino" description="Artigos escritos por Henrique Targino.">
+<Base title="Articles · Henrique Targino" description="Articles written by Henrique Targino.">
   <main class="detail">
     <div class="wrap">
-      <a class="back-link" href={`${base}#artigos`}>← voltar pros artigos</a>
-      <p class="cell-label out">// escritos</p>
-      <h1 class="detail-title">Artigos</h1>
-      <p class="detail-lead">Textos onde eu abro a caixa-preta dos projetos.</p>
+      <a class="back-link" href={`${base}#artigos`}><L en="← back to articles" pt="← voltar pros artigos" /></a>
+      <L as="p" class="cell-label out" en="// writing" pt="// escritos" />
+      <L as="h1" class="detail-title" en="Articles" pt="Artigos" />
+      <L as="p" class="detail-lead" en="Writing where I open up the black box of my projects." pt="Textos onde eu abro a caixa-preta dos projetos." />
 
       <div class="article-list">
         {articles.map((a) => (
           <a class="article-card" href={a.href} target="_blank" rel="noopener">
             <div class="article-cover"><img src={`${base}${a.cover}`} alt={a.title} /></div>
             <div class="article-body">
-              <span class="pub">{a.pub}</span>
+              <L as="span" class="pub" en={a.pubEn ?? a.pub} pt={a.pub} />
               <h3>{a.title}</h3>
-              <p class="article-excerpt">{a.excerpt}</p>
-              <span class="article-go">ler no Medium →</span>
+              <L as="p" class="article-excerpt" en={a.excerptEn ?? a.excerpt} pt={a.excerpt} />
+              <span class="article-go"><L en="read on Medium →" pt="ler no Medium →" /></span>
             </div>
           </a>
         ))}

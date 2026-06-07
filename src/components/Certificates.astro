@@ -1,5 +1,6 @@
 ---
 import { certificates } from '../data/certificates';
+import L from './L.astro';
 const base = import.meta.env.BASE_URL;
 const withImage = certificates.filter((c) => c.image);
 // carrossel começa na Asimov (Harvard cai no centro); o resto segue a ordem da grade
@@ -13,18 +14,18 @@ const loop = [...carousel, ...carousel];
 <section class="certs" id="certificados">
   <div class="wrap">
     <p class="cell-label out">Out [07]:</p>
-    <h3 class="exp-sub">// certificados</h3>
+    <L as="h3" class="exp-sub" en="// certificates" pt="// certificados" />
   </div>
   <div class="cert-carousel" id="cert-carousel">
     <div class="cert-track">
       {loop.map((c) => (
-        <a class="cert-slide" href={`${base}${c.doc || c.image}`} target="_blank" rel="noopener" aria-label={c.title}>
-          <img src={`${base}${c.image}`} alt={c.title} loading="lazy" />
+        <a class="cert-slide" href={`${base}${c.doc || c.image}`} target="_blank" rel="noopener" aria-label={c.titleEn ?? c.title}>
+          <img src={`${base}${c.image}`} alt={c.titleEn ?? c.title} loading="lazy" />
         </a>
       ))}
     </div>
   </div>
   <div class="wrap" style="margin-top:1.6rem;">
-    <a class="band-link" href={`${base}certificados`}>ver todos os certificados →</a>
+    <a class="band-link" href={`${base}certificados`}><L en="see all certificates →" pt="ver todos os certificados →" /></a>
   </div>
 </section>

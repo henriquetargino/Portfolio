@@ -1,5 +1,6 @@
 ---
 import { articles } from '../data/articles';
+import L from '../components/L.astro';
 const base = import.meta.env.BASE_URL;
 const article = articles[0];
 ---
@@ -7,14 +8,14 @@ const article = articles[0];
 <section class="section-block" id="artigos">
   <div class="wrap">
     <p class="cell-label out">Out [06]:</p>
-    <h3 class="exp-sub">// artigos</h3>
+    <L as="h3" class="exp-sub" en="// articles" pt="// artigos" />
     <a class="article-card" href={article.href} target="_blank" rel="noopener">
-      <div class="article-cover"><img src={`${base}${article.cover}`} alt="Heatmap de posições da IA: início vs fim do treino" /></div>
+      <div class="article-cover"><img src={`${base}${article.cover}`} alt="AI position heatmap: start vs end of training" /></div>
       <div class="article-body">
-        <span class="pub">{article.pub}</span>
+        <L as="span" class="pub" en={article.pubEn ?? article.pub} pt={article.pub} />
         <h3>{article.title}</h3>
-        <p class="article-excerpt">{article.excerpt}</p>
-        <span class="article-go">ler no Medium →</span>
+        <L as="p" class="article-excerpt" html en={article.excerptEn ?? article.excerpt} pt={article.excerpt} />
+        <L as="span" class="article-go" en="read on Medium →" pt="ler no Medium →" />
       </div>
     </a>
   </div>

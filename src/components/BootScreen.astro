@@ -3,9 +3,9 @@
 // O gate em Base.astro adiciona .booting no <html> antes da pintura; aqui só anima.
 ---
 
-<div id="boot" class="boot" role="status" aria-label="iniciando o notebook">
+<div id="boot" class="boot" role="status" aria-label="booting the notebook">
   <pre id="boot-log" class="boot-log"></pre>
-  <button id="boot-skip" class="boot-skip" type="button">pular →</button>
+  <button id="boot-skip" class="boot-skip" type="button">skip →</button>
 </div>
 
 <script is:inline>
@@ -15,10 +15,10 @@
     var log = document.getElementById('boot-log');
     if (!el || !log) return;
     var lines = [
-      'iniciando kernel · python 3.10',
+      'booting kernel · python 3.10',
       'import numpy, pandas, torch, cv2, mediapipe',
-      'carregando portfolio.ipynb',
-      'kernel pronto'
+      'loading portfolio.ipynb',
+      'kernel ready'
     ];
     var items = [], k = 0, done = false;
     function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
